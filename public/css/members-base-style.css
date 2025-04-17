@@ -1,0 +1,169 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-family: "Poppins", sans-serif;
+}
+
+.field-fillup-required{
+    color: red;
+}
+
+.auth-container-center{
+    /* height: 100vh; */
+}
+
+form.user .form-control-user{
+    border-radius: 4px;
+}
+
+form.user .btn-user{
+    border-radius: 4px;
+}
+
+.membership-registration-details > h6{
+    font-weight: 500 ;
+}
+.membership-registration-details > p{
+    font-size: 14px ;
+}
+
+.membership-from-select-field{
+    height: 50px;
+    width: 100%;
+    font-size: 15px;
+}
+
+
+.step-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.step {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #ddd;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.step-line {
+    width: 170px;
+    height: 5px;
+    background: #ddd;
+}
+
+.step.active {
+    background: #007bff;
+    color: white;
+}
+
+.membership-registration-form-field-heading{
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+
+/* Sidebar Design */
+.sidebar-brand-text{
+    font-weight: 400;
+    text-transform: capitalize;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.sidebar-brand-icon > img {
+    border-radius: 50% ;
+}
+
+/* Dashboard */
+.members-account-status{
+    font-size: 12px;
+    color: rgb(232, 232, 232);
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.dash-headings{
+    font-weight: 700;
+}
+
+/* Dashboard Steop from */
+.membership-dashbaord-from-heading{
+    font-size: 22px;
+    font-weight: 600;
+}
+.checkbox-fields-label{
+    margin-left: 10px;
+    font-size: 14px;
+    color: rgb(92, 92, 92);;
+}
+
+.checkbox-fields-input{
+    /* border-radius: 4px;
+    border: 2px solid black; */
+    
+}
+
+/* .form-control[type="file"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+} */
+
+
+.licence-box > h5{
+    color: #474646;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+.licence-box > p > b{
+    font-weight: 700;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+}
+.licence-box > p{
+    color: #5f5d5d !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+
+
+@media only screen and (min-width:992px) {
+    .step-line {
+        width: 460px;
+    }
+    
+}
+
+
+
+@media only screen and (min-width:596px) and (max-width:991px){
+    .step-line {
+        width: 240px;
+    }
+    
+}
+
+
+@media only screen and (max-width:480px){
+    .step-line {
+        width: 170px;
+    }
+    
+}
