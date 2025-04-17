@@ -52,7 +52,18 @@
                                     <td>{{ $m->firstname }} {{ $m->lastname }}</td>
                                     <td>{{ $o->organisation_name }}</td>
                                     <td>Edinburgh</td>
-                                    <td>61</td>
+                                    <td>
+                                        <a href="#" class="btn btn-success btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-info-circle"></i>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="btn btn-danger btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endif
                         @endforeach
