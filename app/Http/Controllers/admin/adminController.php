@@ -92,6 +92,11 @@ class adminController extends Controller
 
 
     public function waitingMembersView(){
-        return view('adminDashboard.waitingMembers');
+        $members = members::get();
+        $organisation = organisation::get();
+        return view('adminDashboard.waitingMembers')->with([
+            'members'=>$members,
+            'organisation'=>$organisation,
+        ]);
     }
 }
