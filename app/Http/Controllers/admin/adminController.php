@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Mail;
 
 
 use App\Models\admin\admin_smtp_settings;
+use App\Models\members;
+use App\Models\organisation;
+use App\Models\members_two;
+use App\Models\organisation_details;
+use App\Models\member_network_survey;
+use App\Models\organisation_local_activities;
 
 class adminController extends Controller
 {
@@ -21,6 +27,17 @@ class adminController extends Controller
 
     public function SmtpIntrigationView(){
         $smtp_data = admin_smtp_settings::first();
+        if(!$smtp_data){
+            admin_smtp_settings::create([
+                'host'     => null,
+                'username' => null,
+                'password' => null,
+                'email'    => null,
+                'port'     => null,
+                'protocol' => null,
+                'status' => 0,
+            ]);
+        }
         return view('adminDashboard.smtpSettings')->with(['smtp_data'=>$smtp_data]);
     }
 
@@ -70,5 +87,11 @@ class adminController extends Controller
                 'error'   => $e->getMessage(),
             ], 500);
         }
+    }
+
+
+
+    public function waitingMembersView(){
+        return redirect()->view('adminDashboard.waitingMembers');
     }
 }
