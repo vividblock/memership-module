@@ -23,7 +23,7 @@
     <!-- Custom css -->
     <link rel="stylesheet" href="{{ asset('css/base-style.css')}}">
 
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
