@@ -21,6 +21,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>User Id</th>
                             <th>Name</th>
                             <th>organisation</th>
                             <th>Contact Details</th>
@@ -31,6 +32,7 @@
                     <tfoot>
                         <tr>
                             <th>#</th>
+                            <th>User Id</th>
                             <th>Name</th>
                             <th>organisation</th>
                             <th>Contact Details</th>
@@ -46,7 +48,8 @@
                             @if($m->id === $o->member_id)
                                 <tr>
                                     <td>{{ $count }}</td>
-                                    <td>{{ $m->firstme }} {{ $m->lastname }}</td>
+                                    <td>{{ $m->	members_c3sc_id }}</td>
+                                    <td>{{ $m->firstname }} {{ $m->lastname }}</td>
                                     <td>{{ $o->organisation_name }}</td>
                                     <td>Edinburgh</td>
                                     <td>61</td>
