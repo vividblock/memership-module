@@ -92,6 +92,6 @@ class adminController extends Controller
 
 
     public function waitingMembersView(){
-        return redirect()->view('adminDashboard.waitingMembers');
+        return view('adminDashboard.waitingMembers');
     }
 }
