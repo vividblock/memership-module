@@ -89,8 +89,6 @@ class adminController extends Controller
         }
     }
 
-
-
     public function waitingMembersView(){
         $members = members::get();
         $organisation = organisation::get();
