@@ -6,7 +6,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800 admindash-headings">SMTP Intrigations</h1>
-        @if ($smtp_data->status != 1)
+        @if ($smtp_data->status != 1 || $smtp_data->status == null)
         <a href="#" id="smtp-test-mail-setup-error" class="btn btn-danger btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-exclamation-triangle"></i>
@@ -64,13 +64,13 @@
                     <div class="row">
                     
                         <div class="col-lg-6">
-                        @if ($smtp_data->status != 1)
+                        @if ($smtp_data->status != 1 || $smtp_data->status == null)
                             <span class="btn btn-warning" id="send-test-mail-box">Send Test Mail</span>
                         @endif
                         </div>
 
                         <div class="col-lg-6 text-right">
-                            @if ($smtp_data->status != 1)
+                            @if ($smtp_data->status != 1 || $smtp_data->status == null)
                                 <button type="submit" class="btn btn-primary px-4">Save</button>
                             @else
                                 <button type="submit" class="btn btn-primary px-4">Update</button>
