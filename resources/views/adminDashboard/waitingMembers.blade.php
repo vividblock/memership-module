@@ -51,7 +51,10 @@
                                     <td>{{ $m->	members_c3sc_id }}</td>
                                     <td>{{ $m->firstname }} {{ $m->lastname }}</td>
                                     <td>{{ $o->organisation_name }}</td>
-                                    <td>Edinburgh</td>
+                                    <td>
+                                        <span>Phone: </span>{{ $m->email }}
+                                        <span>Mail: </span>{{ $m->contactnumber }}
+                                    </td>
                                     <td>
                                         <a href="{{ route('waitingMembersSingleView', encrypt($m->id)) }}" class="btn btn-success btn-icon-split">
                                             <span class="icon text-white-50">
