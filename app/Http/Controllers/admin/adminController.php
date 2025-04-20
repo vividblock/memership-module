@@ -103,9 +103,9 @@ class adminController extends Controller
         $members = members::where('id', $memberId)->first();
         $organisation = organisation::where('member_id', $memberId)->first();
         $members_two = members_two::where('member_id', $memberId)->first();
-        $organisation_details = organisation_details::where('member_id', $memberId)->first();
+        $organisation_details = organisation_details::where('org_id', $organisation->id)->first();
         $member_network_survey = member_network_survey::where('member_id', $memberId)->first();
-        $organisation_local_activities = organisation_local_activities::where('member_id', $memberId)->first();
+        $organisation_local_activities = organisation_local_activities::where('org_id', $organisation->id)->first();
         // if($members){
             return view('adminDashboard.waitingMembersSingleView')->with([
                 "members"=> $members,
