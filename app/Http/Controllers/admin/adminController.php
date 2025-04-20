@@ -99,7 +99,7 @@ class adminController extends Controller
     }
 
     public function waitingMembersSingleView(Request $request){
-        $memberId = request->memberId;
+        $memberId = $request->memberId;
         $members = members::where('id', $memberId)->first();
         $organisation = organisation::where('member_id', $memberId)->first();
         $members_two = members_two::where('member_id', $memberId)->first();
