@@ -18,10 +18,9 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
     Route::get('/dashboard', [adminController::class, 'index'])->name('adminDashboardView');
     Route::get('/smtp-intrigations', [adminController::class, 'SmtpIntrigationView'])->name('smtpIntrigationView');
     Route::post('/smtp-server-info-save', [adminController::class, 'SmtpIntrigationSave'])->name('smtpIntrigationSave');
-
     Route::post('/send-test-mail',[adminController::class, 'TestMailSend'])->name('SendTestMail');
 
-    Route::get('/waiting-members-list', [adminController::class, 'waitingMembersView'])->name('waitingMembersView');
+    Route::get('/waiting-members-list', [adminController::class, 'WaitingMembersView'])->name('waitingMembersView');
 
 });
 
