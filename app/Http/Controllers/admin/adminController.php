@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Mail\MailTemplateOne;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
 
 
 
@@ -99,7 +100,7 @@ class adminController extends Controller
     }
 
     public function waitingMembersSingleView(Request $request){
-        $memberId = $request->memberId;
+        $memberId = Crypt::decrypt($request->memberId);
         $members = members::where('id', $memberId)->first();
         $organisation = organisation::where('member_id', $memberId)->first();
         $members_two = members_two::where('member_id', $memberId)->first();
