@@ -22,6 +22,8 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
 
     Route::get('/waiting-members-list', [adminController::class, 'WaitingMembersView'])->name('waitingMembersView');
 
+    Route::get('/waiting-members-view/{memberId}', [adminController::class, 'waitingMembersSingleView'])->name('waitingMembersSingleView');
+
 });
 
 

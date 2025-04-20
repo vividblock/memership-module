@@ -53,7 +53,7 @@
                                     <td>{{ $o->organisation_name }}</td>
                                     <td>Edinburgh</td>
                                     <td>
-                                        <a href="#" class="btn btn-success btn-icon-split">
+                                        <a href="{{ route('waitingMembersSingleView', $m->id) }}" class="btn btn-success btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-info-circle"></i>
                                             </span>
