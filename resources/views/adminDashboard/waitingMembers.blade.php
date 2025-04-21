@@ -52,7 +52,7 @@
                                     <td>{{ $m->firstname }} {{ $m->lastname }}</td>
                                     <td>{{ $o->organisation_name }}</td>
                                     <td>
-                                        <span>Phone: </span>{{ $m->email }}
+                                        <span>Phone: </span>{{ $m->email }}<br>
                                         <span>Mail: </span>{{ $m->contactnumber }}
                                     </td>
                                     <td>

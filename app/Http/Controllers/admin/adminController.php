@@ -108,14 +108,14 @@ class adminController extends Controller
         $member_network_survey = member_network_survey::where('member_id', $memberId)->first();
         $organisation_local_activities = organisation_local_activities::where('org_id', $organisation->id)->first();
         // if($members){
-            return view('adminDashboard.waitingMembersSingleView')->with([
-                "members"=> $members,
-                "organisation" => $organisation,
-                "members_two" => $members_two,
-                "organisation_details" => $organisation_details,
-                "member_network_survey" => $member_network_survey,
-                "organisation_local_activities" => $organisation_local_activities,
-            ]);
+        return view('adminDashboard.waitingMembersSingleView')->with([
+            "members"=> $members,
+            "organisation" => $organisation,
+            "members_two" => $members_two,
+            "organisation_details" => $organisation_details,
+            "member_network_survey" => $member_network_survey,
+            "organisation_local_activities" => $organisation_local_activities,
+        ]);
         // }
 
     }
