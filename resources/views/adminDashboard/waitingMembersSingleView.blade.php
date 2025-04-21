@@ -8,15 +8,29 @@
         <h1 class="h3 mb-0 text-gray-800 admindash-headings">Waiting Members</h1>
 
     </div>
-
-    <div class="card">
-        <div class="card-header">
-            <h3 class="h5 mb-0 text-gray-700 admindash-headings">Members Details</h3>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h5 mb-0 text-gray-700 admindash-headings">Members Details</h3>
+                </div>
+                <div class="card-body">
+                    <span>Name: </span>{{ $members->firstname }} {{ $members->lastname }}
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <span>Name: </span>{{ $members->firstname }} {{ $members->lastname }}
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h5 mb-0 text-gray-700 admindash-headings">Members Details</h3>
+                </div>
+                <div class="card-body">
+                    <span>Name: </span>{{ $members->firstname }} {{ $members->lastname }}
+                </div>
+            </div>
         </div>
     </div>
+
 
 
 
