@@ -15,7 +15,13 @@
                     <h3 class="h5 mb-0 text-gray-700 admindash-headings">Members Details</h3>
                 </div>
                 <div class="card-body">
-                    <span>Name: </span>{{ $members->firstname }} {{ $members->lastname }}
+                    <span>Name: </span>{{ $members->firstname }} {{ $members->lastname }}<br>
+                    <span>Member Id: </span>{{ $members->members_c3sc_id }}<br>
+                    <span>Username: </span>{{ $members->username }}<br>
+                    <span>Email: </span>{{ $members->email }}
+                    <span>Contact number: </span> {{ $members->contactnumber }}<br>
+                    <span>Membership package: </span>{{ $members->memebership_package }}<br>
+                    <span>Apply Date: </span> {{ $members->created_at }}
                 </div>
             </div>
         </div>
@@ -25,7 +31,13 @@
                     <h3 class="h5 mb-0 text-gray-700 admindash-headings">Organisation Details</h3>
                 </div>
                 <div class="card-body">
-                    <span>Name: </span>{{ $organisation->organisation_name }}
+                    <span>Name: </span>{{ $organisation->organisation_name }}<br>
+                    <span>Email: </span>{{ $organisation->organisation_email }}<br>
+                    <span>Contact number: </span>{{ $organisation->contact_number }}<br>
+                    <span>Address: </span>{{ $organisation->correspondence_address }}<br>
+                    <span>City: </span>	{{ $organisation->city }}<br>
+                    <span>Postal code: </span>  {{ $organisation->postcode }}<br>
+                    <span>Country: </span> {{ $organisation->country }}<br>
                 </div>
             </div>
         </div>
