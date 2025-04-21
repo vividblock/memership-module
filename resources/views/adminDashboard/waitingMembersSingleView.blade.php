@@ -25,7 +25,7 @@
                     <h3 class="h5 mb-0 text-gray-700 admindash-headings">Organisation Details</h3>
                 </div>
                 <div class="card-body">
-                    <span>Name: </span>{{ $members->firstname }} {{ $members->lastname }}
+                    <span>Name: </span>{{ $organisation->organisation_name }}
                 </div>
             </div>
         </div>
