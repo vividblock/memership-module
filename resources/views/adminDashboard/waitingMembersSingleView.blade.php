@@ -22,7 +22,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="h5 mb-0 text-gray-700 admindash-headings">Members Details</h3>
+                    <h3 class="h5 mb-0 text-gray-700 admindash-headings">Organisation Details</h3>
                 </div>
                 <div class="card-body">
                     <span>Name: </span>{{ $members->firstname }} {{ $members->lastname }}
