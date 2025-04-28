@@ -16,7 +16,7 @@
                 </div>
                 <div class="card-body">
                     <span class="text-xl font-weight-bold text-primary text-uppercase" >Name: </span>{{ $members->firstname }} {{ $members->lastname }}<br>
-                    <span class="text-xl font-weight-bold text-primary text-uppercase">Member Id: </span>{{ $members->members_c3sc_id }}<br>
+                    <span class="text-xl font-weight-bold text-primary text-uppercase mb-1">Member Id: </span>{{ $members->members_c3sc_id }}<br>
                     <span class="text-xl font-weight-bold text-primary text-uppercase">Username: </span>{{ $members->username }}<br>
                     <span class="text-xl font-weight-bold text-primary text-uppercase">Email: </span>{{ $members->email }}<br>
                     <span class="text-xl font-weight-bold text-primary text-uppercase">Contact number: </span> {{ $members->contactnumber }}<br>
