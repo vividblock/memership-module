@@ -15,7 +15,7 @@
                     <h3 class="h5 mb-0 text-gray-700 admindash-headings">Members Details</h3>
                 </div>
                 <div class="card-body">
-                    <span class="text-xs font-weight-bold text-primary text-uppercase" >Name: </span>{{ $members->firstname }} {{ $members->lastname }}<br>
+                    <span class="text-xl font-weight-bold text-primary text-uppercase" >Name: </span>{{ $members->firstname }} {{ $members->lastname }}<br>
                     <span>Member Id: </span>{{ $members->members_c3sc_id }}<br>
                     <span>Username: </span>{{ $members->username }}<br>
                     <span>Email: </span>{{ $members->email }}<br>
