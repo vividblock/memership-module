@@ -18,7 +18,7 @@
                     <span>Name: </span>{{ $members->firstname }} {{ $members->lastname }}<br>
                     <span>Member Id: </span>{{ $members->members_c3sc_id }}<br>
                     <span>Username: </span>{{ $members->username }}<br>
-                    <span>Email: </span>{{ $members->email }}
+                    <span>Email: </span>{{ $members->email }}<br>
                     <span>Contact number: </span> {{ $members->contactnumber }}<br>
                     <span>Membership package: </span>{{ $members->memebership_package }}<br>
                     <span>Apply Date: </span> {{ $members->created_at }}
