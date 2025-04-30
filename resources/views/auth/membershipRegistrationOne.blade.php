@@ -110,7 +110,7 @@
                                                 </div>
                                                  
                                                 <div class="form-group">
-                                                    <input type="text" name="email_otp" class="form-control form-control-user" placeholder="One time password">
+                                                    <input type="text" name="email_otp" class="form-control form-control-user" placeholder="Otp">
                                                     <input type="hidden" name="email_otp_status" value="false">
                                                 </div>
                                             </div>
