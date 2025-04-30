@@ -124,7 +124,7 @@
                                         <div class="row">
                                             <div class="col-lg">
                                                 <div class="form-group">
-                                                    <label for="">Please Check you email.</label>
+                                                    <label for="">Please check your email. We’ve sent an OTP to your email <span id="email-shows-for-otp"></span></label>
                                                     <input type="text" name="email_otp" class="form-control form-control-user" placeholder="Otp">
                                                     <input type="hidden" name="email_otp_status" value="false">
                                                 </div>
@@ -171,7 +171,8 @@
     <script>
         $(document).ready(function(){
             $(".email-verify-auth-page").on("click", function(){
-
+                const email = $('input[name = "email"]').val();
+                $("#email-shows-for-otp").add
             });
         });
     </script>
