@@ -221,6 +221,7 @@
                             if(data['success']){
                                 $("#submit-btn").prop("disabled", false);
                                 $(".otp-validate-box").fadeOut();
+                                $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
                             }
                         }
                     });
