@@ -126,7 +126,7 @@
 
                                             </div>
                                             <div class="col-lg-4">
-                                                <button class="btn btn-primary btn-user btn-block">Next</button>
+                                                <button disabled class="btn btn-primary btn-user btn-block">Next</button>
                                             </div>
                                             <div class="col-lg-4"></div>
                                         </div>
