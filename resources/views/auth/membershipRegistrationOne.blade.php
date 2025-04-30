@@ -171,7 +171,7 @@
     <script>
         $(document).ready(function(){
             
-            $(".email-verify-auth-page").on("click", function(){
+            $("#email-verify-auth-page").on("click", function(){
                 console.log("Hello WOrld");
                 const email = $('input[name = "email"]').val();
                 $(".otp-validate-box").fadeIn();
