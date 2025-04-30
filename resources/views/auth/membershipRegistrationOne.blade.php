@@ -170,12 +170,15 @@
     <script src="{{ asset('js/sb-admin-2.min.js')}}"></script>
     <script>
         $(document).ready(function(){
-            
+
             $("#email-verify-auth-page").on("click", function(){
-                console.log("Hello WOrld");
+                // console.log("Hello WOrld");
                 const email = $('input[name = "email"]').val();
-                $(".otp-validate-box").fadeIn();
-                $("#email-shows-for-otp").text(email);
+                if(email != ""){
+                    $(".otp-validate-box").fadeIn();
+                    $("#email-shows-for-otp").text(email);
+                }
+                
             });
         });
     </script>
