@@ -102,7 +102,7 @@
                                                 <div class="form-group auth-email-box">
                                                     <input type="email" class="form-control form-control-user"
                                                     placeholder="Email" name="email" value="{{ session('email_sess') }}">
-                                                    <span class="email-verify-button" id="email-verify-auth-page">Verify</span>
+                                                    <button class="email-verify-button" id="email-verify-auth-page">Verify</button>
                                                     @if ($errors->has('email'))
                                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                                     @endif
