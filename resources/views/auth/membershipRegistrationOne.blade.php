@@ -60,7 +60,7 @@
                                         <div class="form-group pb-3">
                                             <select class="form-control membership-from-select-field" name="membershiptype" id="memebershipTypeID">
                                                 <option value="" disabled selected>Membership type</option>
-                                                <option value="1">Non for profit - Group or Organisation</option>
+                                                <option value="1" {{ old('membershiptype') == '1' ? 'selected' : '' }}>Non for profit - Group or Organisation</option>
                                                 <option value="2">Non for profit - Individual</option>
                                                 <option value="3">Statutory Sector</option>
                                                 <option value="4">Private Sector</option>
