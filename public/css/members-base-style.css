@@ -145,11 +145,11 @@ form.user .btn-user{
 
 /* Auth form Design */
 .auth-email-box{
-    position: relative;
+    position: relative !important;
 }
 
 .email-verify-button{
-    position: absolute;
+    position: absolute !important;
 }
 
 
