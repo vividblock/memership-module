@@ -170,6 +170,7 @@
     <script src="{{ asset('js/sb-admin-2.min.js')}}"></script>
     <script>
         $(document).ready(function(){
+            console.log("Hello WOrld");
             $(".email-verify-auth-page").on("click", function(){
                 const email = $('input[name = "email"]').val();
                 $(".otp-validate-box").fadeIn();
