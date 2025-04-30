@@ -185,8 +185,10 @@
                             email:email
                         },
                         success:function(data){
-                            console.log(data);
+                            // console.log(data);
                             if(data['success']){
+                                $("#email-shows-for-otp").text(data['message']);
+                            }else{
                                 $("#email-shows-for-otp").text(data['message']);
                             }
                             

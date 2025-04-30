@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\members;
 use App\Models\organisation;
 use App\Models\admin\admin_smtp_settings;
+use App\Models\membersEmailValidationTemporary;
 
 class membersAuth extends Controller
 {
@@ -245,24 +246,71 @@ class membersAuth extends Controller
     }
 
 
-    public function membersEmailValidateApi(Request $request){
+    public function membersEmailValidateApi(Request $request)
+    // {
+    //     $smtp = admin_smtp_settings::first();
+    //     if($smtp->status == 1){
+    //         try {
+    //             $otp = rand(100000, 999999); // or generate however you like
+    //             Mail::to($request->email)->send(new OtpMail($otp));
+
+    //             membersEmailValidationTemporary::
+    //             return response()->json([
+    //                 'success' => true,
+    //                 'message' => 'Please check your email. We’ve sent an OTP to your email '.$request->email,
+    //             ]);
+    //         } catch (\Throwable $th) {
+    //             //throw $th;
+    //             return response()->json([
+    //                 'success' => false,
+    //                 'message' => 'Please contact with us.',
+    //                 'error'   => $e->getMessage(),
+    //             ], 500);
+    //         }
+    //     }
+    // }
+    {
         $smtp = admin_smtp_settings::first();
-        if($smtp->status == 1){
+    
+        if ($smtp->status == 1) {
             try {
-                $otp = rand(100000, 999999); // or generate however you like
+                $existing = MembersEmailValidationTemporary::where('members_email', $request->email)->latest()->first();
+    
+                if ($existing && $existing->created_at->diffInMinutes(Carbon::now()) < 10) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'OTP already sent. Please wait 10 minutes before requesting again.',
+                    ]);
+                }
+    
+                $otp = rand(100000, 999999);
+    
+                // Save OTP to DB
+                MembersEmailValidationTemporary::create([
+                    'members_email' => $request->email,
+                    'otp' => $otp,
+                    'email_validation_status' => 0,
+                ]);
+    
+                // Send mail
                 Mail::to($request->email)->send(new OtpMail($otp));
+    
                 return response()->json([
                     'success' => true,
-                    'message' => 'Please check your email. We’ve sent an OTP to your email '.$request->email,
+                    'message' => 'Please check your email. We’ve sent an OTP to '.$request->email,
                 ]);
-            } catch (\Throwable $th) {
-                //throw $th;
+            } catch (\Throwable $e) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Failed to send test mail.',
+                    'message' => 'Something went wrong. Please contact support.',
                     'error'   => $e->getMessage(),
                 ], 500);
             }
         }
+    
+        return response()->json([
+            'success' => false,
+            'message' => 'SMTP is disabled. Please contact admin.',
+        ]);
     }
 }
