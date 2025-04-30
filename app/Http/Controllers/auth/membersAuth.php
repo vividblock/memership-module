@@ -20,6 +20,14 @@ class membersAuth extends Controller
     public function registrationOne(Request $request){
 
         // dd($request);
+        Session::put([
+            'membership_registration_one' => true,
+            'membershiptype_sess' => $request->membershiptype,
+            'firstname_sess' => $request->firstname,
+            'lastname_sess' => $request->lastname,
+            'email_sess' => $request->email,
+            'contactnumber_sess' => $request->contactnumber,
+        ]);
 
         $rules =[
             'membershiptype' => 'required',
@@ -62,14 +70,7 @@ class membersAuth extends Controller
             return redirect()->back()->withErrors(['email' => 'Email allready used.'])->withInput();
         }
 
-        Session::put([
-            'membership_registration_one' => true,
-            'membershiptype_sess' => $request->membershiptype,
-            'firstname_sess' => $request->firstname,
-            'lastname_sess' => $request->lastname,
-            'email_sess' => $request->email,
-            'contactnumber_sess' => $request->contactnumber,
-        ]);
+
         return redirect()->route('membersRegistrationTwoView');
     }
 
@@ -237,5 +238,10 @@ class membersAuth extends Controller
         ]);
 
         return redirect()->route('membersDashboard');
+    }
+
+
+    public function membersEmailValidateApi(Request $request){
+        
     }
 }
