@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\auth;
+use Carbon\Carbon;
 
 use App\Mail\OtpMail;
 use Illuminate\Support\Facades\Mail;
