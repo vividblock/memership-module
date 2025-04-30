@@ -206,6 +206,7 @@
 
             $('input[name="email_otp"]').on("input", function() {
                 const otp = $(this).val();
+                console.log(otp);
                 const email = $('input[name = "email"]').val();
                 if (otp.length === 6 && /^\d{6}$/.test(otp)) {
                     $.ajax({
