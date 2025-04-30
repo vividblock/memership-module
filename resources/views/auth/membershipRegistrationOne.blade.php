@@ -124,7 +124,7 @@
                                         <div class="row otp-validate-box" style="display:none;">
                                             <div class="col-lg">
                                                 <div class="form-group">
-                                                    <label for="">Please check your email. We’ve sent an OTP to your email <span id="email-shows-for-otp"></span></label>
+                                                    <small >Please check your email. We’ve sent an OTP to your email <span id="email-shows-for-otp"></span></small>
                                                     <input type="text" name="email_otp" class="form-control form-control-user" placeholder="Otp">
                                                     <input type="hidden" name="email_otp_status" value="false">
                                                 </div>
@@ -178,7 +178,10 @@
                     $(".otp-validate-box").fadeIn();
                     $("#email-shows-for-otp").text(email);
                 }else{
-                    $("#email-validation-message").text("Please enter a valid email id.")
+                    $("#email-validation-message").text("Please enter a valid email id.");
+                    setTimeout(() => {
+                        $("#email-validation-message").text("");
+                    }, 1000);
                 }
                 
             });
