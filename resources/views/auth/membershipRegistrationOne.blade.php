@@ -206,9 +206,20 @@
 
             $('input[name="email_otp"]').on("input", function() {
                 const otp = $(this).val();
-
+                const email = $('input[name = "email"]').val();
                 if (otp.length === 6 && /^\d{6}$/.test(otp)) {
-                    console.log("Auto-submitting form...");
+                    $.ajax({
+                        url:"{{route('otpVerify')}}",
+                        type:'POST',
+                        data:{
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            otp:otp,
+                            email:email,
+                        },
+                        success:function(data){
+                            console.log(data);
+                        }
+                    });
                 }
             });
         });

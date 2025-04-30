@@ -294,7 +294,31 @@ class membersAuth extends Controller
     }
 
 
-    public function otpVerify(Request $request){
-
+    public function otpVerify(Request $request)
+    {
+        $membersEmail = MembersEmailValidationTemporary::where('members_email', $request->email)->first();
+    
+        if (!$membersEmail) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Email not found.',
+            ]);
+        }
+    
+        if ($membersEmail->otp === $request->otp) {
+            $membersEmail->email_validation_status = '1'; // Must be string if using enum('0','1')
+            $membersEmail->save();
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'OTP verified successfully.',
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid OTP.',
+            ]);
+        }
     }
+    
 }
