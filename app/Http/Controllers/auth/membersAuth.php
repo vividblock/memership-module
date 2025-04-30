@@ -22,16 +22,16 @@ class membersAuth extends Controller
         // dd($request);
 
         $rules =[
-            // 'membershiptype' => 'required',
+            'membershiptype' => 'required',
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'contactnumber' => 'required|digits_between:10,15|numeric',
+            'contactnumber' => 'required',
             // 'memebership_package'=>'required'
         ];
 
         $messages = [
-            // 'membershiptype.required' => 'Please select a membership type.',
+            'membershiptype.required' => 'Please select a membership type.',
             // 'memebership_package.required'=>'Please select a membership package.',
             
             'firstname.required' => 'First name is required.',
@@ -47,8 +47,8 @@ class membersAuth extends Controller
             'email.max' => 'Email cannot exceed 255 characters.',
         
             'contactnumber.required' => 'Contact number is required.',
-            'contactnumber.digits_between' => 'Contact number must be between 10-15 digits.',
-            'contactnumber.numeric' => 'Only numbers are allowed in the contact number.',
+            // 'contactnumber.digits_between' => 'Contact number must be between 10-15 digits.',
+            // 'contactnumber.numeric' => 'Only numbers are allowed in the contact number.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
