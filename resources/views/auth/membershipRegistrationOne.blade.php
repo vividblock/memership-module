@@ -110,6 +110,7 @@
                                                 </div>
                                                  
                                                 <div class="form-group">
+                                                    <label for="">Please Check you email.</label>
                                                     <input type="text" name="email_otp" class="form-control form-control-user" placeholder="Otp">
                                                     <input type="hidden" name="email_otp_status" value="false">
                                                 </div>
