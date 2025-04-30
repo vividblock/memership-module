@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\auth;
 
-use App\Mail\MailTemplateOne;
+use App\Mail\OtpMail;
 use Illuminate\Support\Facades\Mail;
 
 use App\Http\Controllers\Controller;
@@ -249,7 +249,8 @@ class membersAuth extends Controller
         $smtp = admin_smtp_settings::first();
         if($smtp->status == 1){
             try {
-                Mail::to($request->email)->send(new MailTemplateOne());
+                $otp = rand(100000, 999999); // or generate however you like
+                Mail::to($request->email)->send(new OtpMail($otp));
                 return response()->json([
                     'success' => true,
                     'message' => 'Please check your email. We’ve sent an OTP to your email '.$request->email,

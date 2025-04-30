@@ -39,7 +39,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-
         Schema::create('network_surveys', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('member_id'); 
@@ -53,6 +52,14 @@ return new class extends Migration
             $table->string('member_signed')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('temporary_members_validation', function (Blueprint $table){
+            $table->id();
+            $table->string('members_email')->nullable();
+            $table->string('otp')->nullable();
+            $table->enum('email_validation_status', [0, 1])->default(0)->comment('0 - not valid, 1 valid');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -63,5 +70,6 @@ return new class extends Migration
         Schema::dropIfExists('members');
         Schema::dropIfExists('members_interest');
         Schema::dropIfExists('network_surveys');
+        Schema::dropIfExists('temporary_members_validation');
     }
 };
