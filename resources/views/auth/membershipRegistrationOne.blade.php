@@ -138,7 +138,7 @@
 
                                             </div>
                                             <div class="col-lg-4">
-                                                <button disabled class="btn btn-primary btn-user btn-block">Next</button>
+                                                <button disabled class="btn btn-primary btn-user btn-block" id="submit-btn">Next</button>
                                             </div>
                                             <div class="col-lg-4"></div>
                                         </div>
@@ -218,7 +218,10 @@
                             email:email,
                         },
                         success:function(data){
-                            console.log(data);
+                            if(data['success']){
+                                $("#submit-btn").prop("disabled", false);
+                                $(".otp-validate-box").fadeOut();
+                            }
                         }
                     });
                 }
