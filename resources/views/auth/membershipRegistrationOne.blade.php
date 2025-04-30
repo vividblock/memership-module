@@ -121,7 +121,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row otp-validate-box">
+                                        <div class="row otp-validate-box" style="display:none;">
                                             <div class="col-lg">
                                                 <div class="form-group">
                                                     <label for="">Please check your email. We’ve sent an OTP to your email <span id="email-shows-for-otp"></span></label>
