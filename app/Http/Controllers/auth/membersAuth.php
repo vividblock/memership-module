@@ -277,10 +277,10 @@ class membersAuth extends Controller
             try {
                 $existing = MembersEmailValidationTemporary::where('members_email', $request->email)->latest()->first();
     
-                if ($existing && $existing->created_at->diffInMinutes(Carbon::now()) < 10) {
+                if ($existing && $existing->created_at->diffInMinutes(Carbon::now()) < 2) {
                     return response()->json([
                         'success' => false,
-                        'message' => 'OTP already sent. Please wait 10 minutes before requesting again.',
+                        'message' => 'OTP already sent. Please wait 2 minutes before requesting again.',
                     ]);
                 }
     
