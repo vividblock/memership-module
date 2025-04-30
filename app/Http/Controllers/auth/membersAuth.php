@@ -34,7 +34,7 @@ class membersAuth extends Controller
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'contactnumber' => 'required|digits_between',
+            'contactnumber' => 'required|digits_between:10,15',
             // 'memebership_package'=>'required'
         ];
 
