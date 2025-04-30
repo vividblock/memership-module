@@ -247,7 +247,7 @@ class membersAuth extends Controller
 
     public function membersEmailValidateApi(Request $request){
         $smtp = admin_smtp_settings::first();
-        if($smtp->status === 1){
+        if($smtp->status == 1){
             try {
                 Mail::to($request->email)->send(new MailTemplateOne());
                 return response()->json([
