@@ -106,7 +106,7 @@
                                                     @if ($errors->has('email'))
                                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                                     @endif
-                                                    
+                                                    <small id="email-validation-message"></small>
                                                 </div>
                                                  
 
@@ -177,6 +177,8 @@
                 if(email != ""){
                     $(".otp-validate-box").fadeIn();
                     $("#email-shows-for-otp").text(email);
+                }else{
+                    $("#email-validation-message").text("Please enter a valid email id.")
                 }
                 
             });
