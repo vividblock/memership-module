@@ -97,7 +97,7 @@
                                             
                                         </div>
 
-                                        <div class="row pb-5">
+                                        <div class="row ">
                                             <div class="col-lg-6">
                                                 <div class="form-group auth-email-box">
                                                     <input type="email" class="form-control form-control-user"
@@ -121,7 +121,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row otp-validate-box">
                                             <div class="col-lg">
                                                 <div class="form-group">
                                                     <label for="">Please check your email. We’ve sent an OTP to your email <span id="email-shows-for-otp"></span></label>
@@ -133,7 +133,7 @@
 
 
                                         
-                                        <div class="row">
+                                        <div class="row pt-5">
                                             <div class="col-lg-4">
 
                                             </div>
@@ -172,7 +172,8 @@
         $(document).ready(function(){
             $(".email-verify-auth-page").on("click", function(){
                 const email = $('input[name = "email"]').val();
-                $("#email-shows-for-otp").add
+                $(".otp-validate-box").fadeIn();
+                $("#email-shows-for-otp").text(email);
             });
         });
     </script>
