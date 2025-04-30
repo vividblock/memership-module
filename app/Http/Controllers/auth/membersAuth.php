@@ -289,7 +289,7 @@ class membersAuth extends Controller
                 MembersEmailValidationTemporary::create([
                     'members_email' => $request->email,
                     'otp' => $otp,
-                    'email_validation_status' => 0,
+                    'email_validation_status' => '0',
                 ]);
     
                 // Send mail
