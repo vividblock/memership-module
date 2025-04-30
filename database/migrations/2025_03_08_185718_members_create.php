@@ -57,7 +57,7 @@ return new class extends Migration
             $table->id();
             $table->string('members_email')->nullable();
             $table->string('otp')->nullable();
-            $table->enum('email_validation_status', [0,1])->default(0)->comment('0 - not valid, 1 valid');
+            $table->enum('email_validation_status', ['0','1'])->default('0')->comment('0 - not valid, 1 valid');
             $table->timestamps();
         });
     }
