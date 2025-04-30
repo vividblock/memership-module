@@ -296,7 +296,7 @@ class membersAuth extends Controller
 
     public function otpVerify(Request $request)
     {
-        $membersEmail = MembersEmailValidationTemporary::where('members_email', $request->email)->first();
+        $membersEmail = MembersEmailValidationTemporary::where('members_email', $request->email)->latest()->first();
     
         if (!$membersEmail) {
             return response()->json([
