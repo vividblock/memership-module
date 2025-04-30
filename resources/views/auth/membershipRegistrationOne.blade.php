@@ -174,6 +174,21 @@
     <script>
         $(document).ready(function(){
 
+
+            $('#email-verify-auth-page').hide();
+
+            // Listen to input event
+            $('input[name="email"]').on('input', function() {
+                const email = $(this).val().trim();
+
+                // Simple email validation (non-empty and contains @)
+                if (email !== '' && email.includes('@')) {
+                    $('#email-verify-auth-page').show();
+                } else {
+                    $('#email-verify-auth-page').hide();
+                }
+            });
+
             $("#email-verify-auth-page").on("click", function(){
                 // console.log("Hello WOrld");
                 const email = $('input[name = "email"]').val();
