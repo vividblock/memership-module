@@ -305,7 +305,7 @@ class membersAuth extends Controller
             ]);
         }
     
-        if ($membersEmail->otp === $request->otp) {
+        if ($membersEmail->otp == $request->otp) {
             $membersEmail->email_validation_status = '1'; // Must be string if using enum('0','1')
             $membersEmail->save();
     
