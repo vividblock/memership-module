@@ -220,7 +220,7 @@
                         success:function(data){
                             if(data['success']){
                                 $("#submit-btn").prop("disabled", false);
-                                $(".otp-validate-box").fadeOut();
+                                // $(".otp-validate-box").fadeOut();
                             }
                         }
                     });
