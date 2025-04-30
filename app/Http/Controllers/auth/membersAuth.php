@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\auth;
 
+use App\Mail\MailTemplateOne;
+use Illuminate\Support\Facades\Mail;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\members;
 use App\Models\organisation;
+use App\Models\admin\admin_smtp_settings;
 
 class membersAuth extends Controller
 {
@@ -242,6 +246,28 @@ class membersAuth extends Controller
 
 
     public function membersEmailValidateApi(Request $request){
-        
+        $smtp = admin_smtp_settings::first();
+        if($smtp->status === 1){
+            try {
+                Mail::to($request->mailTest)->send(new MailTemplateOne());
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+        }
+        try {
+            
+            $smtp->update(['status' => 1]);
+            return response()->json([
+                'success' => true,
+                'message' => 'Test mail sent successfully.'
+            ]);
+        } catch (\Throwable $th) {
+            $smtp->update(['status' => 0]);
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to send test mail.',
+                'error'   => $e->getMessage(),
+            ], 500);
+        }
     }
 }

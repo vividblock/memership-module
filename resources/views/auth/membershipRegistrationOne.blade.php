@@ -177,6 +177,10 @@
                 if(email != ""){
                     $(".otp-validate-box").fadeIn();
                     $("#email-shows-for-otp").text(email);
+                    $.ajax({
+                        url:"{{route('')}}",
+                        type:"get"
+                    });
                 }else{
                     $("#email-validation-message").text("Please enter a valid email id.");
                     setTimeout(() => {
