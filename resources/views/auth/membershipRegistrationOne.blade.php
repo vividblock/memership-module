@@ -106,8 +106,13 @@
                                                     @if ($errors->has('email'))
                                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                                     @endif
+                                                    
                                                 </div>
                                                  
+                                                <div class="form-group">
+                                                    <input type="text" name="email_otp" class="form-control form-control-user" placeholder="One time password">
+                                                    <input type="hidden" name="email_otp_status" value="false">
+                                                </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
@@ -157,11 +162,11 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin-2.min.js')}}"></script>
     <script>
-        // $(document).ready(function(){
-        //     $("#memebershipTypeID").on("change",function(){
+        $(document).ready(function(){
+            $(".email-verify-auth-page").on("click", function(){
 
-        //     });
-        // });
+            });
+        });
     </script>
 
 </body>
