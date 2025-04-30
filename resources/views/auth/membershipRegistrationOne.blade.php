@@ -203,8 +203,12 @@
                 
             });
 
-            $('input[name="email_otp"]').on("change", function(){
-                console.log("hello World");
+            $('input[name="email_otp"]').on("input", function() {
+                const otp = $(this).val();
+
+                if (otp.length === 6 && /^\d{6}$/.test(otp)) {
+                    console.log("Auto-submitting form...");
+                }
             });
         });
     </script>
