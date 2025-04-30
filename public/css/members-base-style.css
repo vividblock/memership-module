@@ -143,6 +143,15 @@ form.user .btn-user{
 }
 
 
+/* Auth form Design */
+.auth-email-box{
+    position: relative;
+}
+
+.email-verify-button{
+    position: absolute;
+}
+
 
 @media only screen and (min-width:992px) {
     .step-line {
