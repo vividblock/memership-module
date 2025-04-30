@@ -124,7 +124,7 @@
                                         <div class="row otp-validate-box" style="display:none;">
                                             <div class="col-lg">
                                                 <div class="form-group">
-                                                    <small >Please check your email. We’ve sent an OTP to your email <span id="email-shows-for-otp"></span></small>
+                                                    <small id="email-shows-for-otp"> <span ></span></small>
                                                     <input type="text" name="email_otp" class="form-control form-control-user" placeholder="Otp">
                                                     <input type="hidden" name="email_otp_status" value="false">
                                                 </div>
@@ -158,7 +158,7 @@
         </div>
 
     </div>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -176,10 +176,21 @@
                 const email = $('input[name = "email"]').val();
                 if(email != ""){
                     $(".otp-validate-box").fadeIn();
-                    $("#email-shows-for-otp").text(email);
+                    
                     $.ajax({
-                        url:"{{route('')}}",
-                        type:"get"
+                        url:"{{route('membersEmailValidateApi')}}",
+                        type:'POST',
+                        data:{
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            email:email
+                        },
+                        success:function(data){
+                            console.log(data);
+                            if(data['success']){
+                                $("#email-shows-for-otp").text(data['message']);
+                            }
+                            
+                        }
                     });
                 }else{
                     $("#email-validation-message").text("Please enter a valid email id.");

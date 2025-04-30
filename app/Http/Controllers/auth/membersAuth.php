@@ -249,25 +249,19 @@ class membersAuth extends Controller
         $smtp = admin_smtp_settings::first();
         if($smtp->status === 1){
             try {
-                Mail::to($request->mailTest)->send(new MailTemplateOne());
+                Mail::to($request->email)->send(new MailTemplateOne());
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Please check your email. We’ve sent an OTP to your email '.$request->email,
+                ]);
             } catch (\Throwable $th) {
                 //throw $th;
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Failed to send test mail.',
+                    'error'   => $e->getMessage(),
+                ], 500);
             }
-        }
-        try {
-            
-            $smtp->update(['status' => 1]);
-            return response()->json([
-                'success' => true,
-                'message' => 'Test mail sent successfully.'
-            ]);
-        } catch (\Throwable $th) {
-            $smtp->update(['status' => 0]);
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to send test mail.',
-                'error'   => $e->getMessage(),
-            ], 500);
         }
     }
 }

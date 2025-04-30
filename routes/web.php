@@ -35,7 +35,7 @@ Route::post('/become-a-member/step-two', [membersAuth::class, 'registrationTwo']
 Route::get('/become-a-member/login', [membersAuth::class, 'membersloginView'])->name('membersloginView');
 Route::post('/become-a-member/login', [membersAuth::class, 'memberslogin'])->name('memberslogin');
 
-Route::get('/validate-email-api', [membersAuth::class, 'membersEmailValidateApi'])->name('membersEmailValidateApi');
+Route::post('/validate-email-api', [membersAuth::class, 'membersEmailValidateApi'])->name('membersEmailValidateApi');
 
 Route::middleware([membersMiddleware::class])->prefix('/auth/members')->group(function(){
     Route::get('/dashboard', [membersController::class, 'dashboard'])->name('membersDashboard');
