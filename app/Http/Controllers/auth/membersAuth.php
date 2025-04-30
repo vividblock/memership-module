@@ -248,28 +248,6 @@ class membersAuth extends Controller
 
 
     public function membersEmailValidateApi(Request $request)
-    // {
-    //     $smtp = admin_smtp_settings::first();
-    //     if($smtp->status == 1){
-    //         try {
-    //             $otp = rand(100000, 999999); // or generate however you like
-    //             Mail::to($request->email)->send(new OtpMail($otp));
-
-    //             membersEmailValidationTemporary::
-    //             return response()->json([
-    //                 'success' => true,
-    //                 'message' => 'Please check your email. We’ve sent an OTP to your email '.$request->email,
-    //             ]);
-    //         } catch (\Throwable $th) {
-    //             //throw $th;
-    //             return response()->json([
-    //                 'success' => false,
-    //                 'message' => 'Please contact with us.',
-    //                 'error'   => $e->getMessage(),
-    //             ], 500);
-    //         }
-    //     }
-    // }
     {
         $smtp = admin_smtp_settings::first();
     
@@ -313,5 +291,10 @@ class membersAuth extends Controller
             'success' => false,
             'message' => 'SMTP is disabled. Please contact admin.',
         ]);
+    }
+
+
+    public function otpVerify(Request $request){
+
     }
 }

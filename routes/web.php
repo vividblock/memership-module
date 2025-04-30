@@ -37,6 +37,8 @@ Route::post('/become-a-member/login', [membersAuth::class, 'memberslogin'])->nam
 
 Route::post('/validate-email-api', [membersAuth::class, 'membersEmailValidateApi'])->name('membersEmailValidateApi');
 
+Route::post('/otp-verify', [membersAuth::class, 'otpVerify'])->name('otpVerify');
+
 Route::middleware([membersMiddleware::class])->prefix('/auth/members')->group(function(){
     Route::get('/dashboard', [membersController::class, 'dashboard'])->name('membersDashboard');
     Route::get('/member-form/step-one/{memberId}', [membersController::class, 'memberformOneView'])->name('memberformOneView');

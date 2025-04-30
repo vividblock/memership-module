@@ -202,6 +202,10 @@
                 }
                 
             });
+
+            $('input[name="email_otp"]').on("change", function(){
+                console.log("hello World");
+            });
         });
     </script>
 
