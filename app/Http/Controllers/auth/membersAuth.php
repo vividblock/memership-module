@@ -34,7 +34,7 @@ class membersAuth extends Controller
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'contactnumber' => 'required',
+            'contactnumber' => 'required|digits_between',
             // 'memebership_package'=>'required'
         ];
 
@@ -55,7 +55,7 @@ class membersAuth extends Controller
             'email.max' => 'Email cannot exceed 255 characters.',
         
             'contactnumber.required' => 'Contact number is required.',
-            // 'contactnumber.digits_between' => 'Contact number must be between 10-15 digits.',
+            'contactnumber.digits_between' => 'Contact number must be between 10-15 digits.',
             // 'contactnumber.numeric' => 'Only numbers are allowed in the contact number.',
         ];
 
