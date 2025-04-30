@@ -175,7 +175,7 @@
                 // console.log("Hello WOrld");
                 const email = $('input[name = "email"]').val();
                 if(email != ""){
-                    $(".otp-validate-box").fadeIn();
+                    
                     
                     $.ajax({
                         url:"{{route('membersEmailValidateApi')}}",
@@ -188,6 +188,7 @@
                             // console.log(data);
                             if(data['success']){
                                 $("#email-shows-for-otp").text(data['message']);
+                                $(".otp-validate-box").fadeIn();
                             }else{
                                 $("#email-shows-for-otp").text(data['message']);
                             }
