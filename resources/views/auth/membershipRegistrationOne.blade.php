@@ -109,11 +109,7 @@
                                                     
                                                 </div>
                                                  
-                                                <div class="form-group">
-                                                    <label for="">Please Check you email.</label>
-                                                    <input type="text" name="email_otp" class="form-control form-control-user" placeholder="Otp">
-                                                    <input type="hidden" name="email_otp_status" value="false">
-                                                </div>
+
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
@@ -125,6 +121,16 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-lg">
+                                                <div class="form-group">
+                                                    <label for="">Please Check you email.</label>
+                                                    <input type="text" name="email_otp" class="form-control form-control-user" placeholder="Otp">
+                                                    <input type="hidden" name="email_otp_status" value="false">
+                                                </div>
+                                            </div>
+                                        </div>
+
 
                                         
                                         <div class="row">
