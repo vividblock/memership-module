@@ -175,7 +175,8 @@
         $(document).ready(function(){
 
             function checkOtpValidateOrNot(){
-                if($("input[name='email_otp_status']").val()){
+                const OtpStatus = $("input[name='email_otp_status']").val();
+                if(OtpStatus){
                     $("#submit-btn").prop("disabled", false);
                     $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
                 }
