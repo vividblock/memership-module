@@ -191,13 +191,15 @@
 
             // Listen to input event
             $('input[name="email"]').on('input', function() {
-                const email = $(this).val().trim();
+                if(OtpStatus != "true"){
+                    const email = $(this).val().trim();
 
-                // Simple email validation (non-empty and contains @)
-                if (email !== '' && email.includes('@')) {
-                    $('#email-verify-auth-page').show();
-                } else {
-                    $('#email-verify-auth-page').hide();
+                    // Simple email validation (non-empty and contains @)
+                    if (email !== '' && email.includes('@')) {
+                        $('#email-verify-auth-page').show();
+                    } else {
+                        $('#email-verify-auth-page').hide();
+                    }
                 }
             });
 
