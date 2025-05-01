@@ -222,7 +222,7 @@
                                     $("#email-shows-for-otp").text(data['message']);
                                     $(".otp-validate-box").fadeIn();
                                 }else{
-                                    $("#email-shows-for-otp").text(data['message']);
+                                    $("#email-validation-message").text(data['message']);
                                 }
                                 
                             }
@@ -257,6 +257,8 @@
                                 $(".otp-validate-box").fadeOut();
                                 $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
                                 $("input[name='email_otp_status']").val(true);
+                            }else{
+                                $("#email-validation-message").text(data['message']);
                             }
                         }
                     });
