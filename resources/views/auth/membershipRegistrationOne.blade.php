@@ -181,6 +181,7 @@
                 if (OtpStatus === "true") {
                     $("#submit-btn").prop("disabled", false);
                     $("#email-verify-auth-page").show().html('<i class="fa-solid fa-check-double"></i>');
+                    $('input[name="email"]').prop("readonly", true);
                 } else {
                     $('#email-verify-auth-page').hide();  // only hide if NOT validated
                 }
