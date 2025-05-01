@@ -136,7 +136,7 @@
 
 
                                         
-                                        <div class="row pt-5">
+                                        <div class="row pt-3">
                                             <div class="col-lg-4">
 
                                             </div>
@@ -174,6 +174,14 @@
     <script>
         $(document).ready(function(){
 
+            function checkOtpValidateOrNot(){
+                if($("input[name='email_otp_status']").val()){
+                    $("#submit-btn").prop("disabled", false);
+                    $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
+                }
+            }
+
+            checkOtpValidateOrNot();
 
             $('#email-verify-auth-page').hide();
 
@@ -193,8 +201,6 @@
                 // console.log("Hello WOrld");
                 const email = $('input[name = "email"]').val();
                 if(email != ""){
-                    
-                    
                     $.ajax({
                         url:"{{route('membersEmailValidateApi')}}",
                         type:'POST',
@@ -224,7 +230,7 @@
 
             $('input[name="email_otp"]').on("input", function() {
                 const otp = $(this).val();
-                console.log(otp);
+                // console.log(otp);
                 const email = $('input[name = "email"]').val();
                 if (otp.length === 6 && /^\d{6}$/.test(otp)) {
                     $.ajax({
@@ -240,6 +246,7 @@
                                 $("#submit-btn").prop("disabled", false);
                                 $(".otp-validate-box").fadeOut();
                                 $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
+                                $("input[name='email_otp_status']").val(true);
                             }
                         }
                     });
