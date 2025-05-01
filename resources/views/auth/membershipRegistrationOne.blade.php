@@ -180,7 +180,7 @@
                 
                 if(OtpStatus === true){
                     $("#submit-btn").prop("disabled", false);
-                    $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
+                    $("#email-verify-auth-page").show().html('<i class="fa-solid fa-check-double"></i>');
                 }
             }
 
