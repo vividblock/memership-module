@@ -176,22 +176,21 @@
         $(document).ready(function(){
 
             const OtpStatus = $("input[name='email_otp_status']").val();
-            function checkOtpValidateOrNot(){
-                if(OtpStatus === "true"){
-                    // console.log("otp Validated");
+
+            function checkOtpValidateOrNot() {
+                if (OtpStatus === "true") {
                     $("#submit-btn").prop("disabled", false);
-                    $("#email-verify-auth-page").show();
-                    $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
+                    $("#email-verify-auth-page").show().html('<i class="fa-solid fa-check-double"></i>');
+                } else {
+                    $('#email-verify-auth-page').hide();  // only hide if NOT validated
                 }
             }
 
             checkOtpValidateOrNot();
 
-            $('#email-verify-auth-page').hide();
-
             // Listen to input event
             $('input[name="email"]').on('input', function() {
-                if(OtpStatus != "true"){
+                if (OtpStatus !== "true") {
                     const email = $(this).val().trim();
 
                     // Simple email validation (non-empty and contains @)
