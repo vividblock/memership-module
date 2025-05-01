@@ -220,9 +220,11 @@
                             success:function(data){
                                 // console.log(data);
                                 if(data['success']){
+                                    $("#email-verify-auth-page").text("Verify");
                                     $("#email-shows-for-otp").text(data['message']);
                                     $(".otp-validate-box").fadeIn();
                                 }else{
+                                    $("#email-verify-auth-page").text("Verify");
                                     $("#email-validation-message").text(data['message']);
                                 }
                                 
