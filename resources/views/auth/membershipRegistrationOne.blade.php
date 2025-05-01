@@ -177,7 +177,7 @@
 
             const OtpStatus = $("input[name='email_otp_status']").val();
             function checkOtpValidateOrNot(){
-                if(OtpStatus === true){
+                if(OtpStatus === "true"){
                     console.log("otp Validated");
                     $("#submit-btn").prop("disabled", false);
                     $("#email-verify-auth-page").show().html('<i class="fa-solid fa-check-double"></i>');
@@ -203,7 +203,7 @@
             $("#email-verify-auth-page").on("click", function(){
                 // console.log("Hello WOrld");
 
-                if(OtpStatus != true){
+                if(OtpStatus != "true"){
                     const email = $('input[name = "email"]').val();
                     if(email != ""){
                         $.ajax({
