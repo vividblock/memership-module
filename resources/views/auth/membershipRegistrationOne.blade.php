@@ -205,8 +205,9 @@
 
             $("#email-verify-auth-page").on("click", function(){
                 // console.log("Hello WOrld");
-
+                
                 if(OtpStatus != "true"){
+                    $(this).html('<i class="fa fa-spinner fa-spin" > </i>');
                     const email = $('input[name = "email"]').val();
                     if(email != ""){
                         $.ajax({
@@ -258,6 +259,7 @@
                                 $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
                                 $("input[name='email_otp_status']").val(true);
                             }else{
+                                $(".otp-validate-box").fadeOut();
                                 $("#email-validation-message").text(data['message']);
                             }
                         }
