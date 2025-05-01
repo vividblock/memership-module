@@ -129,7 +129,8 @@
                                                 <div class="form-group">
                                                     <small id="email-shows-for-otp"> <span ></span></small>
                                                     <input type="text" name="email_otp" class="form-control form-control-user" placeholder="Otp">
-                                                    <input type="hidden" name="email_otp_status" value="false">
+
+                                                    <input type="hidden" name="email_otp_status" value="{{ session('email_validate_by_otp') ?? 'false' }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -174,8 +175,9 @@
     <script>
         $(document).ready(function(){
 
+            const OtpStatus = $("input[name='email_otp_status']").val();
             function checkOtpValidateOrNot(){
-                const OtpStatus = $("input[name='email_otp_status']").val();
+                
                 if(OtpStatus === true){
                     $("#submit-btn").prop("disabled", false);
                     $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
@@ -200,32 +202,36 @@
 
             $("#email-verify-auth-page").on("click", function(){
                 // console.log("Hello WOrld");
-                const email = $('input[name = "email"]').val();
-                if(email != ""){
-                    $.ajax({
-                        url:"{{route('membersEmailValidateApi')}}",
-                        type:'POST',
-                        data:{
-                            _token: $('meta[name="csrf-token"]').attr('content'),
-                            email:email
-                        },
-                        success:function(data){
-                            // console.log(data);
-                            if(data['success']){
-                                $("#email-shows-for-otp").text(data['message']);
-                                $(".otp-validate-box").fadeIn();
-                            }else{
-                                $("#email-shows-for-otp").text(data['message']);
+
+                if(OtpStatus != true){
+                    const email = $('input[name = "email"]').val();
+                    if(email != ""){
+                        $.ajax({
+                            url:"{{route('membersEmailValidateApi')}}",
+                            type:'POST',
+                            data:{
+                                _token: $('meta[name="csrf-token"]').attr('content'),
+                                email:email
+                            },
+                            success:function(data){
+                                // console.log(data);
+                                if(data['success']){
+                                    $("#email-shows-for-otp").text(data['message']);
+                                    $(".otp-validate-box").fadeIn();
+                                }else{
+                                    $("#email-shows-for-otp").text(data['message']);
+                                }
+                                
                             }
-                            
-                        }
-                    });
-                }else{
-                    $("#email-validation-message").text("Please enter a valid email id.");
-                    setTimeout(() => {
-                        $("#email-validation-message").text("");
-                    }, 1000);
+                        });
+                    }else{
+                        $("#email-validation-message").text("Please enter a valid email id.");
+                        setTimeout(() => {
+                            $("#email-validation-message").text("");
+                        }, 1000);
+                    }
                 }
+
                 
             });
 

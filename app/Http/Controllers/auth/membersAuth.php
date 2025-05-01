@@ -33,6 +33,7 @@ class membersAuth extends Controller
             'lastname_sess' => $request->lastname,
             'email_sess' => $request->email,
             'contactnumber_sess' => $request->contactnumber,
+            'email_validate_by_otp' => $request->email_otp_status,
         ]);
 
         $rules =[
