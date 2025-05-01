@@ -24,7 +24,7 @@
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
 
     <!-- Custom css -->
-    <link rel="stylesheet" href="{{ asset('css/members-base-style.css')}}">
+    <link  href="{{ asset('css/members-base-style.css')}}" rel="stylesheet">
 
 </head>
 
