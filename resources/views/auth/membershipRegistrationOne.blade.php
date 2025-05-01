@@ -176,7 +176,7 @@
 
             function checkOtpValidateOrNot(){
                 const OtpStatus = $("input[name='email_otp_status']").val();
-                if(OtpStatus){
+                if(OtpStatus === true){
                     $("#submit-btn").prop("disabled", false);
                     $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
                 }
