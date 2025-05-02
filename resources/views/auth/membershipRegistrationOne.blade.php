@@ -197,7 +197,7 @@
                     // Simple email validation (non-empty and contains @)
                     if (email !== '' && email.includes('@')) {
                         emailAlreadyExists(email, function(exists) {
-                            if (!exists) {
+                            if (exists) {
                                 $('#email-verify-auth-page').show();
                                 $("#email-validation-message").text('');  // clear previous message
                             } else {
