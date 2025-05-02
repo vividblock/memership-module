@@ -198,6 +198,8 @@
                     if (email !== '' && email.includes('@')) {
                         if(!emailAllreadyExists(email)){
                             $('#email-verify-auth-page').show();
+                        }else{
+                            $('#email-verify-auth-page').hide();
                         }
                     } else {
                         $('#email-verify-auth-page').hide();
