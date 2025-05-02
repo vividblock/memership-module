@@ -196,12 +196,36 @@
 
                     // Simple email validation (non-empty and contains @)
                     if (email !== '' && email.includes('@')) {
-                        $('#email-verify-auth-page').show();
+                        if(!emailAllreadyExists(email)){
+                            $('#email-verify-auth-page').show();
+                        }
                     } else {
                         $('#email-verify-auth-page').hide();
                     }
                 }
             });
+
+            function emailAllreadyExists(email){
+                $.ajax({
+                    url:"{{route('emailAlreadyExists')}}",
+                    type:'POST',
+                    data:{
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        email:email
+                    },
+                    success:function(data){
+                        // console.log(data);
+                        if(data['success']){
+                            $("#email-validation-message").text(data['message']);
+                            return true;
+                        }else{
+                            return false;
+                        }
+                        
+                    }
+                });
+
+            }
 
             $("#email-verify-auth-page").on("click", function(){
                 // console.log("Hello WOrld");

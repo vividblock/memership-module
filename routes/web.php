@@ -35,9 +35,12 @@ Route::post('/become-a-member/step-two', [membersAuth::class, 'registrationTwo']
 Route::get('/become-a-member/login', [membersAuth::class, 'membersloginView'])->name('membersloginView');
 Route::post('/become-a-member/login', [membersAuth::class, 'memberslogin'])->name('memberslogin');
 
+// Email Validation on Registration
 Route::post('/validate-email-api', [membersAuth::class, 'membersEmailValidateApi'])->name('membersEmailValidateApi');
-
 Route::post('/otp-verify', [membersAuth::class, 'otpVerify'])->name('otpVerify');
+
+// Email Check Already Exists or Not
+Route::post('/email-already-exists', [membersAuth::class, 'emailAlreadyExists'])->name('emailAlreadyExists');
 
 Route::middleware([membersMiddleware::class])->prefix('/auth/members')->group(function(){
     Route::get('/dashboard', [membersController::class, 'dashboard'])->name('membersDashboard');

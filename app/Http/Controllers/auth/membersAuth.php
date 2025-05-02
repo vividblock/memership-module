@@ -321,5 +321,20 @@ class membersAuth extends Controller
             ]);
         }
     }
+
+    public function emailAlreadyExists(Request $rquest){
+        $registrationMail = members::where('email', $request->email)->first();
+        if($registrationMail){
+            return response()->json([
+                'success' => true,
+                'message' => 'This email already exists.',
+            ]);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'This email is an new email.',
+            ]);
+        }
+    }
     
 }
