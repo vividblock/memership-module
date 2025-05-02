@@ -196,37 +196,38 @@
 
                     // Simple email validation (non-empty and contains @)
                     if (email !== '' && email.includes('@')) {
-                        if(!emailAllreadyExists(email)){
-                            $('#email-verify-auth-page').show();
-                        }else{
-                            $('#email-verify-auth-page').hide();
-                        }
+                        emailAlreadyExists(email, function(exists) {
+                            if (!exists) {
+                                $('#email-verify-auth-page').show();
+                                $("#email-validation-message").text('');  // clear previous message
+                            } else {
+                                $('#email-verify-auth-page').hide();
+                            }
+                        });
                     } else {
                         $('#email-verify-auth-page').hide();
                     }
                 }
             });
 
-            function emailAllreadyExists(email){
+            function emailAlreadyExists(email, callback) {
                 $.ajax({
-                    url:"{{route('emailAlreadyExists')}}",
-                    type:'POST',
-                    data:{
+                    url: "{{route('emailAlreadyExists')}}",
+                    type: 'POST',
+                    data: {
                         _token: $('meta[name="csrf-token"]').attr('content'),
-                        email:email
+                        email: email
                     },
-                    success:function(data){
+                    success: function(data) {
                         console.log(data);
-                        if(!data['success']){
+                        if (!data['success']) {
                             $("#email-validation-message").text(data['message']);
-                            return true;
-                        }else{
-                            return false;
+                            callback(true);  // email exists
+                        } else {
+                            callback(false); // email does not exist
                         }
-                        
                     }
                 });
-
             }
 
             $("#email-verify-auth-page").on("click", function(){
