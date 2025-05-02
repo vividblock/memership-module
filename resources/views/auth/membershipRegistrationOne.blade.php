@@ -215,7 +215,7 @@
                     },
                     success:function(data){
                         console.log(data);
-                        if(data['success']){
+                        if(!data['success']){
                             $("#email-validation-message").text(data['message']);
                             return true;
                         }else{
