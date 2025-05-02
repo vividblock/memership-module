@@ -322,7 +322,7 @@ class membersAuth extends Controller
         }
     }
 
-    public function emailAlreadyExists(Request $rquest){
+    public function emailAlreadyExists(Request $request){
         $registrationMail = members::where('email', $request->email)->first();
         if($registrationMail){
             return response()->json([
