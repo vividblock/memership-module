@@ -214,7 +214,7 @@
                         email:email
                     },
                     success:function(data){
-                        // console.log(data);
+                        console.log(data);
                         if(data['success']){
                             $("#email-validation-message").text(data['message']);
                             return true;
