@@ -287,6 +287,7 @@
                                 $(".otp-validate-box").fadeOut();
                                 $("#email-verify-auth-page").html('<i class="fa-solid fa-check-double"></i>');
                                 $("input[name='email_otp_status']").val(true);
+                                $('input[name="email"]').prop("readonly", true);
                             }else{
                                 $(".otp-validate-box").fadeOut();
                                 $("#email-validation-message").text(data['message']);
