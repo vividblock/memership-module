@@ -77,6 +77,10 @@ class membersAuth extends Controller
             return redirect()->back()->withErrors(['email' => 'Email allready used.'])->withInput();
         }
 
+        $membersEmailValidation = membersEmailValidationTemporary::where('members_email', $request->email)->latest()->first();
+        if($membersEmailValidation->email_validation_status == '0'){
+            return redirect()->back()->withErrors(['email' => 'Please verify your email.'])->withInput();
+        }
 
         return redirect()->route('membersRegistrationTwoView');
     }
