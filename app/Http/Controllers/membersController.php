@@ -33,11 +33,11 @@ class membersController extends Controller
             'country' => 'required|string|max:255',
             'org_email' => 'required|email|max:255',
             'socail_handle' => 'nullable|string|max:255',
-            'contact_number' => 'required|digits_between:10,15|numeric',
+            'contact_number' => 'required',
             'organization_name' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postcode' => 'required|string|max:20',
-            'org_contact_number' => 'required|digits_between:10,15|numeric',
+            'org_contact_number' => 'required',
             'website' => 'nullable|url|max:255'
         ];
 
@@ -58,8 +58,8 @@ class membersController extends Controller
             'socail_handle.string' => 'The social handle must be valid text.',
             'socail_handle.max' => 'The social handle must not exceed 255 characters.',
         
-            'contact_number.digits_between' => 'The contact number must be between 10 and 15 digits.',
-            'contact_number.numeric' => 'The contact number must be a valid number.',
+            // 'contact_number.digits_between' => 'The contact number must be between 10 and 15 digits.',
+            // 'contact_number.numeric' => 'The contact number must be a valid number.',
         
             'organization_name.required' => 'The organization name field is required.',
             'organization_name.string' => 'The organization name must be valid text.',
@@ -74,8 +74,8 @@ class membersController extends Controller
             'postcode.max' => 'The postcode must not exceed 20 characters.',
         
             'org_contact_number.required' => 'The organization contact number is required.',
-            'org_contact_number.digits_between' => 'The organization contact number must be between 10 and 15 digits.',
-            'org_contact_number.numeric' => 'The organization contact number must be a valid number.',
+            // 'org_contact_number.digits_between' => 'The organization contact number must be between 10 and 15 digits.',
+            // 'org_contact_number.numeric' => 'The organization contact number must be a valid number.',
         
             'website.url' => 'The website must be a valid URL.',
             'website.max' => 'The website must not exceed 255 characters.',
