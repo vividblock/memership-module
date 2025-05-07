@@ -15,5 +15,6 @@ class members_two extends Model
         'other_activity',
         'special_interest',
         'short_description',
+        'governing_documents',
     ];
 }

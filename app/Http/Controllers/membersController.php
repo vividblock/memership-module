@@ -158,43 +158,87 @@ class membersController extends Controller
         ]);
     }
 
-    public function memberformThree(Request $request){
-        $members_two =  members_two::where('member_id', $request->memberId)->first();
-        if($members_two){
-            members_two::where('member_id', $request->memberId)->update([
-                'your_activity'=>$request->your_activity,
-                'other_activity'=>$request->other_activity ,
-                'special_interest'=>$request->special_interest,
-                'short_description'=>$request->description_group,
-            ]);
-        }else{
-            members_two::create([
-                'member_id'=> $request->memberId,
-                'your_activity'=>$request->your_activity,
-                'other_activity'=>$request->other_activity ,
-                'special_interest'=>$request->special_interest,
-                'short_description'=>$request->description_group,
-            ]);
-        }
+    // public function memberformThree(Request $request){
+    //     $members_two =  members_two::where('member_id', $request->memberId)->first();
 
-        // Handle multiple files
+    //     // Handle multiple files
+    //     if ($request->hasFile('documents')) {
+    //         foreach ($request->file('documents') as $file) {
+    //             $path = $file->store('documents', 'public'); 
+    //             // dd($path);// 'public/documents/filename.ext'
+    //             // Save each file path in a related table, e.g., member_documents
+    //             members_two::where('member_id', $request->memberId)->update(
+    //                 governing_documents
+    //             // \App\Models\MemberDocument::create([
+    //             //     'member_id' => $request->memberId,
+    //             //     'file_path' => $path,
+    //             // ]);
+    //         }
+    //     }
+
+    //     if($members_two){
+    //         members_two::where('member_id', $request->memberId)->update([
+    //             'your_activity'=>$request->your_activity,
+    //             'other_activity'=>$request->other_activity ,
+    //             'special_interest'=>$request->special_interest,
+    //             'short_description'=>$request->description_group,
+    //         ]);
+    //     }else{
+    //         members_two::create([
+    //             'member_id'=> $request->memberId,
+    //             'your_activity'=>$request->your_activity,
+    //             'other_activity'=>$request->other_activity ,
+    //             'special_interest'=>$request->special_interest,
+    //             'short_description'=>$request->description_group,
+    //         ]);
+    //     }
+
+
+
+
+    //     Session::put('from_step_three',true);
+    //     $memberformStep = new Members_form_fillup_status;
+    //     $memberformStep->updateFormSteps($request->memberId, '2', "false" , Session::get('membershiptype_sess') == "2" ? "5" : "6");
+
+
+    //     return redirect()->route('memberformFourView', $request->memberId);
+    // }
+    public function memberformThree(Request $request)
+    {
+        $data = [
+            'your_activity'     => $request->your_activity,
+            'other_activity'    => $request->other_activity,
+            'special_interest'  => $request->special_interest,
+            'short_description' => $request->description_group,
+        ];
+
+        // If a file was uploaded, save it and store path
         if ($request->hasFile('documents')) {
-            // foreach ($request->file('documents') as $file) {
-                // $path =$request->file('documents')->store('documents', 'public');
-                Storage::disk('public')->put($request->file('documents'), 'documents');
-                //  $file->store('documents', 'public'); 
-
-            // }
+            $file = $request->file('documents')[0]; // get first file
+            if ($file->isValid()) {
+                $path = $file->store('documents', 'public');
+                $data['governing_documents'] = $path;
+            }
         }
 
+        // Save or update
+        members_two::updateOrCreate(
+            ['member_id' => $request->memberId],
+            $data
+        );
 
-        Session::put('from_step_three',true);
-        $memberformStep = new Members_form_fillup_status;
-        $memberformStep->updateFormSteps($request->memberId, '2', "false" , Session::get('membershiptype_sess') == "2" ? "5" : "6");
-
+        // Update step status
+        Session::put('from_step_three', true);
+        (new Members_form_fillup_status)->updateFormSteps(
+            $request->memberId,
+            '2',
+            'false',
+            Session::get('membershiptype_sess') === '2' ? '5' : '6'
+        );
 
         return redirect()->route('memberformFourView', $request->memberId);
     }
+
 
     public function memberformFourView(Request $request){
         return view('membersDashbaord.memberFormFour');

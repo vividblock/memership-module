@@ -36,6 +36,7 @@ return new class extends Migration
             $table->string('other_activity')->nullable();
             $table->string('special_interest')->nullable();
             $table->text('short_description')->nullable();
+            $table->text('governing_documents')->nullable();
             $table->timestamps();
         });
 

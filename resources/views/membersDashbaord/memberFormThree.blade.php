@@ -106,7 +106,7 @@
                             <label class="form-label">Constitution / Governing Document</label><br>
                             <small>If your group/organisation has a constitution or governing document, please upload the relevant document(s).</small>
                             <div class="input-group mt-3">
-                                <input type="file" class="form-control d-none" id="customFileInput" name="documents" multiple>
+                                <input type="file" class="form-control d-none" id="customFileInput" name="documents[]" multiple>
                                 <input type="text" class="form-control" id="fileName" placeholder="No files chosen" readonly>
                                 <label class="input-group-text btn btn-primary" for="customFileInput">Browse</label>
                             </div>
