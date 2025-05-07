@@ -155,7 +155,7 @@ class membersController extends Controller
         return view('membersDashbaord.memberFormThree')->with([
             'members' => $members, 
             'organisation' => $organisation,
-            'members_two' => $members_two,
+            'member_two' => $members_two,
             'form_steps' => $formStep,
         ]);
     }
