@@ -22,18 +22,32 @@
                 <div class="col-lg-3"><a class="btn btn-outline-primary">About your organisation</a></div>
                 <div class="col-lg-3"><a class="btn btn-outline-primary">1. Member Details</a></div>
             </div>
+
+            @php
+                $currentStep = (int) $form_steps->form_steps;
+                $totalSteps = (int) $form_steps->member_total_step;
+                $progressPercent = $totalSteps > 0 ? round(($currentStep / $totalSteps) * 100) : 0;
+            @endphp
             <div class="row my-3 align-items-center ">
                 <div class="col-lg-11">
                     <div class="mb-3  small"></div>
-                    <div class="progress ">
-                        <div class="progress-bar" role="progressbar" style="width: 50%"
-                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+
+                    <div class="progress">
+                        <div 
+                            class="progress-bar" 
+                            role="progressbar" 
+                            style="width: {{ $progressPercent }}%" 
+                            aria-valuenow="{{ $progressPercent }}" 
+                            aria-valuemin="0" 
+                            aria-valuemax="100">
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-1" style="padding-top: 13px !important;">
-                    <strong class="text-center text-gray-800" >50%</strong>
+                    <strong class="text-center text-gray-800">{{ $progressPercent }}%</strong>
                 </div>
             </div>
+
         </div>
         <div class="card-body">
 
