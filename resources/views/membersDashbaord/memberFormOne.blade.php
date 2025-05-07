@@ -15,9 +15,9 @@
             <div class="row mt-3">
                 <div class="col-lg-3"><a class="btn btn-primary">Member Details</a></div>
                 <div class="col-lg-3">
-                <a class="btn btn-outline-primary ">Your Activity</a></div>
-                <div class="col-lg-3"><a class="btn btn-outline-primary">1. Member Details</a></div>
-                <div class="col-lg-3"><a class="btn btn-outline-primary">1. Member Details</a></div>
+                <a class="btn btn-outline-primary ">Activity & Documentation</a></div>
+                <div class="col-lg-3"><a class="btn btn-outline-primary">About your organisation</a></div>
+                <div class="col-lg-3"><a class="btn btn-outline-primary">Agreements & Networks</a></div>
             </div>
 
 

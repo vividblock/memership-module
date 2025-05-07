@@ -14,7 +14,7 @@
             <p >Please complete all relevant sections below:</p>
             <div class="row mt-3">
                 <div class="col-lg-2"><a class="btn btn-primary">Member Details</a></div>
-                <div class="col-lg-2"><a  class="btn btn-primary">Your Activity</a></div>
+                <div class="col-lg-2"><a  class="btn btn-primary">Activity & Documentation</a></div>
                 <div class="col-lg-3"><a class="btn 
                 @if(session('from_step_three')) btn-primary 
                     @else btn-outline-primary 
