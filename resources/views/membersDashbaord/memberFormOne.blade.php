@@ -64,7 +64,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group pt-3 pb-3">
+                        <!-- <div class="form-group pt-3 pb-3">
                             <label for="">Organisation or Group Membership <span class="field-fillup-required">*</span></label><br>
                             
                             <input type="checkbox" class="checkbox-fields-input" name="organisation_details[]" value="not-for-profit-organisation-or-group">
@@ -77,6 +77,29 @@
                             <span class="checkbox-fields-label">We are based in, or serve, the city of Cardiff</span><br>
 
                             <input type="checkbox" name="organisation_details[]" value="not-applicable">
+                            <span class="checkbox-fields-label">Not Applicable</span><br>
+                        </div> -->
+                        @php
+                            $selected = json_decode($organisation->organisation_details, true) ?? [];
+                        @endphp
+
+                        <div class="form-group pt-3 pb-3">
+                            <label for="">Organisation or Group Membership <span class="field-fillup-required">*</span></label><br>
+
+                            <input type="checkbox" name="organisation_details[]" value="not-for-profit-organisation-or-group"
+                                {{ in_array('not-for-profit-organisation-or-group', $selected) ? 'checked' : '' }}>
+                            <span class="checkbox-fields-label">We are a not-for-profit organisation or group</span><br>
+
+                            <input type="checkbox" name="organisation_details[]" value="unpaid-committee"
+                                {{ in_array('unpaid-committee', $selected) ? 'checked' : '' }}>
+                            <span class="checkbox-fields-label">We are run by an unpaid committee</span><br>
+
+                            <input type="checkbox" name="organisation_details[]" value="serve-city-cardiff"
+                                {{ in_array('serve-city-cardiff', $selected) ? 'checked' : '' }}>
+                            <span class="checkbox-fields-label">We are based in, or serve, the city of Cardiff</span><br>
+
+                            <input type="checkbox" name="organisation_details[]" value="not-applicable"
+                                {{ in_array('not-applicable', $selected) ? 'checked' : '' }}>
                             <span class="checkbox-fields-label">Not Applicable</span><br>
                         </div>
 
