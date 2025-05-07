@@ -66,6 +66,7 @@ return new class extends Migration
             $table->unsignedBigInteger('member_id'); 
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->string('form_steps')->default('0');
+            $table->string('form_fillup_status')->default('false');
             $table->timestamps();
         });
     }

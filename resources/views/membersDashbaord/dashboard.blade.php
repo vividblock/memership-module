@@ -14,7 +14,15 @@
         <div class="card-body">
             <h5 class="mb-3">Welcome, 
                 <strong class="text-gray-800">{{ session('members_firstname_sess') }} {{ session('members_lastname_sess') }}</strong> 
-                <small class="members-account-status">Account not complete yet.</small>
+                @if(!$form_steps->form_fillup_status)
+                    <small class="members-account-status">
+                        Account not complete yet.
+                    </small>
+                @else
+                    <small class="members-account-status" style="background-color:green;">
+                        Account Active.
+                    </small>
+                @endif
             </h5>
 
             <div class="row my-3 align-items-center ">

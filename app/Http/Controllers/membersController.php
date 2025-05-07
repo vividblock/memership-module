@@ -12,12 +12,19 @@ use App\Models\members_two;
 use App\Models\organisation_details;
 use App\Models\member_network_survey;
 use App\Models\organisation_local_activities;
+use App\Models\Members_form_fillup_status;
 
 class membersController extends Controller
 {
     public function dashboard(){
         $members = members::where('id', Session::get('members_id_sess'))->first();
-        return view('membersDashbaord.dashboard')->with(['members' => $members]);
+        $MembersformStep = new Members_form_fillup_status;
+        $formStep = $MembersformStep->getFormSteps(Session::get('members_id_sess'));
+
+        return view('membersDashbaord.dashboard')->with([
+            'members' => $members,
+            'form_steps' => $formStep,
+        ]);
     }
 
     public function memberformOneView(Request $request){

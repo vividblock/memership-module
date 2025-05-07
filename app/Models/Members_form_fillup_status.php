@@ -30,7 +30,7 @@ class Members_form_fillup_status extends Model
     public function getFormSteps($memberId){
         try {
             $formSteps = Members_form_fillup_status::where('member_id', $memberId)->first();
-            return $formSteps->form_steps;
+            return $formSteps;
 
         } catch (\Throwable $th) {
             //throw $th;
@@ -39,10 +39,11 @@ class Members_form_fillup_status extends Model
 
     }
 
-    public function updateFormSteps($memberId, $formSteps){
+    public function updateFormSteps($memberId, $formSteps, $form_fillup_status){
         try {
             Members_form_fillup_status::where('member_id', $memberId)->update([
-                'form_steps' => $formSteps
+                'form_steps' => $formSteps,
+                'form_fillup_status'=> $form_fillup_status,
             ]);
             return true;
 
