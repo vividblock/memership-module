@@ -14,7 +14,7 @@
         <div class="card-body">
             <h5 class="mb-3">Welcome, 
                 <strong class="text-gray-800">{{ session('members_firstname_sess') }} {{ session('members_lastname_sess') }}</strong> 
-                @if(!$form_steps->form_fillup_status)
+                @if($form_steps->form_fillup_status == 'false')
                     <small class="members-account-status">
                         Account not complete yet.
                     </small>
@@ -28,13 +28,24 @@
             <div class="row my-3 align-items-center ">
                 <div class="col-lg-11">
                     <div class="mb-3  small"></div>
-                    <div class="progress ">
-                        <div class="progress-bar" role="progressbar" style="width: 45%"
-                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    @php
+                        $currentStep = (int) $form_steps->form_steps;
+                        $totalSteps = (int) $form_steps->member_total_step;
+                        $progressPercent = $totalSteps > 0 ? round(($currentStep / $totalSteps) * 100) : 0;
+                    @endphp
+                    <div class="progress">
+                        <div 
+                            class="progress-bar" 
+                            role="progressbar" 
+                            style="width: {{ $progressPercent }}%" 
+                            aria-valuenow="{{ $progressPercent }}" 
+                            aria-valuemin="0" 
+                            aria-valuemax="100">
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-1" style="padding-top: 13px !important;">
-                    <strong class="text-center text-gray-800" >45%</strong>
+                    <strong class="text-center text-gray-800">{{ $progressPercent }}%</strong>
                 </div>
             </div>
 

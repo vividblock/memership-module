@@ -132,6 +132,7 @@ class membersAuth extends Controller
         ];
 
         $organisation_description = null;
+
         if(Session::get('membershiptype_sess') == 2){
             $rules = [
                 'organisation_request_descripiton' => 'required|string',
@@ -183,8 +184,9 @@ class membersAuth extends Controller
             'organisation_request_descripiton' => $organisation_description
         ]);
 
+
         $formSteps = new Members_form_fillup_status;
-        $formSteps->registerFormSteps($members->id);
+        $formSteps->registerFormSteps($members->id, Session::get('membershiptype_sess') == 2 ? '5' : '6');
 
         Session::forget([
             'membership_registration_one',

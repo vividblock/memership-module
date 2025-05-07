@@ -13,12 +13,15 @@ class Members_form_fillup_status extends Model
     protected $fillable =[
         'member_id',
         'form_steps',
+        'form_fillup_status',
+        'member_total_step',
     ];
 
-    public function registerFormSteps($memberId){
+    public function registerFormSteps($memberId, $memberTotalStep){
         try {
             Members_form_fillup_status::create([
-                'member_id' => $memberId
+                'member_id' => $memberId,
+                'member_total_step' => $memberTotalStep,
             ]);
         } catch (\Throwable $th) {
             //throw $th;
@@ -39,12 +42,18 @@ class Members_form_fillup_status extends Model
 
     }
 
-    public function updateFormSteps($memberId, $formSteps, $form_fillup_status){
+    public function updateFormSteps($memberId, $formSteps, $form_fillup_status, $memberTotalStep = null){
         try {
-            Members_form_fillup_status::where('member_id', $memberId)->update([
+
+            $data = [
                 'form_steps' => $formSteps,
-                'form_fillup_status'=> $form_fillup_status,
-            ]);
+                'form_fillup_status' => $form_fillup_status,
+            ];
+    
+            if ($memberTotalStep !== null) {
+                $data['member_total_step'] = $memberTotalStep;
+            }
+            Members_form_fillup_status::where('member_id', $memberId)->update($data);
             return true;
 
         } catch (\Throwable $th) {
