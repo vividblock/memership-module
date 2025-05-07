@@ -80,7 +80,7 @@
                             <span class="checkbox-fields-label">Not Applicable</span><br>
                         </div> -->
                         @php
-                            $raw = $organisation->organisation_details ?? '[]';
+                            $raw = $organisation->organization_details ?? '[]';
                             dd($raw);
                             $selected = json_decode($raw, true);
 
