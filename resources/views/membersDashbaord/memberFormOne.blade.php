@@ -141,13 +141,62 @@
                                 <span class="text-danger">{{ $errors->first('org_email') }}</span>
                             @endif
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
+                            <label for="">Social Handles <span class="field-fillup-required">*</span> </label>
+                            <input type="text" name="socail_handle" id="" class="form-control form-control-user" placeholder="@organization, @twitter, " value="{{ $organisation->social_handle  }}">
+                            @if ($errors->has('socail_handle'))
+                                <span class="text-danger">{{ $errors->first('socail_handle') }}</span>
+                            @endif
+                        </div> -->
+                        <div x-data="socialHandles()" class="form-group">
                             <label for="">Social Handles <span class="field-fillup-required">*</span></label>
-                            <input type="text" name="social_handle" id="social-handle" class="form-control" placeholder="@organization, @twitter" value="{{ $organisation->social_handle }}">
+
+                            <div class="d-flex mb-2">
+                                <input type="text" x-model="handle" class="form-control mr-2" placeholder="@organization, @twitter">
+                                <button type="button" class="btn btn-primary" @click="addHandle">+</button>
+                            </div>
+
+                            <!-- Tag display -->
+                            <div class="mb-2">
+                                <template x-for="(h, index) in handles" :key="index">
+                                    <span class="badge badge-secondary mr-1">
+                                        <span x-text="h"></span>
+                                        <a href="#" class="text-white ml-1" @click.prevent="removeHandle(index)">×</a>
+                                    </span>
+                                </template>
+                            </div>
+
+                            <!-- Hidden field to submit -->
+                            <input type="hidden" name="social_handle" :value="JSON.stringify(handles)">
+
                             @if ($errors->has('social_handle'))
                                 <span class="text-danger">{{ $errors->first('social_handle') }}</span>
                             @endif
                         </div>
+
+                        <!-- Alpine.js -->
+                        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+                        <script>
+                            function socialHandles() {
+                                return {
+                                    handle: '',
+                                    handles: @json(json_decode($organisation->social_handle ?? '[]')),
+
+                                    addHandle() {
+                                        const h = this.handle.trim();
+                                        if (h && !this.handles.includes(h)) {
+                                            this.handles.push(h);
+                                        }
+                                        this.handle = '';
+                                    },
+
+                                    removeHandle(index) {
+                                        this.handles.splice(index, 1);
+                                    }
+                                }
+                            }
+                        </script>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
