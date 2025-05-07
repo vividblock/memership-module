@@ -99,6 +99,8 @@ class membersController extends Controller
         $organisationDetails = json_encode($request->organisation_details);
 
         Session::put('from_step_one',true);
+        $memberformStep = new Members_form_fillup_status;
+        $memberformStep->updateFormSteps($request->memberId, '1', false, $request->membershiptype == "2" ? "5" : "6");
         // if($request->membershiptype === "2"){
             Session::put('membershiptype_sess',$request->membershiptype);
             members::where('id', $request->memberId)->update([
