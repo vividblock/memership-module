@@ -207,28 +207,40 @@ class membersController extends Controller
     // }
     public function memberformThree(Request $request)
     {
+        // Prepare data to update or create the member
         $data = [
             'your_activity'     => $request->your_activity,
             'other_activity'    => $request->other_activity,
             'special_interest'  => $request->special_interest,
             'short_description' => $request->description_group,
         ];
-
-        // If a file was uploaded, save it and store path
+    
+        // Initialize an array to store the paths of uploaded files
+        $paths = [];
+    
+        // If files are uploaded, process them
         if ($request->hasFile('documents')) {
-            $file = $request->file('documents')[0]; // get first file
-            if ($file->isValid()) {
-                $path = $file->store('documents', 'public');
-                $data['governing_documents'] = $path;
+            foreach ($request->file('documents') as $file) {
+                if ($file->isValid()) {
+                    // Store the file and get its path
+                    $path = $file->store('documents', 'public');
+                    // Add the file path to the array
+                    $paths[] = $path;
+                }
+            }
+    
+            // If any files were uploaded, save their paths as a JSON string in the database
+            if (count($paths) > 0) {
+                $data['governing_documents'] = json_encode($paths);
             }
         }
-
-        // Save or update
+    
+        // Save or update the member data
         members_two::updateOrCreate(
             ['member_id' => $request->memberId],
             $data
         );
-
+    
         // Update step status
         Session::put('from_step_three', true);
         (new Members_form_fillup_status)->updateFormSteps(
@@ -237,9 +249,11 @@ class membersController extends Controller
             'false',
             Session::get('membershiptype_sess') === '2' ? '5' : '6'
         );
-
+    
+        // Redirect to the next step
         return redirect()->route('memberformFourView', $request->memberId);
     }
+    
 
 
     public function memberformFourView(Request $request){
