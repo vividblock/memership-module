@@ -81,6 +81,7 @@
                         </div> -->
                         @php
                             $raw = $organisation->organisation_details ?? '[]';
+                            dd($raw);
                             $selected = json_decode($raw, true);
 
                             if (!is_array($selected)) {
