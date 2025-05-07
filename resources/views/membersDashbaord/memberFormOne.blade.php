@@ -80,8 +80,14 @@
                             <span class="checkbox-fields-label">Not Applicable</span><br>
                         </div> -->
                         @php
-                            $selected = json_decode($organisation->organisation_details, true) ?? [];
+                            $raw = $organisation->organisation_details ?? '[]';
+                            $selected = json_decode($raw, true);
+
+                            if (!is_array($selected)) {
+                                $selected = explode(',', $raw); // fallback to comma-separated
+                            }
                         @endphp
+
 
                         <div class="form-group pt-3 pb-3">
                             <label for="">Organisation or Group Membership <span class="field-fillup-required">*</span></label><br>
