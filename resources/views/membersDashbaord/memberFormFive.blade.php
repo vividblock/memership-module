@@ -13,8 +13,8 @@
             <h2 class="h3 text-gray-800 membership-dashbaord-from-heading">Membership Application Details</h2>
             <p >Please complete all relevant sections below:</p>
             <div class="row mt-3">
-                <div class="col-lg-2 text-center"><a class="btn btn-primary">Member Details</a></div>
-                <div class="col-lg-2 text-center"><a  class="btn btn-primary">Your Activity</a></div>
+                <div class="col-lg-2 text-center"><a class="btn btn-primary">Member & Organisation</a></div>
+                <div class="col-lg-2 text-center"><a  class="btn btn-primary">Activity & Documentation</a></div>
                 <div class="col-lg-3 text-center"><a class="btn btn-primary">About your organisation</a></div>
                 <div class="col-lg-3 text-center"><a class="btn
                 @if(session('from_step_four')) btn-primary 
