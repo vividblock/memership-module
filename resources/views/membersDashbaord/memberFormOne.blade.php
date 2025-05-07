@@ -142,10 +142,10 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="">Social Handles <span class="field-fillup-required">*</span> </label>
-                            <input type="text" name="socail_handle" id="" class="form-control form-control-user" placeholder="@organization, @twitter, " value="{{ $organisation->social_handle  }}">
-                            @if ($errors->has('socail_handle'))
-                                <span class="text-danger">{{ $errors->first('socail_handle') }}</span>
+                            <label for="">Social Handles <span class="field-fillup-required">*</span></label>
+                            <input type="text" name="social_handle" id="social-handle" class="form-control" placeholder="@organization, @twitter" value="{{ $organisation->social_handle }}">
+                            @if ($errors->has('social_handle'))
+                                <span class="text-danger">{{ $errors->first('social_handle') }}</span>
                             @endif
                         </div>
                     </div>

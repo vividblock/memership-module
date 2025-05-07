@@ -59,6 +59,26 @@
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 
+    <!-- Tagify CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet">
+    <!-- Tagify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const input = document.querySelector('#social-handle');
+            new Tagify(input, {
+                whitelist: [],
+                dropdown: {
+                    enabled: 0
+                }
+            });
+        });
+    </script>
+    @endpush
+
+
+
 </body>
 
 </html>
