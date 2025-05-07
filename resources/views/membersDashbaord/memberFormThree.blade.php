@@ -18,7 +18,7 @@
                     @if(session('from_step_one')) btn-primary 
                     @else btn-outline-primary 
                     @endif"
-                 >Your Activity</a></div>
+                 >Your Activity & Documentation</a></div>
                 <div class="col-lg-3"><a class="btn btn-outline-primary">About your organisation</a></div>
                 <div class="col-lg-3"><a class="btn btn-outline-primary">1. Member Details</a></div>
             </div>
