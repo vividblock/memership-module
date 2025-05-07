@@ -184,7 +184,7 @@ class membersAuth extends Controller
         ]);
 
         $formSteps = new Members_form_fillup_status;
-        $formSteps->updateFormSteps($members->id, '0');
+        $formSteps->registerFormSteps($members->id);
 
         Session::forget([
             'membership_registration_one',

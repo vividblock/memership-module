@@ -15,6 +15,18 @@ class Members_form_fillup_status extends Model
         'form_steps',
     ];
 
+    public function registerFormSteps($memberId){
+        try {
+            Members_form_fillup_status::create([
+                'member_id' => $memberId
+            ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return false;
+        }
+
+    }
+
     public function getFormSteps($memberId){
         try {
             $formSteps = Members_form_fillup_status::where('member_id', $memberId)->first();
