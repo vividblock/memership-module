@@ -95,13 +95,38 @@
                         </div>
                         @if(session('membershiptype_sess') != "2")
                         <div class="mb-3">
-                            <label class="form-label">Constitution / Governing Document</label><br>
+                            <!-- <label class="form-label">Constitution / Governing Document</label><br>
                             <small >If your group/organisation has a constitution or governing document, please upload the relevant document to this application or in your email - it must be signed and dated (this will speed up your membership application)</small>
                             <div class="input-group" style="padding-top:20px;">
                                 <input type="file" class="form-control d-none" id="customFileInput">
                                 <input type="text" class="form-control" id="fileName" placeholder="No file chosen" readonly>
                                 <label class="input-group-text btn btn-primary" for="customFileInput">Browse</label>
+                            </div> -->
+
+                            <label class="form-label">Constitution / Governing Document</label><br>
+                            <small>If your group/organisation has a constitution or governing document, please upload the relevant document(s).</small>
+                            <div class="input-group mt-3">
+                                <input type="file" class="form-control d-none" id="customFileInput" name="documents[]" multiple>
+                                <input type="text" class="form-control" id="fileName" placeholder="No files chosen" readonly>
+                                <label class="input-group-text btn btn-primary" for="customFileInput">Browse</label>
                             </div>
+
+                            <div id="filePreview" class="mt-2"></div>
+
+                            <script>
+                            document.getElementById('customFileInput').addEventListener('change', function() {
+                                const preview = document.getElementById('filePreview');
+                                preview.innerHTML = '';
+                                const fileNames = Array.from(this.files).map(file => file.name);
+                                document.getElementById('fileName').value = fileNames.join(', ');
+                                fileNames.forEach(name => {
+                                    const p = document.createElement('p');
+                                    p.textContent = name;
+                                    preview.appendChild(p);
+                                });
+                            });
+                            </script>
+
 
                         </div>
                         @endif

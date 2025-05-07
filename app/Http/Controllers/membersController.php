@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\members;
 use App\Models\organisation;
@@ -175,6 +176,20 @@ class membersController extends Controller
                 'short_description'=>$request->description_group,
             ]);
         }
+
+        // Handle multiple files
+        if ($request->hasFile('documents')) {
+            foreach ($request->file('documents') as $file) {
+                $path = $file->store('documents', 'public'); // 'public/documents/filename.ext'
+                // Save each file path in a related table, e.g., member_documents
+                // \App\Models\MemberDocument::create([
+                //     'member_id' => $request->memberId,
+                //     'file_path' => $path,
+                // ]);
+            }
+        }
+
+
         Session::put('from_step_three',true);
         $memberformStep = new Members_form_fillup_status;
         $memberformStep->updateFormSteps($request->memberId, '2', "false" , Session::get('membershiptype_sess') == "2" ? "5" : "6");
