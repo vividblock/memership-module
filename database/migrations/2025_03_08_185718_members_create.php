@@ -60,6 +60,14 @@ return new class extends Migration
             $table->enum('email_validation_status', ['0','1'])->default('0')->comment('0 - not valid, 1 valid');
             $table->timestamps();
         });
+
+        Schema::create('member_form_fillUp_status', function(Blueprint $table){
+            $table->id();
+            $table->unsignedBigInteger('member_id'); 
+            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
+            $table->string('form_steps')->default('0');
+            $table->timestamps();
+        });
     }
 
     /**
