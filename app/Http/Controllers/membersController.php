@@ -181,7 +181,7 @@ class membersController extends Controller
         if ($request->hasFile('documents')) {
             foreach ($request->file('documents') as $file) {
                 $path = $file->store('documents', 'public'); 
-                dd($path);// 'public/documents/filename.ext'
+                // dd($path);// 'public/documents/filename.ext'
                 // Save each file path in a related table, e.g., member_documents
                 // \App\Models\MemberDocument::create([
                 //     'member_id' => $request->memberId,
