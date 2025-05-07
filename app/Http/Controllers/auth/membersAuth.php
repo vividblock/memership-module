@@ -16,6 +16,7 @@ use App\Models\members;
 use App\Models\organisation;
 use App\Models\admin\admin_smtp_settings;
 use App\Models\membersEmailValidationTemporary;
+use App\Models\Members_form_fillup_status;
 
 class membersAuth extends Controller
 {
@@ -181,6 +182,9 @@ class membersAuth extends Controller
             'postcode' => $request->postcode,
             'organisation_request_descripiton' => $organisation_description
         ]);
+
+        $formSteps = new Members_form_fillup_status;
+        $formSteps->updateFormSteps($members->id, '0');
 
         Session::forget([
             'membership_registration_one',
