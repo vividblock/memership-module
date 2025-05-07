@@ -180,7 +180,8 @@ class membersController extends Controller
         // Handle multiple files
         if ($request->hasFile('documents')) {
             // foreach ($request->file('documents') as $file) {
-                $path =$request->file('documents')->store('documents', 'public');
+                // $path =$request->file('documents')->store('documents', 'public');
+                Storage::disk('public')->put($request->file('documents'), 'documents');
                 //  $file->store('documents', 'public'); 
 
             // }
