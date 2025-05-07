@@ -58,39 +58,39 @@
                         <div class="form-group">
                         <label for="">Your activity (Please select all that apply) <span class="field-fillup-required">*</span> </label>
                         <select name="your_activity" class="form-control membership-from-select-field">
-                            <option value="Advice &amp; Advocacy">Advice &amp; Advocacy</option>
-                            <option value="Animal Welfare ">Animal Welfare </option>
-                            <option value="Arts, Culture &amp; Heritage  ">Arts, Culture &amp; Heritage  </option>
-                            <option value="Benefits advice   ">Benefits advice   </option>
-                            <option value="Benevolent Organisations ">Benevolent Organisations </option>
-                            <option value="Carers">Carers</option>
-                            <option value="Childcare">Childcare</option>
-                            <option value="Children &amp; Families ">Children &amp; Families </option>
-                            <option value="Community ">Community </option>
-                            <option value="Community Justice ">Community Justice </option>
-                            <option value="Dementia, Disability  ">Dementia, Disability  </option>
-                            <option value="Education, Training  ">Education, Training  </option>
-                            <option value="Employment ">Employment </option>
-                            <option value="Environment ">Environment </option>
-                            <option value="Financial Advice  ">Financial Advice  </option>
-                            <option value="Funding">Funding</option>
-                            <option value="Health &amp; Social Care ">Health &amp; Social Care </option>
-                            <option value="Housing ">Housing </option>
-                            <option value="Sports &amp; Recreation ">Sports &amp; Recreation </option>
-                            <option value="Volunteering ">Volunteering </option>
-                            <option value="Youth">Youth</option>
+                            <option value="Advice & Advocacy" {{ $member_two->your_activity == "Advice & Advocacy" ? 'selected' : '' }}>Advice & Advocacy</option>
+                            <option value="Animal Welfare" {{ $member_two->your_activity == "Animal Welfare" ? 'selected' : '' }}>Animal Welfare</option>
+                            <option value="Arts, Culture & Heritage" {{ $member_two->your_activity == "Arts, Culture & Heritage" ? 'selected' : '' }}>Arts, Culture & Heritage</option>
+                            <option value="Benefits advice" {{ $member_two->your_activity == "Benefits advice" ? 'selected' : '' }}>Benefits advice</option>
+                            <option value="Benevolent Organisations" {{ $member_two->your_activity == "Benevolent Organisations" ? 'selected' : '' }}>Benevolent Organisations</option>
+                            <option value="Carers" {{ $member_two->your_activity == "Carers" ? 'selected' : '' }}>Carers</option>
+                            <option value="Childcare" {{ $member_two->your_activity == "Childcare" ? 'selected' : '' }}>Childcare</option>
+                            <option value="Children & Families" {{ $member_two->your_activity == "Children & Families" ? 'selected' : '' }}>Children & Families</option>
+                            <option value="Community" {{ $member_two->your_activity == "Community" ? 'selected' : '' }}>Community</option>
+                            <option value="Community Justice" {{ $member_two->your_activity == "Community Justice" ? 'selected' : '' }}>Community Justice</option>
+                            <option value="Dementia, Disability" {{ $member_two->your_activity == "Dementia, Disability" ? 'selected' : '' }}>Dementia, Disability</option>
+                            <option value="Education, Training" {{ $member_two->your_activity == "Education, Training" ? 'selected' : '' }}>Education, Training</option>
+                            <option value="Employment" {{ $member_two->your_activity == "Employment" ? 'selected' : '' }}>Employment</option>
+                            <option value="Environment" {{ $member_two->your_activity == "Environment" ? 'selected' : '' }}>Environment</option>
+                            <option value="Financial Advice" {{ $member_two->your_activity == "Financial Advice" ? 'selected' : '' }}>Financial Advice</option>
+                            <option value="Funding" {{ $member_two->your_activity == "Funding" ? 'selected' : '' }}>Funding</option>
+                            <option value="Health & Social Care" {{ $member_two->your_activity == "Health & Social Care" ? 'selected' : '' }}>Health & Social Care</option>
+                            <option value="Housing" {{ $member_two->your_activity == "Housing" ? 'selected' : '' }}>Housing</option>
+                            <option value="Sports & Recreation" {{ $member_two->your_activity == "Sports & Recreation" ? 'selected' : '' }}>Sports & Recreation</option>
+                            <option value="Volunteering" {{ $member_two->your_activity == "Volunteering" ? 'selected' : '' }}>Volunteering</option>
+                            <option value="Youth" {{ $member_two->your_activity == "Youth" ? 'selected' : '' }}>Youth</option>
                         </select>
                         </div>
                         <div class="form-group">
                             <label for="">Special Interest</label>
                             <select name="special_interest" class="form-control membership-from-select-field">
-                                <option value="Age ">Age </option>
-                                <option value="BME ">BME </option>
-                                <option value="Disability ">Disability </option>
-                                <option value="Faith Groups  ">Faith Groups  </option>
-                                <option value="Gender">Gender</option>
-                                <option value="Religion">Religion</option>
-                                <option value="Sexuality ">Sexuality </option>
+                                <option value="Age" {{ $member_two->special_interest == "Age" ? 'selected' : '' }}>Age</option>
+                                <option value="BME" {{ $member_two->special_interest == "BME" ? 'selected' : '' }}>BME</option>
+                                <option value="Disability" {{ $member_two->special_interest == "Disability" ? 'selected' : '' }}>Disability</option>
+                                <option value="Faith Groups" {{ $member_two->special_interest == "Faith Groups" ? 'selected' : '' }}>Faith Groups</option>
+                                <option value="Gender" {{ $member_two->special_interest == "Gender" ? 'selected' : '' }}>Gender</option>
+                                <option value="Religion" {{ $member_two->special_interest == "Religion" ? 'selected' : '' }}>Religion</option>
+                                <option value="Sexuality" {{ $member_two->special_interest == "Sexuality" ? 'selected' : '' }}>Sexuality</option>
                             </select>
                         </div>
                         @if(session('membershiptype_sess') != "2")
@@ -111,7 +111,23 @@
                                 <label class="input-group-text btn btn-primary" for="customFileInput">Browse</label>
                             </div>
 
-                            <div id="filePreview" class="mt-2"></div>
+                            @if (!empty($member_two->governing_documents))
+                                @php
+                                    $existingFiles = json_decode($member_two->governing_documents, true);
+                                @endphp
+                                @if (is_array($existingFiles) && count($existingFiles))
+                                    <div class="mt-3">
+                                        <label><strong>Uploaded Document(s):</strong></label>
+                                        <ul>
+                                            @foreach ($existingFiles as $doc)
+                                                <li>
+                                                    <a href="{{ asset('storage/' . $doc) }}" target="_blank">{{ basename($doc) }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                            @endif
 
                             <script>
                             document.getElementById('customFileInput').addEventListener('change', function() {
@@ -141,7 +157,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="">Other – please specify</label>
-                            <input type="text" name="other_activity" class="form-control form-control-user">
+                            <input type="text" name="other_activity" class="form-control form-control-user" value="{{ $member_two->other_activity }}">
                         </div>
                         <div class="form-group">
                             <label for="">Short description of individual, group or organisation <span class="field-fillup-required">*</span></label>
@@ -151,7 +167,7 @@
                                 @else
                                     height:226px
                                 @endif
-                            "></textarea>
+                            ">{{ $member_two->short_description }}</textarea>
                         </div>
                     </div>
                 </div>

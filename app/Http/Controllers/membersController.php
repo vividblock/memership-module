@@ -148,12 +148,14 @@ class membersController extends Controller
 
     public function memberformThreeView(Request $request){
         $members = members::where('id', $request->memberId)->first();
+        $members_two = members_two::where('member_id', $request->memberId)->first();
         $organisation = organisation::where('member_id', $request->memberId)->first();
         $MembersformStep = new Members_form_fillup_status;
         $formStep = $MembersformStep->getFormSteps(Session::get('members_id_sess'));
         return view('membersDashbaord.memberFormThree')->with([
             'members' => $members, 
             'organisation' => $organisation,
+            'members_two' => $members_two,
             'form_steps' => $formStep,
         ]);
     }
