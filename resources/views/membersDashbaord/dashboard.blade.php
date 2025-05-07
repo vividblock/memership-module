@@ -25,14 +25,15 @@
                 @endif
             </h5>
 
+            @php
+                $currentStep = (int) $form_steps->form_steps;
+                $totalSteps = (int) $form_steps->member_total_step;
+                $progressPercent = $totalSteps > 0 ? round(($currentStep / $totalSteps) * 100) : 0;
+            @endphp
             <div class="row my-3 align-items-center ">
                 <div class="col-lg-11">
                     <div class="mb-3  small"></div>
-                    @php
-                        $currentStep = (int) $form_steps->form_steps;
-                        $totalSteps = (int) $form_steps->member_total_step;
-                        $progressPercent = $totalSteps > 0 ? round(($currentStep / $totalSteps) * 100) : 0;
-                    @endphp
+
                     <div class="progress">
                         <div 
                             class="progress-bar" 
@@ -48,6 +49,8 @@
                     <strong class="text-center text-gray-800">{{ $progressPercent }}%</strong>
                 </div>
             </div>
+
+
 
             <div class="row mt-4">
                 <div class="col-lg-6">

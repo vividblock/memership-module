@@ -30,7 +30,13 @@ class membersController extends Controller
     public function memberformOneView(Request $request){
         $members = members::where('id', $request->memberId)->first();
         $organisation = organisation::where('member_id', $request->memberId)->first();
-        return view('membersDashbaord.memberFormOne')->with(['members' => $members, 'organisation' => $organisation]);
+        $MembersformStep = new Members_form_fillup_status;
+        $formStep = $MembersformStep->getFormSteps(Session::get('members_id_sess'));
+        return view('membersDashbaord.memberFormOne')->with([
+            'members' => $members, 
+            'organisation' => $organisation,
+            'form_steps' => $formStep,
+        ]);
     }
 
     public function membersformOne(Request $request){
@@ -141,8 +147,12 @@ class membersController extends Controller
     public function memberformThreeView(Request $request){
         $members = members::where('id', $request->memberId)->first();
         $organisation = organisation::where('member_id', $request->memberId)->first();
-        Session::put('from_step_three',true);
-        return view('membersDashbaord.memberFormThree')->with(['members' => $members, 'organisation' => $organisation]);
+        
+        return view('membersDashbaord.memberFormThree')->with([
+            'members' => $members, 
+            'organisation' => $organisation,
+            'form_steps' => $formStep,
+        ]);
     }
 
     public function memberformThree(Request $request){
@@ -163,6 +173,9 @@ class membersController extends Controller
                 'short_description'=>$request->description_group,
             ]);
         }
+        Session::put('from_step_three',true);
+        $memberformStep = new Members_form_fillup_status;
+        $memberformStep->updateFormSteps($request->memberId, '2', "false" , Session::get('membershiptype_sess') == "2" ? "5" : "6");
 
 
         return redirect()->route('memberformFourView', $request->memberId);
