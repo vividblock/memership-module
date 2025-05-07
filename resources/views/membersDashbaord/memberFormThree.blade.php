@@ -51,7 +51,7 @@
         </div>
         <div class="card-body">
 
-            <form class="user" action="{{ route('memberformThree', session('members_id_sess') )}}" method="post">
+            <form class="user" action="{{ route('memberformThree', session('members_id_sess') )}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-6">
