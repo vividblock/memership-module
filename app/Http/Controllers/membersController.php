@@ -122,7 +122,8 @@ class membersController extends Controller
                 'postcode'=>$request->postcode,
                 'country'=>$request->country,
                 'contact_number'=>$request->org_contact_number,
-                'social_handle'=>$request->socail_handle,
+                // 'social_handle'=>$request->socail_handle,
+                'social_handle'=>json_decode($request->social_handle, true),
                 'website'=>$request->website,
                 'organization_details'=>$organisationDetails,
             ]);
