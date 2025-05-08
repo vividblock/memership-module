@@ -132,7 +132,7 @@
                                                 <div class="form-group">
                                                     <input type="password" class="form-control form-control-user"
                                                     placeholder="Password" name="password">
-                                                    <span class="eye-button-for-password"><i class="fa-solid fa-eye"></i></span>
+                                                    <span class="eye-button-for-password" id="show-password"><i class="fa-solid fa-eye"></i></span>
                                                     @if ($errors->has('password'))
                                                         <span class="text-danger">{{ $errors->first('password') }}</span>
                                                     @endif
@@ -222,6 +222,20 @@
         }
 
         google.maps.event.addDomListener(window, 'load', initAutocomplete);
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $("#show-password").on("click", function(){
+                let passwordInput = $('input[name="password"]');
+                let isPassword = passwordInput.attr('type') === 'password';
+
+                passwordInput.attr('type', isPassword ? 'text' : 'password');
+                $(this).html(isPassword 
+                    ? '<i class="fa-solid fa-eye-slash"></i>' 
+                    : '<i class="fa-solid fa-eye"></i>');
+            });
+        });
     </script>
 </body>
 
