@@ -353,15 +353,16 @@ class membersController extends Controller
                 'member_signed'=>$request->member_signed,
             ]);
         }
-        if(Session::get('membershiptype_sess')=== "2"){
-            return redirect()->route('membersDashboard');
-        }
         (new Members_form_fillup_status)->updateFormSteps(
             $request->memberId,
             '4',
             'false',
             Session::get('membershiptype_sess') === '2' ? '4' : '5'
         );
+        if(Session::get('membershiptype_sess')=== "2"){
+            return redirect()->route('membersDashboard');
+        }
+
 
         return redirect()->route('memberformSixView', $request->memberId);
     }
