@@ -95,6 +95,15 @@
                             <strong>Contact Number:</strong> {{ $organisation->contact_number ?? 'N/A' }}
                         </div>
                         <div class="col-md-6 mb-2">
+                            <strong>Country:</strong> {{ $organisation->country ?? 'N/A' }}
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <strong>Full Address:</strong>
+                            {{ $organisation->correspondence_address }},
+                            {{ $organisation->city }},
+                            {{ $organisation->postcode }}
+                        </div>
+                        <div class="col-md-6 mb-2">
                             <strong>Social Handles:</strong>
                             <div class="border rounded p-2 bg-light">
                                 @if(is_array($organisation->social_handle))
@@ -113,15 +122,6 @@
                             @else
                                 N/A
                             @endif
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <strong>Country:</strong> {{ $organisation->country ?? 'N/A' }}
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <strong>Full Address:</strong>
-                            {{ $organisation->correspondence_address }},
-                            {{ $organisation->city }},
-                            {{ $organisation->postcode }}
                         </div>
                         <div class="col-md-12 mb-2">
                             <strong>Organisation Details:</strong>
