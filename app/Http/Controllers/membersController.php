@@ -644,11 +644,18 @@ class membersController extends Controller
 
 
     public function resetPasswordView(){
-        $otp = rand(100000, 999999);
-        Session::put([
-            "reset_password_otp" => $otp
-        ]);
-        Mail::to($this->member->email)->send(new OtpMail($otp));
+        $lastSent = Session::get('reset_password_sent_at');
+
+        // Check if OTP was sent less than 2 minutes ago
+        if (!$lastSent || now()->diffInMinutes($lastSent) >= 2) {
+            $otp = rand(100000, 999999);
+            Session::put([
+                'reset_password_otp' => $otp,
+                'reset_password_sent_at' => now()
+            ]);
+    
+            Mail::to($this->member->email)->send(new OtpMail($otp));
+        }
         return view('membersDashbaord.resetPassword')->with([
             "member" => $this->member,
         ]);
