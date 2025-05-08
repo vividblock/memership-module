@@ -58,7 +58,7 @@
                                 <option value="Other  Quality Marks" {{ $organisation_details->quality_marks == 'Other  Quality Marks' ? 'selected' : '' }}>Other Quality Marks</option>
                             </select>
                         </div>
-
+                        {{ dd($organisation_details->date_accreditation_awarded) }}
                         <div class="form-group">
                             <label for="">Date accreditation was awarded:</label>
                             <input type="date" name="date_accreditation_awarded" class="form-control form-control-user" 
