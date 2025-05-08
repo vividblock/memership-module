@@ -16,6 +16,7 @@ use App\Models\organisation_details;
 use App\Models\member_network_survey;
 use App\Models\organisation_local_activities;
 use App\Models\Members_form_fillup_status;
+use App\Models\notification_members;
 
 class membersController extends Controller
 {
@@ -149,11 +150,9 @@ class membersController extends Controller
     }
 
     public function memberformTwoView(Request $request){
-
     }
 
     public function memberformTwo(Request $request){
-
     }
 
     public function memberformThreeView(Request $request){
@@ -213,8 +212,7 @@ class membersController extends Controller
 
     //     return redirect()->route('memberformFourView', $request->memberId);
     // }
-    public function memberformThree(Request $request)
-    {   
+    public function memberformThree(Request $request){   
 
         $allowedActivities = [
             'Advice & Advocacy', 'Animal Welfare', 'Arts, Culture & Heritage', 'Benefits advice',
@@ -314,8 +312,6 @@ class membersController extends Controller
         return redirect()->route('memberformFourView', $request->memberId);
     }
     
-
-
     public function memberformFourView(Request $request){
         $organisation = organisation::where('member_id', $request->memberId)->first();
         $organisation_details = organisation_details::where('org_id', $organisation->id)->first();
@@ -480,6 +476,9 @@ class membersController extends Controller
             'submited',
             Session::get('membershiptype_sess') === '2' ? '4' : '5'
         );
+
+        // notification_members::
+
         if(Session::get('membershiptype_sess')=== "2"){
             return redirect()->route('membersDashboard');
         }
@@ -557,7 +556,6 @@ class membersController extends Controller
 
     }
 
-
     public function cardsView(Request $request){
         $members = members::where('id', $this->memberID)->first();
         $organisation = organisation::where('member_id', $this->memberID)->first();
@@ -565,4 +563,5 @@ class membersController extends Controller
 
         return view('membersDashbaord.cards')->with(['members' => $members, 'organisation' => $organisation]);;
     }
+
 }
