@@ -23,15 +23,14 @@ class membersController extends Controller
 
     public function __construct(){
         $this->memberID = Session::get('members_id_sess');
-        $memberId = Session::get('members_id_sess');
         if ($memberId) {
             $MembersformStep = new Members_form_fillup_status();
-            $this->formStep = $MembersformStep->getFormSteps($memberId);
+            $this->formStep = $MembersformStep->getFormSteps($this->memberID);
         }
     }
 
     public function dashboard(){
-        $members = members::where('id', Session::get('members_id_sess'))->first();
+        $members = members::where('id', $this->memberID)->first();
 
         return view('membersDashbaord.dashboard')->with([
             'members' => $members,
@@ -406,14 +405,21 @@ class membersController extends Controller
             'attend_events'=>$request-> attend_events,                      // Yes/No
             'gdpr' =>$request->gdpr, 
         ]);
+
+        (new Members_form_fillup_status)->updateFormSteps(
+            $request->memberId,
+            '5',
+            'false',
+            Session::get('membershiptype_sess') === '2' ? '4' : '5'
+        );
         return redirect()->route('membersDashboard');
 
     }
 
 
     public function cardsView(Request $request){
-        $members = members::where('id', Session::get('members_id_sess'))->first();
-        $organisation = organisation::where('member_id', Session::get('members_id_sess'))->first();
+        $members = members::where('id', $this->memberID)->first();
+        $organisation = organisation::where('member_id', $this->memberID)->first();
 
 
         return view('membersDashbaord.cards')->with(['members' => $members, 'organisation' => $organisation]);;
