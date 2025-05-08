@@ -279,9 +279,9 @@ class membersController extends Controller
             if ($request->hasFile('documents')) {
                 foreach ($request->file('documents') as $file) {
                     if ($file->isValid()) {
-                        $originalName = $file->getClientOriginalName();
+                        // $originalName = $file->getClientOriginalName();
                         // Store the file and get its path
-                        $path = $file->store('documents', $originalName, 'public');
+                        $path = $file->store('documents', 'public');
                         // Add the file path to the array
                         $paths[] = $path;
                     }
