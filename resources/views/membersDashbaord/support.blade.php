@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="">Description<span class="field-fillup-required">*</span></label>
-                <textarea name="description" id=""></textarea>
+                <textarea name="description" class="form-control form-control-user" id=""></textarea>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Submit</button>
