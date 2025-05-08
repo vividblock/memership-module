@@ -24,6 +24,13 @@
 
     <!-- Custom css -->
     <link rel="stylesheet" href="{{ asset('css/members-base-style.css')}}">
+    <style>
+        .eye-button-for-password{
+            position: absolute;
+            top: 13px;
+            right: 28px;
+        }
+    </style>
 
 </head>
 
