@@ -352,13 +352,24 @@
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+
+                @if(session('form_fillup_status') === "submited" || session('form_fillup_status') === '1')
+                <a class="dropdown-item" href="{{ route('profileView') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                @elseif(session('form_fillup_status') === "false" || session('form_fillup_status') === '0')
+                <a class="dropdown-item" href="{{ route('memberformOneView',session('members_id_sess')) }}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                </a>
+                @endif
+
+
+
+                <a class="dropdown-item" href="{{ route('supportView') }}">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
+                    Support
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
