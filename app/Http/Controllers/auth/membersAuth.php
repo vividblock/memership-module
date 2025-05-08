@@ -79,7 +79,7 @@ class membersAuth extends Controller
         }
 
         $membersEmailValidation = membersEmailValidationTemporary::where('members_email', $request->email)->latest()->first();
-        if($membersEmailValidation->email_validation_status == '0' || $membersEmailValidation->email_validation_status == null){
+        if($membersEmailValidation->email_validation_status == '0' || !$membersEmailValidation){
             return redirect()->back()->withErrors(['email' => 'Please verify your email.'])->withInput();
         }
 
