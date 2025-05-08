@@ -18,44 +18,50 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
+                            {{ dd($member_network_survay)}}
                             <label for="">Please specify which themes are your key areas of interest: (feel free to select more than one) </label>
                             <select name="networks" class="form-control membership-from-select-field">
-                                <option value="BME people and communities ">BME people and communities </option>
-                                <option value="Children, Young People and Families (Starting well) ">Children, Young People and Families (Starting well) </option>
-                                <option value="Education, learning and employment ">Education, learning and employment </option>
-                                <option value="Environmental sustainability  ">Environmental sustainability  </option>
-                                <option value="Equality and Diversity/ Human Rights  ">Equality and Diversity/ Human Rights  </option>
-                                <option value="Enterprise and learning ">Enterprise and learning </option>
-                                <option value="Health, Social Care and Well-being ">Health, Social Care and Well-being </option>
-                                <option value="Older People (Aging Well) ">Older People (Aging Well) </option>
-                                <option value="Safer and Cohesive Communities">Safer and Cohesive Communities</option>
-                                <option value="Trustees/Governance ">Trustees/Governance </option>
-                                <option value="Volunteer Coordination ">Volunteer Coordination </option>
-                                <option value="None of the above">None of the above</option>
+                                <option value="BME people and communities" {{ $member_network_survay->networks == 'BME people and communities' ? 'selected' : '' }}>BME people and communities</option>
+                                <option value="Children, Young People and Families (Starting well)" {{ $member_network_survay->networks == 'Children, Young People and Families (Starting well)' ? 'selected' : '' }}>Children, Young People and Families (Starting well)</option>
+                                <option value="Education, learning and employment" {{ $member_network_survay->networks == 'Education, learning and employment' ? 'selected' : '' }}>Education, learning and employment</option>
+                                <option value="Environmental sustainability" {{ $member_network_survay->networks == 'Environmental sustainability' ? 'selected' : '' }}>Environmental sustainability</option>
+                                <option value="Equality and Diversity/ Human Rights" {{ $member_network_survay->networks == 'Equality and Diversity/ Human Rights' ? 'selected' : '' }}>Equality and Diversity/ Human Rights</option>
+                                <option value="Enterprise and learning" {{ $member_network_survay->networks == 'Enterprise and learning' ? 'selected' : '' }}>Enterprise and learning</option>
+                                <option value="Health, Social Care and Well-being" {{ $member_network_survay->networks == 'Health, Social Care and Well-being' ? 'selected' : '' }}>Health, Social Care and Well-being</option>
+                                <option value="Older People (Aging Well)" {{ $member_network_survay->networks == 'Older People (Aging Well)' ? 'selected' : '' }}>Older People (Aging Well)</option>
+                                <option value="Safer and Cohesive Communities" {{ $member_network_survay->networks == 'Safer and Cohesive Communities' ? 'selected' : '' }}>Safer and Cohesive Communities</option>
+                                <option value="Trustees/Governance" {{ $member_network_survay->networks == 'Trustees/Governance' ? 'selected' : '' }}>Trustees/Governance</option>
+                                <option value="Volunteer Coordination" {{ $member_network_survay->networks == 'Volunteer Coordination' ? 'selected' : '' }}>Volunteer Coordination</option>
+                                <option value="None of the above" {{ $member_network_survay->networks == 'None of the above' ? 'selected' : '' }}>None of the above</option>
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="">If none of the above, suggest a theme/network of interest: </label>
-                            <input type="text" name="network_interst" class="form-control form-control-user" id="">
+                            <input type="text" name="network_interst" class="form-control form-control-user" value="{{ $member_network_survay->network_interst ?? '' }}">
                         </div>
+
                         <div class="form-group">
                             <label for="">We are interested in connecting with our members for an informal discussion.</label><br>
-                            <input type="checkbox" name="informal_discussion" id=""><span class="checkbox-fields-label">If you would be interested for one of C3SC’s team or trustees to get in touch and arrange a discussion with you please tick this box</span>
+                            <input type="checkbox" name="informal_discussion" {{ $member_network_survay->informal_discussion == 'on' ? 'checked' : '' }}><span class="checkbox-fields-label">If you would be interested for one of C3SC’s team or trustees to get in touch and arrange a discussion with you please tick this box</span>
                         </div>
                     </div>
+
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input type="checkbox" class="checkbox-fields-input" name="how_to_use_this" id=""><span class="checkbox-fields-label">If you do not want your details to be used in this way, then please tick this box.</span><br>
+                            <input type="checkbox" class="checkbox-fields-input" name="how_to_use_this" {{ $member_network_survay->how_to_use_this == 'on' ? 'checked' : '' }}><span class="checkbox-fields-label">If you do not want your details to be used in this way, then please tick this box.</span><br>
                             <small>Please note: If you do not tick this box, your details will appear in our directories.</small>
                         </div>
+
                         <div class="form-group">
-                        <label for="">Do you give us permission to contact you if an opportunity arises for us to use your details in our digital and print communications – such as on or website, social media, and/or any publications - or if you have the opportunity to be featured in the media?<span class="field-fillup-required">*</span> </label><br>
-                        <input type="radio"  name="how_u_use_this_details_media" id="">Yes<br>
-                        <input type="radio" name="how_u_use_this_details_media" id="">No<br>
-                        <small>Note: digital communications may be available online indefinitely. Please visit the Privacy Notice page on our website to understand how we will use the information you provide.</small>
+                            <label for="">Do you give us permission to contact you if an opportunity arises for us to use your details in our digital and print communications – such as on or website, social media, and/or any publications - or if you have the opportunity to be featured in the media?<span class="field-fillup-required">*</span> </label><br>
+                            <input type="radio" name="how_u_use_this_details_media" value="yes" {{ $member_network_survay->how_u_use_this_details_media == 'yes' ? 'checked' : '' }}>Yes<br>
+                            <input type="radio" name="how_u_use_this_details_media" value="no" {{ $member_network_survay->how_u_use_this_details_media == 'no' ? 'checked' : '' }}>No<br>
+                            <small>Note: digital communications may be available online indefinitely. Please visit the Privacy Notice page on our website to understand how we will use the information you provide.</small>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-12">
                         <h4>
@@ -66,19 +72,21 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Date Signed<span class="field-fillup-required">*</span></label>
-                                    <input type="date" name="member_signed_date" class="form-control from-control-user" id="">
+                                    <input type="date" name="member_signed_date" class="form-control from-control-user" value="{{ $member_network_survay->member_signed_date ?? '' }}">
                                 </div>
                             </div>
+
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Electronic Signature<span class="field-fillup-required">*</span></label>
-                                    <input type="text" name="member_signed" class="form-control from-control-user" id="">
+                                    <input type="text" name="member_signed" class="form-control from-control-user" value="{{ $member_network_survay->member_signed ?? '' }}">
                                     <small>Please write your full name to sign this application.</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row mt-3">
                     <div class="col-lg-4">
                         <a href="{{ route('memberformOneView', session('members_id_sess')) }}" class="btn btn-success btn-user btn-block">back</a>
@@ -104,4 +112,3 @@
 </div>
 
 @include('includes.members.footer')
-
