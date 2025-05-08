@@ -498,6 +498,22 @@ class membersController extends Controller
     }
 
     public function memberformSix(Request $request){
+
+        $rules = [
+            'gdpr' => 'required|in:C3SC may share the groups contact details with other Third Sector Organisations or community groups,Do not share this groups\' contact details.',
+        ];
+        $messages = [
+            'gdpr.required' => 'Please indicate your preference for data sharing (GDPR).',
+            'gdpr.in' => 'Please select a valid GDPR option.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        
         // dd($request);
         $orgData = organisation::where('member_id', $request->memberId)->first();
         $org_local_activity_details = organisation_local_activities::where('org_id', $orgData->id)->first();

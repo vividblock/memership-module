@@ -18,7 +18,7 @@
         // Add extra step only for "other" members (making it 6 steps)
         if ($memberType == "other") {
             array_splice($steps, 4, 0, [[
-                'title' => 'Additional Info',
+                'title' => 'Mapping Local Activities',
                 'route' => route('memberformSixView', $memberId)
             ]]);
         }

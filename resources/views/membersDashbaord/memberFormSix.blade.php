@@ -94,6 +94,9 @@
                                 <option value="C3SC may share the groups contact details with other Third Sector Organisations or community groups" {{ $org_local_activity_details->gdpr == 'C3SC may share the groups contact details with other Third Sector Organisations or community groups' ? 'selected' : '' }}>C3SC may share the groups contact details with other Third Sector Organisations or community groups</option>
                                 <option value="Do not share this groups' contact details." {{ $org_local_activity_details->gdpr == 'Do not share this groups\' contact details.' ? 'selected' : '' }}>Do not share this groups' contact details.</option>
                             </select>
+                            @if ($errors->has('gdpr'))
+                                <span class="text-danger">{{ $errors->first('gdpr') }}</span>
+                            @endif
                         </div>
                     </div>
                 </div>
