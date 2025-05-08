@@ -166,7 +166,11 @@ form.user .btn-user{
 }
 
 .working-on-dashboard-option{
-    
+    font-size: 14px;
+    background-color: #ff4b01;
+    color: #FFC;
+    padding: 6px 8px;
+    border-radius: 11px;
 }
 
 @media only screen and (min-width:992px) {
