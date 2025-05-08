@@ -6,8 +6,8 @@
         <h1 class="h3 text-gray-800 dash-headings">Reset Password</h1>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+    <!-- <div class="row justify-content-center">
+        <div class="col-md-6"> -->
             @if(session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
@@ -50,8 +50,8 @@
                 </div>
             </div>
 
-        </div>
-    </div>
+        <!-- </div>
+    </div> -->
 </div>
 
 @include('includes.members.footer')
