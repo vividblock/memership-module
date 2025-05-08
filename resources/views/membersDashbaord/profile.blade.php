@@ -95,7 +95,16 @@
                             <strong>Contact Number:</strong> {{ $organisation->contact_number ?? 'N/A' }}
                         </div>
                         <div class="col-md-6 mb-2">
-                            <strong>Social Handle:</strong> {{ $organisation->social_handle ?? 'N/A' }}
+                            <strong>Social Handles:</strong>
+                            <div class="border rounded p-2 bg-light">
+                                @if(is_array($organisation->social_handle))
+                                    {{ implode(', ', $organisation->social_handle) }}
+                                @elseif(is_string($organisation->social_handle) && Str::startsWith($organisation->social_handle, '['))
+                                    {{ implode(', ', json_decode($organisation->social_handle, true)) }}
+                                @else
+                                    {{ $organisation->social_handle ?? 'N/A' }}
+                                @endif
+                            </div>
                         </div>
                         <div class="col-md-6 mb-2">
                             <strong>Website:</strong>
@@ -117,7 +126,13 @@
                         <div class="col-md-12 mb-2">
                             <strong>Organisation Details:</strong>
                             <div class="border rounded p-2 bg-light">
-                                {{ $organisation->organization_details ?? 'N/A' }}
+                                @if(is_array($organisation->organization_details))
+                                    {{ implode(', ', $organisation->organization_details) }}
+                                @elseif(is_string($organisation->organization_details) && Str::startsWith($organisation->organization_details, '['))
+                                    {{ implode(', ', json_decode($organisation->organization_details, true)) }}
+                                @else
+                                    {{ $organisation->organization_details ?? 'N/A' }}
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-12">
