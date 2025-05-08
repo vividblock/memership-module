@@ -57,7 +57,7 @@
                             <label for="">Do you give us permission to contact you if an opportunity arises for us to use your details in our digital and print communications – such as on or website, social media, and/or any publications - or if you have the opportunity to be featured in the media?<span class="field-fillup-required">*</span> </label><br>
                             <input type="radio" name="how_u_use_this_details_media" value="yes" {{ $member_network_survay->how_u_use_this_details_media == 'yes' ? 'checked' : '' }}>Yes<br>
                             <input type="radio" name="how_u_use_this_details_media" value="no" {{ $member_network_survay->how_u_use_this_details_media == 'no' ? 'checked' : '' }}>No<br>
-                            <small>Note: digital communications may be available online indefinitely. Please visit the Privacy Notice page on our website to understand how we will use the information you provide.</small>
+                            <small>Note: digital communications may be available online indefinitely. Please visit the Privacy Notice page on our website to understand how we will use the information you provide.</small><br>
                             @if ($errors->has('how_u_use_this_details_media'))
                                 <span class="text-danger">{{ $errors->first('how_u_use_this_details_media') }}</span>
                             @endif
@@ -86,7 +86,7 @@
                                 <div class="form-group">
                                     <label for="">Electronic Signature<span class="field-fillup-required">*</span></label>
                                     <input type="text" name="member_signed" class="form-control from-control-user" value="{{ $member_network_survay->member_signed ?? '' }}">
-                                    <small>Please write your full name to sign this application.</small>
+                                    <small>Please write your full name to sign this application.</small><br>
                                     @if ($errors->has('member_signed'))
                                         <span class="text-danger">{{ $errors->first('member_signed') }}</span>
                                     @endif
