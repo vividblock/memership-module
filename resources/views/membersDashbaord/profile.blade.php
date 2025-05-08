@@ -21,7 +21,17 @@
                     <strong>Email:</strong> {{ $member->email }}
                 </div>
                 <div class="col-md-6">
-                    <strong>Membership Type:</strong> {{ $member->membership_type }}
+                    <strong>Membership Type:</strong> 
+                    @if($member->membership_type == "1")
+                        Non for profit - Group or Organisation
+                    @elseif($member->membership_type == "2")
+                        Non for profit - Individual
+                    @elseif($member->membership_type == "3")
+                        Statutory Sector
+                    @elseif($member->membership_type == "4")
+                        Private Sector
+                    @endif
+                    
                 </div>
                 <div class="col-md-6">
                     <strong>Status:</strong> {!! $member->user_status ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>' !!}
