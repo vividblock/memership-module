@@ -24,20 +24,24 @@ class membersController extends Controller
 
     protected $formStep;
     protected $memberID;
+    protected $member;
+    protected $organisation;
 
     public function __construct(){
         $this->memberID = Session::get('members_id_sess');
         if ($this->memberID) {
             $MembersformStep = new Members_form_fillup_status();
             $this->formStep = $MembersformStep->getFormSteps($this->memberID);
+            $this->member = members::where('id', $this->memberID)->first();
+            $this->organisation = organisation::where("member_id", $this->memberID)->first();
         }
     }
 
     public function dashboard(){
-        $members = members::where('id', $this->memberID)->first();
+        // $members = members::where('id', $this->memberID)->first();
 
         return view('membersDashbaord.dashboard')->with([
-            'members' => $members,
+            'members' => $this->member,
             'form_steps' => $this->formStep,
         ]);
     }
@@ -603,5 +607,12 @@ class membersController extends Controller
         return redirect()->back();
     }
 
+    // Profile ------
+    public function profileView(){
+        return view('membersDashbaord.profile')->with([
+            "member" => $this->member,
+            "organisation" => $this->organisation,
+        ]);
+    }
 
 }

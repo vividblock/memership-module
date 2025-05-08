@@ -62,7 +62,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('profileView') }}">
                     <i class="fa-regular fa-id-card"></i>
                     <span>Profile</span>
                 </a>

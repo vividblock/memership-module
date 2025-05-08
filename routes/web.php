@@ -44,26 +44,26 @@ Route::post('/email-already-exists', [membersAuth::class, 'emailAlreadyExists'])
 
 Route::middleware([membersMiddleware::class])->prefix('/auth/members')->group(function(){
     Route::get('/dashboard', [membersController::class, 'dashboard'])->name('membersDashboard');
+
+    // Membership form
     Route::get('/member-form/step-one/{memberId}', [membersController::class, 'memberformOneView'])->name('memberformOneView');
     Route::post('/member-form/step-one/{memberId}', [membersController::class, 'membersformOne'])->name('membersformOne');
     Route::get('/member-form/step-two/{memberId}', [membersController::class, 'memberformTwoView'])->name('memberformTwoView');
-
-
-
     Route::get('/member-form/step-three/{memberId}',[membersController::class, 'memberformThreeView'])->name('memberformThreeView');
     Route::post('/member-form/step-three/{memberId}',[membersController::class, 'memberformThree'])->name('memberformThree');
     Route::get('/member-form/step-four/{memberId}', [membersController::class,'memberformFourView'])->name('memberformFourView');
     Route::post('/member-form/step-four/{memberId}', [membersController::class,'memberformFour'])->name('memberformFour');
     Route::get('/member-form/step-five/{memberId}', [membersController::class,'memberformFiveView'])->name('memberformFiveView');
     Route::post('/member-form/step-five/{memberId}', [membersController::class,'memberformFive'])->name('memberformFive');
-
     Route::get('/member-form/step-six/{memberId}', [membersController::class,'memberformSixView'])->name('memberformSixView');
     Route::post('/member-form/step-six/{memberId}', [membersController::class,'memberformSix'])->name('memberformSix');
 
-    
+    // Profile
+    Route::get('/member-profile', [membersController::class,'profileView'])->name('profileView');
 
+
+    // Cards
     Route::get('/cards', [membersController::class, 'cardsView'])->name('cardsView');
-
 
     // Support 
     Route::get('/support', [membersController::class, 'supportView'])->name('supportView');
