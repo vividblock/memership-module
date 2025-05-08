@@ -82,7 +82,7 @@
                                         <h6 class="text-gray-800 membership-registration-form-field-heading">Organisation or Group Name</h6>
                                         <div class="form-group pb-2">
                                             <input type="text" class="form-control form-control-user"
-                                            placeholder="Group/Organisation Name" name="organisationname">
+                                            placeholder="Group/Organisation Name" name="organisationname" value="{{ session('organisationname_sess') }}">
                                             @if ($errors->has('organisationname'))
                                                 <span class="text-danger">{{ $errors->first('organisationname') }}</span>
                                             @endif
@@ -109,7 +109,7 @@
                                             <div class="col-lg-6 pb-2">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control form-control-user"
-                                                    placeholder="Postcode" name="postcode" id="postcode">
+                                                    placeholder="Postcode" name="postcode" id="postcode" value="{{ session('postcode_sess') }}">
                                                     @if ($errors->has('postcode'))
                                                         <span class="text-danger">{{ $errors->first('postcode') }}</span>
                                                     @endif
@@ -122,7 +122,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control form-control-user"
-                                                    placeholder="Organisation Email" name="organisationemail">
+                                                    placeholder="Organisation Email" name="organisationemail" value="{{ session('organisationemail_sess') }}">
                                                     @if ($errors->has('organisationemail'))
                                                         <span class="text-danger">{{ $errors->first('organisationemail') }}</span>
                                                     @endif
@@ -131,7 +131,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <input type="password" class="form-control form-control-user"
-                                                    placeholder="Password" name="password">
+                                                    placeholder="Password" name="password" value="{{ session('password_sess') }}">
                                                     <span class="eye-button-for-password" id="show-password"><i class="fa-solid fa-eye"></i></span>
                                                     @if ($errors->has('password'))
                                                         <span class="text-danger">{{ $errors->first('password') }}</span>
@@ -147,7 +147,7 @@
                                             <h6 class="text-gray-800 membership-registration-form-field-heading">Please provide a brief description of your group’s or organisation’s purpose and aims [maximum: 100 words].</h6>
                                         @endif
                                         <div class="form-group pb-2">
-                                            <textarea class="form-control" name="organisation_request_descripiton"></textarea>
+                                            <textarea class="form-control" name="organisation_request_descripiton">{{session('organisation_request_descripiton_sess')}}</textarea>
                                         </div>
                                         
 
