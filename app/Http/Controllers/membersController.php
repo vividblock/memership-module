@@ -226,7 +226,7 @@ class membersController extends Controller
 
         $rules = [
             'your_activity'     => ['required', Rule::in($allowedActivities)],
-            'short_description' => 'required|string|min:10|max:1000',
+            'description_group' => 'required|string|min:10|max:1000',
         ];
         
 
@@ -234,9 +234,9 @@ class membersController extends Controller
             'your_activity.required' => 'Please select your main activity.',
             'your_activity.in'       => 'The selected activity is not valid.',
         
-            'short_description.required' => 'Please provide a short description of your group or activity.',
-            'short_description.min'      => 'The description must be at least 10 characters.',
-            'short_description.max'      => 'The description must not exceed 1000 characters.',
+            'description_group.required' => 'Please provide a short description of your group or activity.',
+            'description_group.min'      => 'The description must be at least 10 characters.',
+            'description_group.max'      => 'The description must not exceed 1000 characters.',
         ];
 
         // Extra validation if membership type is not '2'

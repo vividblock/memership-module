@@ -138,6 +138,9 @@
                                     height:226px
                                 @endif
                             ">{{ $member_two->short_description }}</textarea>
+                            @if ($errors->has('description_group'))
+                                <span class="text-danger">{{ $errors->first('description_group') }}</span>
+                            @endif
                         </div>
                     </div>
                 </div>
