@@ -141,7 +141,7 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Notification & </h6> -->
-                        <a class="collapse-item" href="#">Reset Password</a>
+                        <a class="collapse-item" href="{{ route('resetPasswordView') }}">Reset Password</a>
                     </div>
                 </div>
             </li>

@@ -632,4 +632,9 @@ class membersController extends Controller
         ]);
     }
 
+
+    public function resetPasswordView(){
+        return view('membersDashbaord.resetPassword');
+    }
+
 }

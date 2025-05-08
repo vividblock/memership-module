@@ -68,6 +68,9 @@ Route::middleware([membersMiddleware::class])->prefix('/auth/members')->group(fu
     // Support 
     Route::get('/support', [membersController::class, 'supportView'])->name('supportView');
     Route::post('/support-submit/{memberId}', [membersController::class, 'supportSubmit'])->name('supportSubmit');
+
+    // Reset Password
+    Route::get('/reset-password', [membersController::class, 'resetPasswordView'])->name('resetPasswordView');
 }); 
 
 
