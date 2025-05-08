@@ -68,7 +68,8 @@
 
                         <div class="form-group">
                             <label for="">Date accreditation will be reviewed:</label>
-                            <input type="date" name="date_accreditation_reviewed" class="form-control form-control-user" id="">
+                            <input type="date" name="date_accreditation_reviewed" class="form-control form-control-user"
+                                value="{{ old('date_accreditation_reviewed', $organisation_details->date_accreditation_reviewed ?? '') }}">
                             <small>Write each accreditation and its corresponding date.</small>
                         </div>
                     </div>
