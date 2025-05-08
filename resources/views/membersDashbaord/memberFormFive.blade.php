@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            {{ dd($member_network_survay)}}
+                            
                             <label for="">Please specify which themes are your key areas of interest: (feel free to select more than one) </label>
                             <select name="networks" class="form-control membership-from-select-field">
                                 <option value="BME people and communities" {{ $member_network_survay->networks == 'BME people and communities' ? 'selected' : '' }}>BME people and communities</option>
