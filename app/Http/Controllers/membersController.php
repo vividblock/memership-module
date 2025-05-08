@@ -326,6 +326,44 @@ class membersController extends Controller
     }
 
     public function memberformFour(Request $request){
+        $rules = [
+            'currently_employ'               => 'required|numeric|min:0',
+            'volunteers_number'              => 'required|integer|min:0',
+            'registered_on'                  => 'required|in:yes,no',
+            'support_to_recruit_volunteers'  => 'required|in:yes,no',
+            'organisation_area'              => 'required|string|max:255',
+            'organisation_part_of'           => 'required|in:yes,no',
+        ];
+
+        $messages = [
+            'currently_employ.required' => 'Please enter the number of staff currently employed.',
+            'currently_employ.numeric'  => 'The number of staff must be a numeric value.',
+            'currently_employ.min'      => 'The number of staff cannot be negative.',
+        
+            'volunteers_number.required' => 'Please enter the number of volunteers.',
+            'volunteers_number.integer'  => 'The number of volunteers must be an integer.',
+            'volunteers_number.min'      => 'The number of volunteers cannot be negative.',
+        
+            'registered_on.required' => 'Please indicate whether you are registered on www.Volunteering-Wales.net.',
+            'registered_on.in'       => 'Invalid selection for Volunteering-Wales.net registration.',
+        
+            'support_to_recruit_volunteers.required' => 'Please indicate if you want support to recruit volunteers.',
+            'support_to_recruit_volunteers.in'       => 'Invalid selection for volunteer recruitment support.',
+        
+            'organisation_area.required' => 'Please select your organisation area.',
+            'organisation_area.max'      => 'Organisation area exceeds the maximum length.',
+        
+            'organisation_part_of.required' => 'Please indicate if your organisation is part of a national or umbrella body.',
+            'organisation_part_of.in'       => 'Invalid selection for organisation affiliation.',
+        ];
+        
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         // dd($request);
         $organisation = organisation::where('member_id', $request->memberId)->first();
         // dd($organisation);

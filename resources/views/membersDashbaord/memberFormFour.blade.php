@@ -28,6 +28,9 @@
                                 <option value="Cardiff South-West" {{ $organisation_details->organisation_area == 'Cardiff South-West' ? 'selected' : '' }}>Cardiff South-West</option>
                                 <option value="Cardiff West" {{ $organisation_details->organisation_area == 'Cardiff West' ? 'selected' : '' }}>Cardiff West</option>
                             </select>
+                            @if ($errors->has('organisation_area'))
+                                <span class="text-danger">{{ $errors->first('organisation_area') }}</span>
+                            @endif
                         </div>
 
                         <div class="form-group pb-2">
@@ -38,6 +41,10 @@
 
                             <input type="radio" name="organisation_part_of" value="no"
                                 {{ $organisation_details->organisation_part_of == 'no' ? 'checked' : '' }}> No
+
+                            @if ($errors->has('organisation_part_of'))
+                                <span class="text-danger">{{ $errors->first('organisation_part_of') }}</span>
+                            @endif
                         </div>
 
                         <div class="form-group pb-2">
@@ -82,12 +89,18 @@
                             <label for="">What is the total number of staff you currently employ?<span class="field-fillup-required">*</span></label>
                             <input type="text" name="currently_employ" class="form-control form-control-user" 
                                 value="{{ old('currently_employ', $organisation_details->currently_employ ?? '') }}">
+                            @if ($errors->has('currently_employ'))
+                                <span class="text-danger">{{ $errors->first('currently_employ') }}</span>
+                            @endif
                         </div>
 
                         <div class="form-group">
                             <label for="">How many volunteers are involved with you or in your group/organisation?<span class="field-fillup-required">*</span></label>
                             <input type="text" name="volunteers_number" class="form-control form-control-user" 
                                 value="{{ old('volunteers_number', $organisation_details->volunteers_number ?? '') }}">
+                            @if ($errors->has('volunteers_number'))
+                                <span class="text-danger">{{ $errors->first('volunteers_number') }}</span>
+                            @endif
                         </div>
 
                         <div class="form-group pb-2">
@@ -96,6 +109,10 @@
                                 {{ old('registered_on', $organisation_details->registered_on) == 'yes' ? 'checked' : '' }}> Yes
                             <input type="radio" name="registered_on" value="no" 
                                 {{ old('registered_on', $organisation_details->registered_on) == 'no' ? 'checked' : '' }}> No
+
+                            @if ($errors->has('registered_on'))
+                                <span class="text-danger">{{ $errors->first('registered_on') }}</span>
+                            @endif
                         </div>
 
                         <div class="form-group pb-2">
@@ -104,6 +121,9 @@
                                 {{ old('support_to_recruit_volunteers', $organisation_details->support_to_recruit_volunteers) == 'yes' ? 'checked' : '' }}> Yes
                             <input type="radio" name="support_to_recruit_volunteers" value="no" 
                                 {{ old('support_to_recruit_volunteers', $organisation_details->support_to_recruit_volunteers) == 'no' ? 'checked' : '' }}> No
+                            @if ($errors->has('support_to_recruit_volunteers'))
+                                <span class="text-danger">{{ $errors->first('support_to_recruit_volunteers') }}</span>
+                            @endif
                         </div>
                     </div>
                 </div>
