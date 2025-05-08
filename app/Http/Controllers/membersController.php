@@ -17,6 +17,7 @@ use App\Models\member_network_survey;
 use App\Models\organisation_local_activities;
 use App\Models\Members_form_fillup_status;
 use App\Models\notification_members;
+use App\Models\support_admin_members;
 
 class membersController extends Controller
 {
@@ -566,11 +567,40 @@ class membersController extends Controller
 
     // Support -------
     public function supportView(){
-        return view('membersDashbaord.support');
+        return view('membersDashbaord.support')->with([
+            'support_list' => getAllSupport($this->memberID),
+        ]);
     }
 
     public function supportSubmit(Request $request){
-        
+        $rules = [
+            'urgency_lavel' => ['required', 'in:1,2,3'],
+            'subject'       => ['required', 'string', 'max:255'],
+            'description'   => ['required', 'string'],
+        ];
+        $messages = [
+            'urgency_lavel.required' => 'Please select the urgency level.',
+            'urgency_lavel.in'       => 'Choose a valid urgency option.',
+            'subject.required'       => 'Subject is required.',
+            'subject.string'         => 'Subject must be text.',
+            'subject.max'            => 'Subject cannot exceed 255 characters.',
+            'description.required'   => 'Please enter a description.',
+            'description.string'     => 'Description must be a valid text.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $data = [
+            'member_id' => $request->memberId,
+            'urgency_lable'  => $request->urgency_lavel,
+            'support_subject'  =>  $request->subject,
+            'support_message'  => $request->description,
+        ];
+        support_admin_members::createSupport($data);
+        return redirect()->back();
     }
 
 

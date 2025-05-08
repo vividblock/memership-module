@@ -17,6 +17,7 @@
                 </div>
                 <div class="card-body">
                     <form action="{{route('supportSubmit', session('members_id_sess'))}}" method="post">
+                        @csrf
                         <div class="form-group">
                             <label for="">Urgency Level<span class="field-fillup-required">*</span></label>
                             <select name="urgency_lavel" class="form-control membership-from-select-field">
@@ -47,7 +48,12 @@
                     Your previous requests
                 </div>
                 <div class="card-body">
-                    
+                    <div class="
+                        card
+                        border-bottom-primary
+                    ">
+                        
+                    </div>
                 </div>
             </div>
         </div>

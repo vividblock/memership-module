@@ -11,7 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('support_members_admin', function(Blueprint $table){
+            $table->id();
+            $table->string('member_id');
+            $table->string('urgency_lable');
+            $table->string('support_subject');
+            $table->text('support_message');
+            $table->string('support_status')->default('pending');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('support_members_admin');
     }
 };
