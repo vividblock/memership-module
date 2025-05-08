@@ -97,7 +97,7 @@
                         <div class="col-md-6 mb-2">
                             <strong>Country:</strong> {{ $organisation->country ?? 'N/A' }}
                         </div>
-                        <div class="col-md-12 mb-2">
+                        <div class="col-md-6 mb-2">
                             <strong>Full Address:</strong>
                             {{ $organisation->correspondence_address }},
                             {{ $organisation->city }},
