@@ -27,7 +27,7 @@
     <div class="row mt-3 align-items-center">
         @foreach($steps as $index => $step)
             @php
-                $stepNumber = $index + 1;
+                $stepNumber = $index;
                 if ($stepNumber < $currentStep) {
                     $btnClass = 'btn-success'; // Completed
                 } elseif ($stepNumber == $currentStep) {
