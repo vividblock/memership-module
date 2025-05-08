@@ -1,13 +1,47 @@
 <div class="card-header">
     <h2 class="h3 text-gray-800 membership-dashbaord-from-heading">Membership Application Details</h2>
     <p >Please complete all relevant sections below:</p>
+    @php
+        $memberId = session('members_id_sess');
+        $currentStep = (int) $form_steps->form_steps;
+        $memberType = session('membershiptype_sess') == "2" ? "single" : "other";
+
+        // Define all possible steps
+        $steps = [
+            ['title' => 'Member & Organisation', 'route' => route('memberformOneView', $memberId)],
+            ['title' => 'Activity & Documentation', 'route' => route('memberformThreeView', $memberId)],
+            ['title' => 'About your organisation', 'route' => route('memberformFourView', $memberId)],
+            ['title' => 'Agreements & Networks', 'route' => route('memberformFiveView', $memberId)],
+            ['title' => 'Submission', 'route' => route('memberformFiveView', $memberId)],
+        ];
+
+        // Add extra step only for "other" members (making it 6 steps)
+        if ($memberType == "other") {
+            array_splice($steps, 4, 0, [[
+                'title' => 'Additional Info',
+                'route' => route('memberformSixView', $memberId)
+            ]]);
+        }
+    @endphp
+
     <div class="row mt-3 align-items-center">
-        <div class="col"><a href="{{ route('memberformOneView', session('members_id_sess') ) }}" class="btn btn-primary">Member & Organisation</a></div>
-        <div class="col">
-        <a class="btn btn-outline-primary ">Activity & Documentation</a></div>
-        <div class="col"><a class="btn btn-outline-primary">About your organisation</a></div>
-        <div class="col"><a class="btn btn-outline-primary">Agreements & Networks</a></div>
-        <div class="col text-center"><a class="btn btn-outline-primary">Submission</a></div>
+        @foreach($steps as $index => $step)
+            @php
+                $stepNumber = $index + 1;
+                if ($stepNumber < $currentStep) {
+                    $btnClass = 'btn-success'; // Completed
+                } elseif ($stepNumber == $currentStep) {
+                    $btnClass = 'btn-primary'; // Current step
+                } else {
+                    $btnClass = 'btn-outline-primary'; // Upcoming
+                }
+            @endphp
+            <div class="col text-center">
+                <a href="{{ $step['route'] }}" class="btn {{ $btnClass }} w-100 mb-2">
+                    {{ $step['title'] }}
+                </a>
+            </div>
+        @endforeach
     </div>
 
 

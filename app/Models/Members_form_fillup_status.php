@@ -15,6 +15,7 @@ class Members_form_fillup_status extends Model
         'form_steps',
         'form_fillup_status',
         'member_total_step',
+        // 'current_steps',
     ];
 
     public function registerFormSteps($memberId, $memberTotalStep){

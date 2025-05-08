@@ -66,7 +66,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('member_id'); 
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
-            $table->string('form_steps')->default('0');
+            $table->string('form_steps')->default('0')->comment('filledup_steps');
+            // $table->string('current_steps')->default('0');
             $table->string('form_fillup_status')->default('false');
             $table->string('member_total_step')->nullable();
             $table->timestamps();
