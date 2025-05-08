@@ -325,8 +325,10 @@ class membersController extends Controller
     }
 
     public function memberformFiveView(Request $request){
+        $member_network_survay = member_network_survey::where('member_id', $request->memberId)->first();
         return view('membersDashbaord.memberFormFive')->with([
             'form_steps' => $this->formStep,
+            'member_network_survay' => $member_network_survay,
         ]);
     }
 
