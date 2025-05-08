@@ -50,13 +50,14 @@
                         <div class="form-group">
                             <label for="">Special Interest</label>
                             <select name="special_interest" class="form-control membership-from-select-field">
-                                <option value="Age" {{ $member_two->special_interest == "Age" ? 'selected' : '' }}>Age</option>
-                                <option value="BME" {{ $member_two->special_interest == "BME" ? 'selected' : '' }}>BME</option>
-                                <option value="Disability" {{ $member_two->special_interest == "Disability" ? 'selected' : '' }}>Disability</option>
-                                <option value="Faith Groups" {{ $member_two->special_interest == "Faith Groups" ? 'selected' : '' }}>Faith Groups</option>
-                                <option value="Gender" {{ $member_two->special_interest == "Gender" ? 'selected' : '' }}>Gender</option>
-                                <option value="Religion" {{ $member_two->special_interest == "Religion" ? 'selected' : '' }}>Religion</option>
-                                <option value="Sexuality" {{ $member_two->special_interest == "Sexuality" ? 'selected' : '' }}>Sexuality</option>
+                                <option value="">Please select</option>
+                                <option value="Age" {{ old('special_interest', optional($member_two)->special_interest) == "Age" ? 'selected' : '' }}>Age</option>
+                                <option value="BME" {{ old('special_interest', optional($member_two)->special_interest) == "BME" ? 'selected' : '' }}>BME</option>
+                                <option value="Disability" {{ old('special_interest', optional($member_two)->special_interest) == "Disability" ? 'selected' : '' }}>Disability</option>
+                                <option value="Faith Groups" {{ old('special_interest', optional($member_two)->special_interest) == "Faith Groups" ? 'selected' : '' }}>Faith Groups</option>
+                                <option value="Gender" {{ old('special_interest', optional($member_two)->special_interest) == "Gender" ? 'selected' : '' }}>Gender</option>
+                                <option value="Religion" {{ old('special_interest', optional($member_two)->special_interest) == "Religion" ? 'selected' : '' }}>Religion</option>
+                                <option value="Sexuality" {{ old('special_interest', optional($member_two)->special_interest) == "Sexuality" ? 'selected' : '' }}>Sexuality</option>
                             </select>
 
                         </div>
