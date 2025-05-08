@@ -112,11 +112,13 @@
                         <label for="">C3SC is constantly looking at a range of bids and tender opportunities to submit applications to respond to identified areas of need. What do you feel as an organisation are the top 3 areas of need / opportunities for collaboration?</label>
                         <div class="form-group">
                             <label for="">Area 1</label>
-                            <textarea name="collaboration_area_1" class="form-control form-control-user"></textarea>
+                            <textarea name="collaboration_area_1" class="form-control form-control-user">{{ $organisation_details->collaboration_area_1 ?? '' }}</textarea>
+
                             <label for="">Area 2</label>
-                            <textarea name="collaboration_area_2" class="form-control form-control-user"></textarea>
+                            <textarea name="collaboration_area_2" class="form-control form-control-user">{{ $organisation_details->collaboration_area_2 ?? '' }}</textarea>
+
                             <label for="">Area 3</label>
-                            <textarea name="collaboration_area_3" class="form-control form-control-user"></textarea>
+                            <textarea name="collaboration_area_3" class="form-control form-control-user">{{ $organisation_details->collaboration_area_3 ?? '' }}</textarea>
                         </div>
                     </div>
                 </div>
