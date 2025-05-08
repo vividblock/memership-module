@@ -10,7 +10,7 @@
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
 
-    <div class="card border-left-primary shadow py-2" style="width:25rem;" id="MembershipCard">
+    <div class="card border-left-primary shadow py-2" style="width:50rem;" id="MembershipCard">
 
     </div>
 
