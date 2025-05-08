@@ -9,32 +9,7 @@
     </div>
 
     <div class="card shadow py-2">
-        <div class="card-header">
-            <h2 class="h3 text-gray-800 membership-dashbaord-from-heading">Membership Application Details</h2>
-            <p >Please complete all relevant sections below:</p>
-            <div class="row mt-3">
-                <div class="col-lg-2"><a class="btn btn-primary">Member & Organisation</a></div>
-                <div class="col-lg-2"><a  class="btn btn-primary">Activity & Documentation</a></div>
-                <div class="col-lg-3"><a class="btn 
-                @if(session('from_step_three')) btn-primary 
-                    @else btn-outline-primary 
-                    @endif">About your organisation</a></div>
-                <div class="col-lg-3"><a class="btn btn-outline-primary">Agreements & Networks</a></div>
-                <div class="col-lg-2 text-center"><a class="btn btn-outline-primary">Submission</a></div>
-            </div>
-            <div class="row my-3 align-items-center ">
-                <div class="col-lg-11">
-                    <div class="mb-3 small"></div>
-                    <div class="progress ">
-                        <div class="progress-bar" role="progressbar" style="width: 75%"
-                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                <div class="col-lg-1" style="padding-top: 13px !important;">
-                    <strong class="text-center text-gray-800" >75%</strong>
-                </div>
-            </div>
-        </div>
+        @include('includes.members.members_form_header')
         <div class="card-body">
 
             <form class="user" action="{{ route('memberformFour', session('members_id_sess') )}}" method="post">
