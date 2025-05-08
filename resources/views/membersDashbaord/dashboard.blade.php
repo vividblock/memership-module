@@ -63,12 +63,21 @@
                             <b class="text-gray-700">Have you claimed your C3SC public Listing Page ?</b>
                             <p class="mt-2">Please ensure your organisation's details are complete and up to date.</p>
                             <!-- <a href="" class="btn btn-warning text-gray-800">Review & Update Details</a> -->
-                            <a href="#" class="btn btn-primary btn-icon-split">
+                            @if($form_steps->form_fillup_status == 'submited')
+                            <a href="{{ route('memberformOneView',session('members_id_sess')) }}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">Edit Details</span>
+                            </a>
+                            @else
+                            <a href="{{ route('memberformOneView',session('members_id_sess')) }}" class="btn btn-primary btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-exclamation-triangle"></i>
                                 </span>
                                 <span class="text">Review & Update Details</span>
                             </a>
+                            @endif
                         </div>
                     </div>
                 </div>
