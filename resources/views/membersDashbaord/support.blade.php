@@ -66,7 +66,7 @@
                     <div class="card mb-3 shadow-sm {{ $borderClass }}">
                         <div class="card-body">
                             <div class="d-flex justify-content-between mb-2">
-                                <span class="badge bg-secondary">Status: {{ ucfirst($support->support_status) }}</span>
+                                <span class="badge bg-primary">{{ ucfirst($support->support_status) }}</span>
                                 <small class="text-muted">Created: {{ \Carbon\Carbon::parse($support->created_at)->format('d M Y, H:i') }}</small>
                             </div>
                             <h5 class="card-title text-primary">{{ $support->support_subject }}</h5>
