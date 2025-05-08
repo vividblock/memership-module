@@ -320,15 +320,47 @@
         <div class="tab-pane fade" id="interest">
             @if($interest)
             <div class="card blur-shadow mb-4">
-                <div class="card-header">Member Interests</div>
-                <div class="card-body">
-                    <p><strong>Activity:</strong> {{ $interest->your_activity }}</p>
-                    <p><strong>Special Interest:</strong> {{ $interest->special_interest }}</p>
-                    <p><strong>Description:</strong> {{ $interest->short_description }}</p>
+                <div class="card-header bg-primary text-white">Member Interests</div>
+                <div class="card-body p-4">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <th style="width: 30%;">Activity</th>
+                                <td>{{ $interest->your_activity ?? 'N/A' }}</td>
+                            </tr>
+                            @if(!empty($interest->other_activity))
+                            <tr>
+                                <th>Other Activity</th>
+                                <td>{{ $interest->other_activity }}</td>
+                            </tr>
+                            @endif
+                            <tr>
+                                <th>Special Interest</th>
+                                <td>{{ $interest->special_interest ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Short Description</th>
+                                <td>{{ $interest->short_description ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Governing Documents</th>
+                                <td>
+                                    @if($interest->governing_documents)
+                                        <a href="{{ asset('storage/' . $interest->governing_documents) }}" target="_blank">
+                                            View Document
+                                        </a>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             @endif
         </div>
+
 
         <!-- Survey -->
         <div class="tab-pane fade" id="survey">
