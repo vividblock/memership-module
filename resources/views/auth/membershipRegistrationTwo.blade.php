@@ -154,7 +154,7 @@
                                         
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <a href="{{ route('membersRegistrationOneView') }}" class="btn btn-success btn-user btn-block">Back</a>
+                                                <a href="{{ route('membersRegistrationOneView') }}" class="btn btn-success btn-user btn-block"><i class="fa-solid fa-arrow-left"></i> Back</a>
                                             </div>
                                             <div class="col-lg-4">
                                                
