@@ -14,36 +14,41 @@
         </div>
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-2">
                     <strong>Name:</strong> {{ $member->firstname }} {{ $member->lastname }}
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mb-2">
                     <strong>Email:</strong> {{ $member->email }}
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mb-2">
+                    <strong>Username:</strong> {{ $member->username }}
+                </div>
+                <div class="col-md-6 mb-2">
+                    <strong>C3SC ID:</strong> {{ $member->members_c3sc_id }}
+                </div>
+                <div class="col-md-6 mb-2">
                     <strong>Membership Type:</strong> 
-                    @if($member->membership_type == "1")
-                        Non for profit - Group or Organisation
-                    @elseif($member->membership_type == "2")
-                        Non for profit - Individual
-                    @elseif($member->membership_type == "3")
-                        Statutory Sector
-                    @elseif($member->membership_type == "4")
-                        Private Sector
+                    @php
+                        $types = [
+                            "1" => "Non for profit - Group or Organisation",
+                            "2" => "Non for profit - Individual",
+                            "3" => "Statutory Sector",
+                            "4" => "Private Sector"
+                        ];
+                    @endphp
+                    {{ $types[$member->membership_type] ?? 'N/A' }}
+                </div>
+                <div class="col-md-6 mb-2">
+                    <strong>Status:</strong>
+                    @if($member->user_status)
+                        <span class="badge badge-success">Active</span>
+                    @else
+                        <span class="badge badge-danger">Inactive</span>
                     @endif
-                    
                 </div>
-                <div class="col-md-6">
-                    <strong>Status:</strong> {!! $member->user_status ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>' !!}
-                </div>
-                <div class="col-md-6">
-                    <strong>Username:</strong> {{$member->username }}
-                </div>
-                <div class="col-md-6">
-                    <strong>C3SC Id:</strong> {{$member->members_c3sc_id }}
-                </div>
-                <div class="col-md-6">
-                    <strong>Membership Package:</strong> {{$member->memebership_package }}
+                <div class="col-md-6 mb-2">
+                    <strong>Membership Package:</strong> 
+                    {{ $member->memebership_package ?? 'N/A' }}
                 </div>
             </div>
         </div>
