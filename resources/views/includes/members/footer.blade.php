@@ -59,6 +59,14 @@
     <!-- <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script> -->
     <!-- <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script> -->
 
+    <script>
+        $(document).ready(function () {
+            $('#sidebarNav .nav-link').on('click', function () {
+                $('#sidebarNav .nav-item').removeClass('active'); // Remove from all
+                $(this).closest('.nav-item').addClass('active'); // Add to clicked
+            });
+        });
+    </script>
 
 
 
