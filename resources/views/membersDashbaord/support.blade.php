@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="card border-left-primary shadow py-2" style="width:40rem;">
+            <div class="card border-left-primary shadow py-2" >
                 <div class="card-header">
                     Please fill this form
                 </div>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card border-left-primary shadow py-2" style="width:35rem;">
+            <div class="card border-left-primary shadow py-2" >
 
             </div>
         </div>
