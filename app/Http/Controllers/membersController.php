@@ -649,7 +649,9 @@ class membersController extends Controller
             "reset_password_otp" => $otp
         ]);
         Mail::to($this->member->email)->send(new OtpMail($otp));
-        return view('membersDashbaord.resetPassword');
+        return view('membersDashbaord.resetPassword')->with([
+            "member" => $this->member,
+        ]);
     }
 
     public function resetPassword(Request $request){
@@ -680,6 +682,7 @@ class membersController extends Controller
                 $this->member->update([
                     'password' => Hash::make($request->password),
                 ]);
+                Session::forget('reset_password_otp');
                 return redirect()->back()->with('status', 'Password reset successfully. Please log in.');
             }else{
                 return redirect()->back()->withErrors(['email' => 'No member found with this email.'])->withInput();

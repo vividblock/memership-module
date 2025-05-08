@@ -29,7 +29,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="otp">OTP Code</label>
+                            <label for="otp">OTP Code (Please check your email {{ $member->email }})</label>
                             <input type="text" name="otp" id="otp" class="form-control" required maxlength="6" placeholder="Enter the 6-digit OTP">
                         </div>
 
