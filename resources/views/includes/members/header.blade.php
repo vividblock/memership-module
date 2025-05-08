@@ -146,9 +146,6 @@
                 </div>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}">
                     <i class="fa-solid fa-right-from-bracket"></i>
