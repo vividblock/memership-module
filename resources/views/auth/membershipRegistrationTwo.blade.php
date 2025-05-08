@@ -81,7 +81,7 @@
                                         <h6 class="text-gray-800 membership-registration-form-field-heading">Organisation Address</h6>
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
-                                            placeholder="Correspondence Address" name="correspondenceaddress" id="autocomplete">
+                                            placeholder="Correspondence Address" name="correspondenceaddress" id="autocomplete" value="{{ session('correspondenceaddress_sess') }}">
                                             @if ($errors->has('correspondenceaddress'))
                                                 <span class="text-danger">{{ $errors->first('correspondenceaddress') }}</span>
                                             @endif
@@ -90,7 +90,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control form-control-user"
-                                                    placeholder="City" name="city" id="city">
+                                                    placeholder="City" name="city" id="city" value="{{ session('city_sess') }}">
                                                     @if ($errors->has('city'))
                                                         <span class="text-danger">{{ $errors->first('city') }}</span>
                                                     @endif

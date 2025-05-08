@@ -79,7 +79,7 @@ class membersAuth extends Controller
         }
 
         $membersEmailValidation = membersEmailValidationTemporary::where('members_email', $request->email)->latest()->first();
-        if($membersEmailValidation->email_validation_status == '0'){
+        if($membersEmailValidation->email_validation_status == '0' || $membersEmailValidation->email_validation_status == null){
             return redirect()->back()->withErrors(['email' => 'Please verify your email.'])->withInput();
         }
 
@@ -94,6 +94,17 @@ class membersAuth extends Controller
     }
 
     public function registrationTwo(Request $request){
+        Session::put([
+            'organisationname_sess' => $request->organisationname,
+            'correspondenceaddress_sess' => $request->correspondenceaddress,
+            'city_sess' => $request->city,
+            'postcode_sess' => $request->postcode,
+            'organisationemail_sess' => $request->organisationemail,
+            'password_sess' => $request->password,
+            'organisation_request_descripiton_sess' => $request->organisation_request_descripiton,
+        ]);
+
+
         $rules = [
             'organisationname' => 'required|string|max:255',
             'correspondenceaddress' => 'required|string|max:255',
@@ -195,6 +206,13 @@ class membersAuth extends Controller
             'lastname_sess',
             'email_sess',
             'contactnumber_sess',
+            'organisationname_sess',
+            'correspondenceaddress_sess',
+            'city_sess',
+            'postcode_sess',
+            'organisationemail_sess',
+            'password_sess',
+            'organisation_request_descripiton_sess',
         ]);
 
         Session::put([
