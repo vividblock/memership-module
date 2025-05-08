@@ -70,7 +70,14 @@
                                 </span>
                                 <span class="text">Edit Details</span>
                             </a>
-                            @else
+                            @elseif($form_steps->form_fillup_status == 'true')
+                            <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">View Profile</span>
+                            </a>
+                            @elseif($form_steps->form_fillup_status == 'false')
                             <a href="{{ route('memberformOneView',session('members_id_sess')) }}" class="btn btn-primary btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-exclamation-triangle"></i>
@@ -87,12 +94,28 @@
                             <b class="text-gray-700">Your C3SC Membership Details</b>
                             <p class="mt-2">Please ensure your organisation's details are complete and up to date.</p>
 
+                            @if($form_steps->form_fillup_status == 'submited')
+                            <a href="{{ route('memberformOneView',session('members_id_sess')) }}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">Edit Details</span>
+                            </a>
+                            @elseif($form_steps->form_fillup_status == 'true')
+                            <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">View Profile</span>
+                            </a>
+                            @elseif($form_steps->form_fillup_status == 'false')
                             <a href="{{ route('memberformOneView',session('members_id_sess')) }}" class="btn btn-primary btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-exclamation-triangle"></i>
                                 </span>
-                                <span class="text ">Review & Update Details</span>
+                                <span class="text">Review & Update Details</span>
                             </a>
+                            @endif
                         </div>
                     </div>
                 </div>
