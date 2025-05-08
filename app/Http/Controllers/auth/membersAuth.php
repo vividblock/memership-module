@@ -83,7 +83,9 @@ class membersAuth extends Controller
 
             return redirect()->back()->withErrors(['email' => 'Please verify your email.'])->withInput();
 
-        }else{
+        }
+        
+        if($membersEmailValidation === null){
             return redirect()->back()->withErrors(['email' => 'Please verify your email.'])->withInput();
         }
 
