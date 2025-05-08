@@ -129,12 +129,28 @@
                         <div class="col-md-12 mb-2">
                             <strong>Organisation Details:</strong>
                             <div class="border rounded p-2 bg-light">
-                                @if(is_array($organisation->organization_details))
-                                    {{ implode(', ', $organisation->organization_details) }}
-                                @elseif(is_string($organisation->organization_details) && Str::startsWith($organisation->organization_details, '['))
-                                    {{ implode(', ', json_decode($organisation->organization_details, true)) }}
+                                @php
+                                    use Illuminate\Support\Str;
+
+                                    $details = [];
+
+                                    if (is_array($organisation->organization_details)) {
+                                        $details = $organisation->organization_details;
+                                    } elseif (is_string($organisation->organization_details) && Str::startsWith($organisation->organization_details, '[')) {
+                                        $details = json_decode($organisation->organization_details, true);
+                                    } elseif (is_string($organisation->organization_details)) {
+                                        $details = [$organisation->organization_details];
+                                    }
+                                @endphp
+
+                                @if (!empty($details))
+                                    @foreach($details as $detail)
+                                        <span class="badge badge-primary">
+                                            {{ Str::of($detail)->replace('-', ' ')->title() }}
+                                        </span>
+                                    @endforeach
                                 @else
-                                    {{ $organisation->organization_details ?? 'N/A' }}
+                                    N/A
                                 @endif
                             </div>
                         </div>
@@ -237,9 +253,9 @@
         <div class="tab-pane fade" id="local">
             @if($activity)
             <div class="card blur-shadow mb-4">
-                <div class="card-header">
+                <!-- <div class="card-header">
                     <h5 class="mb-0">Local Activity: {{ $activity->name_of_group }}</h5>
-                </div>
+                </div> -->
                 <div class="card-body p-4">
                     <table class="table table-bordered table-hover">
                         <tbody>
