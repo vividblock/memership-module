@@ -71,6 +71,8 @@ Route::middleware([membersMiddleware::class])->prefix('/auth/members')->group(fu
 
     // Reset Password
     Route::get('/reset-password', [membersController::class, 'resetPasswordView'])->name('resetPasswordView');
+
+    Route::post('/reset-password', [membersController::class, 'resetPassword'])->name('resetPassword');
 }); 
 
 

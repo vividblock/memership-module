@@ -22,10 +22,10 @@
                 </div>
             @endif
 
-            <div class="card shadow" style="width:50rem;">
+            <div class="card shadow" style="width:45rem;">
                 <div class="card-header">Verify OTP & Reset Password</div>
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('resetPassword')}}">
                         @csrf
 
                         <div class="form-group">

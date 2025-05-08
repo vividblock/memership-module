@@ -19,6 +19,10 @@ use App\Models\Members_form_fillup_status;
 use App\Models\notification_members;
 use App\Models\support_admin_members;
 
+use App\Mail\OtpMail;
+use Illuminate\Support\Facades\Mail;
+use App\Models\membersEmailValidationTemporary;
+
 class membersController extends Controller
 {
 
@@ -54,6 +58,11 @@ class membersController extends Controller
 
         return view('membersDashbaord.dashboard')->with([
             'members' => $this->member,
+            "organisation" => $this->organisation,
+            "orgDetails" => $this->organisationDetails,
+            "activity" => $this->organisationLocalActivities,
+            "interest" => $this->memberActivity,
+            "survey" => $this->memberNetworkSurvey,
             'form_steps' => $this->formStep,
         ]);
     }
@@ -634,7 +643,18 @@ class membersController extends Controller
 
 
     public function resetPasswordView(){
+        $otp = rand(100000, 999999);
+        Session::put([
+            "reset_password_otp" => $otp
+        ]);
+        Mail::to($this->member->email)->send(new OtpMail($otp));
         return view('membersDashbaord.resetPassword');
+    }
+
+    public function resetPassword(Request $request){
+        if($request->otp == Session::get("reset_password_otp")){
+            dd(Session::get("reset_password_otp"));
+        }
     }
 
 }
