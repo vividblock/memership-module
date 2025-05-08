@@ -366,15 +366,46 @@
         <div class="tab-pane fade" id="survey">
             @if($survey)
             <div class="card blur-shadow mb-4">
-                <div class="card-header">Network Survey</div>
-                <div class="card-body">
-                    <p><strong>Networks:</strong> {{ $survey->networks }}</p>
-                    <p><strong>Discussion:</strong> {{ $survey->informal_discussion }}</p>
-                    <p><strong>Signed:</strong> {{ $survey->member_signed }} on {{ $survey->member_signed_date }}</p>
+                <div class="card-header bg-primary text-white">Network Survey</div>
+                <div class="card-body p-4">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <th style="width: 30%;">Networks</th>
+                                <td>{{ $survey->networks ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Network Interest</th>
+                                <td>{{ $survey->network_interst ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Informal Discussion</th>
+                                <td>{{ $survey->informal_discussion ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>How Do You Use This?</th>
+                                <td>{{ $survey->how_to_use_this ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Usage Details / Media</th>
+                                <td>{{ $survey->how_u_use_this_details_media ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Member Signed</th>
+                                <td>
+                                    {{ $survey->member_signed ?? 'N/A' }}
+                                    @if($survey->member_signed_date)
+                                        on {{ \Carbon\Carbon::parse($survey->member_signed_date)->format('j F Y') }}
+                                    @endif
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             @endif
         </div>
+
     </div>
 
 </div>
