@@ -360,7 +360,7 @@ class membersController extends Controller
         (new Members_form_fillup_status)->updateFormSteps(
             $request->memberId,
             '4',
-            'false',
+            'submited',
             Session::get('membershiptype_sess') === '2' ? '4' : '5'
         );
         if(Session::get('membershiptype_sess')=== "2"){
@@ -417,7 +417,7 @@ class membersController extends Controller
         (new Members_form_fillup_status)->updateFormSteps(
             $request->memberId,
             '5',
-            'false',
+            'submited',
             Session::get('membershiptype_sess') === '2' ? '4' : '5'
         );
         return redirect()->route('membersDashboard');
