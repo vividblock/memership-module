@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
+
 
 use App\Models\members;
 use App\Models\organisation;
@@ -137,7 +139,7 @@ class membersController extends Controller
                 'organization_details'=>$organisationDetails,
             ]);
 
-
+            // Session::put('from_step_one_filled_up',true);
             return redirect()->route('memberformThreeView', $request->memberId);
         // }else{
 
@@ -212,7 +214,47 @@ class membersController extends Controller
     //     return redirect()->route('memberformFourView', $request->memberId);
     // }
     public function memberformThree(Request $request)
-    {
+    {   
+
+        $allowedActivities = [
+            'Advice & Advocacy', 'Animal Welfare', 'Arts, Culture & Heritage', 'Benefits advice',
+            'Benevolent Organisations', 'Carers', 'Childcare', 'Children & Families', 'Community',
+            'Community Justice', 'Dementia, Disability', 'Education, Training', 'Employment',
+            'Environment', 'Financial Advice', 'Funding', 'Health & Social Care', 'Housing',
+            'Sports & Recreation', 'Volunteering', 'Youth'
+        ];
+
+        $rules = [
+            'your_activity'     => ['required', Rule::in($allowedActivities)],
+            'short_description' => 'required|string|min:10|max:1000',
+        ];
+        
+
+        $messages = [
+            'your_activity.required' => 'Please select your main activity.',
+            'your_activity.in'       => 'The selected activity is not valid.',
+        
+            'short_description.required' => 'Please provide a short description of your group or activity.',
+            'short_description.min'      => 'The description must be at least 10 characters.',
+            'short_description.max'      => 'The description must not exceed 1000 characters.',
+        ];
+
+        // Extra validation if membership type is not '2'
+        if(Session::get('membershiptype_sess') !== '2'){
+            $rules['documents'] = 'required';
+            $rules['documents.*'] = 'file|mimes:pdf,jpeg,png,jpg,doc,docx';
+
+            $messages['documents.required']    = 'You must upload at least one document.';
+            $messages['documents.*.file']      = 'Each uploaded item must be a valid file.';
+            $messages['documents.*.mimes']     = 'Only PDF, image (jpg, jpeg, png, gif), or Word documents (doc, docx) are allowed.';
+        }
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         // Prepare data to update or create the member
         $data = [
             'your_activity'     => $request->your_activity,
@@ -220,28 +262,31 @@ class membersController extends Controller
             'special_interest'  => $request->special_interest,
             'short_description' => $request->description_group,
         ];
-    
-        // Initialize an array to store the paths of uploaded files
-        $paths = [];
-    
-        // If files are uploaded, process them
-        if ($request->hasFile('documents')) {
-            foreach ($request->file('documents') as $file) {
-                if ($file->isValid()) {
-                    $originalName = $file->getClientOriginalName();
-                    // Store the file and get its path
-                    $path = $file->store('documents', $originalName, 'public');
-                    // Add the file path to the array
-                    $paths[] = $path;
+        
+        if(Session::get('membershiptype_sess') !== '2'){
+
+            // Initialize an array to store the paths of uploaded files
+            $paths = [];
+        
+            // If files are uploaded, process them
+            if ($request->hasFile('documents')) {
+                foreach ($request->file('documents') as $file) {
+                    if ($file->isValid()) {
+                        $originalName = $file->getClientOriginalName();
+                        // Store the file and get its path
+                        $path = $file->store('documents', $originalName, 'public');
+                        // Add the file path to the array
+                        $paths[] = $path;
+                    }
+                }
+        
+                // If any files were uploaded, save their paths as a JSON string in the database
+                if (count($paths) > 0) {
+                    $data['governing_documents'] = json_encode($paths);
                 }
             }
-    
-            // If any files were uploaded, save their paths as a JSON string in the database
-            if (count($paths) > 0) {
-                $data['governing_documents'] = json_encode($paths);
-            }
         }
-    
+
         // Save or update the member data
         members_two::updateOrCreate(
             ['member_id' => $request->memberId],

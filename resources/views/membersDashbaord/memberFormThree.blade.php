@@ -17,30 +17,33 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                        <label for="">Your activity (Please select all that apply) <span class="field-fillup-required">*</span> </label>
-                        <select name="your_activity" class="form-control membership-from-select-field">
-                            <option value="Advice & Advocacy" {{ $member_two->your_activity == "Advice & Advocacy" ? 'selected' : '' }}>Advice & Advocacy</option>
-                            <option value="Animal Welfare" {{ $member_two->your_activity == "Animal Welfare" ? 'selected' : '' }}>Animal Welfare</option>
-                            <option value="Arts, Culture & Heritage" {{ $member_two->your_activity == "Arts, Culture & Heritage" ? 'selected' : '' }}>Arts, Culture & Heritage</option>
-                            <option value="Benefits advice" {{ $member_two->your_activity == "Benefits advice" ? 'selected' : '' }}>Benefits advice</option>
-                            <option value="Benevolent Organisations" {{ $member_two->your_activity == "Benevolent Organisations" ? 'selected' : '' }}>Benevolent Organisations</option>
-                            <option value="Carers" {{ $member_two->your_activity == "Carers" ? 'selected' : '' }}>Carers</option>
-                            <option value="Childcare" {{ $member_two->your_activity == "Childcare" ? 'selected' : '' }}>Childcare</option>
-                            <option value="Children & Families" {{ $member_two->your_activity == "Children & Families" ? 'selected' : '' }}>Children & Families</option>
-                            <option value="Community" {{ $member_two->your_activity == "Community" ? 'selected' : '' }}>Community</option>
-                            <option value="Community Justice" {{ $member_two->your_activity == "Community Justice" ? 'selected' : '' }}>Community Justice</option>
-                            <option value="Dementia, Disability" {{ $member_two->your_activity == "Dementia, Disability" ? 'selected' : '' }}>Dementia, Disability</option>
-                            <option value="Education, Training" {{ $member_two->your_activity == "Education, Training" ? 'selected' : '' }}>Education, Training</option>
-                            <option value="Employment" {{ $member_two->your_activity == "Employment" ? 'selected' : '' }}>Employment</option>
-                            <option value="Environment" {{ $member_two->your_activity == "Environment" ? 'selected' : '' }}>Environment</option>
-                            <option value="Financial Advice" {{ $member_two->your_activity == "Financial Advice" ? 'selected' : '' }}>Financial Advice</option>
-                            <option value="Funding" {{ $member_two->your_activity == "Funding" ? 'selected' : '' }}>Funding</option>
-                            <option value="Health & Social Care" {{ $member_two->your_activity == "Health & Social Care" ? 'selected' : '' }}>Health & Social Care</option>
-                            <option value="Housing" {{ $member_two->your_activity == "Housing" ? 'selected' : '' }}>Housing</option>
-                            <option value="Sports & Recreation" {{ $member_two->your_activity == "Sports & Recreation" ? 'selected' : '' }}>Sports & Recreation</option>
-                            <option value="Volunteering" {{ $member_two->your_activity == "Volunteering" ? 'selected' : '' }}>Volunteering</option>
-                            <option value="Youth" {{ $member_two->your_activity == "Youth" ? 'selected' : '' }}>Youth</option>
-                        </select>
+                            <label for="">Your activity (Please select all that apply) <span class="field-fillup-required">*</span> </label>
+                            <select name="your_activity" class="form-control membership-from-select-field">
+                                <option value="Advice & Advocacy" {{ $member_two->your_activity == "Advice & Advocacy" ? 'selected' : '' }}>Advice & Advocacy</option>
+                                <option value="Animal Welfare" {{ $member_two->your_activity == "Animal Welfare" ? 'selected' : '' }}>Animal Welfare</option>
+                                <option value="Arts, Culture & Heritage" {{ $member_two->your_activity == "Arts, Culture & Heritage" ? 'selected' : '' }}>Arts, Culture & Heritage</option>
+                                <option value="Benefits advice" {{ $member_two->your_activity == "Benefits advice" ? 'selected' : '' }}>Benefits advice</option>
+                                <option value="Benevolent Organisations" {{ $member_two->your_activity == "Benevolent Organisations" ? 'selected' : '' }}>Benevolent Organisations</option>
+                                <option value="Carers" {{ $member_two->your_activity == "Carers" ? 'selected' : '' }}>Carers</option>
+                                <option value="Childcare" {{ $member_two->your_activity == "Childcare" ? 'selected' : '' }}>Childcare</option>
+                                <option value="Children & Families" {{ $member_two->your_activity == "Children & Families" ? 'selected' : '' }}>Children & Families</option>
+                                <option value="Community" {{ $member_two->your_activity == "Community" ? 'selected' : '' }}>Community</option>
+                                <option value="Community Justice" {{ $member_two->your_activity == "Community Justice" ? 'selected' : '' }}>Community Justice</option>
+                                <option value="Dementia, Disability" {{ $member_two->your_activity == "Dementia, Disability" ? 'selected' : '' }}>Dementia, Disability</option>
+                                <option value="Education, Training" {{ $member_two->your_activity == "Education, Training" ? 'selected' : '' }}>Education, Training</option>
+                                <option value="Employment" {{ $member_two->your_activity == "Employment" ? 'selected' : '' }}>Employment</option>
+                                <option value="Environment" {{ $member_two->your_activity == "Environment" ? 'selected' : '' }}>Environment</option>
+                                <option value="Financial Advice" {{ $member_two->your_activity == "Financial Advice" ? 'selected' : '' }}>Financial Advice</option>
+                                <option value="Funding" {{ $member_two->your_activity == "Funding" ? 'selected' : '' }}>Funding</option>
+                                <option value="Health & Social Care" {{ $member_two->your_activity == "Health & Social Care" ? 'selected' : '' }}>Health & Social Care</option>
+                                <option value="Housing" {{ $member_two->your_activity == "Housing" ? 'selected' : '' }}>Housing</option>
+                                <option value="Sports & Recreation" {{ $member_two->your_activity == "Sports & Recreation" ? 'selected' : '' }}>Sports & Recreation</option>
+                                <option value="Volunteering" {{ $member_two->your_activity == "Volunteering" ? 'selected' : '' }}>Volunteering</option>
+                                <option value="Youth" {{ $member_two->your_activity == "Youth" ? 'selected' : '' }}>Youth</option>
+                            </select>
+                            @if ($errors->has('your_activity'))
+                                <span class="text-danger">{{ $errors->first('your_activity') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="">Special Interest</label>
@@ -53,6 +56,7 @@
                                 <option value="Religion" {{ $member_two->special_interest == "Religion" ? 'selected' : '' }}>Religion</option>
                                 <option value="Sexuality" {{ $member_two->special_interest == "Sexuality" ? 'selected' : '' }}>Sexuality</option>
                             </select>
+
                         </div>
                         @if(session('membershiptype_sess') != "2")
                         <div class="mb-3">
@@ -64,13 +68,17 @@
                                 <label class="input-group-text btn btn-primary" for="customFileInput">Browse</label>
                             </div> -->
 
-                            <label class="form-label">Constitution / Governing Document</label><br>
-                            <small>If your group/organisation has a constitution or governing document, please upload the relevant document(s).</small>
+                            <label class="form-label">Constitution or Governing Document <span class="field-fillup-required">*</span></label><br>
+                            <small>If your group or organisation has a constitution or governing document, please upload the relevant document(s).</small>
                             <div class="input-group mt-3">
                                 <input type="file" class="form-control d-none" id="customFileInput" name="documents[]" multiple>
                                 <input type="text" class="form-control" id="fileName" placeholder="No files chosen" readonly>
                                 <label class="input-group-text btn btn-primary" for="customFileInput">Browse</label>
+                                @if ($errors->has('documents'))
+                                    <span class="text-danger">{{ $errors->first('documents') }}</span>
+                                @endif
                             </div>
+
 
                             @if (!empty($member_two->governing_documents))
                                 @php
