@@ -74,10 +74,11 @@
                                 <input type="file" class="form-control d-none" id="customFileInput" name="documents[]" multiple>
                                 <input type="text" class="form-control" id="fileName" placeholder="No files chosen" readonly>
                                 <label class="input-group-text btn btn-primary" for="customFileInput">Browse</label>
-                                @if ($errors->has('documents'))
-                                    <span class="text-danger">{{ $errors->first('documents') }}</span>
-                                @endif
+                                
                             </div>
+                            @if ($errors->has('documents'))
+                                <span class="text-danger">{{ $errors->first('documents') }}</span>
+                            @endif
 
 
                             @if (!empty($member_two->governing_documents))
