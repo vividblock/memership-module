@@ -165,6 +165,10 @@ form.user .btn-user{
     /* display: none !important; */
 }
 
+.working-on-dashboard-option{
+    
+}
+
 @media only screen and (min-width:992px) {
     .step-line {
         width: 460px;

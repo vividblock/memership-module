@@ -77,7 +77,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Notification & </h6> -->
-                        <a class="collapse-item" href="#">Notification</a>
+                        <a class="collapse-item" href="#">Notification <span class="working-on-dashboard-option"><i class="fa-solid fa-person-digging"></i></span></a>
                         <a class="collapse-item" href="{{ route('supportView') }}">Support</a>
                     </div>
                 </div>
