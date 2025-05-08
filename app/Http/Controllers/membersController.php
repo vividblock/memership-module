@@ -47,11 +47,11 @@ class membersController extends Controller
     }
 
     public function memberformOneView(Request $request){
-        $members = members::where('id', $request->memberId)->first();
-        $organisation = organisation::where('member_id', $request->memberId)->first();
+        // $members = members::where('id', $request->memberId)->first();
+        // $organisation = organisation::where('member_id', $request->memberId)->first();
         return view('membersDashbaord.memberFormOne')->with([
-            'members' => $members, 
-            'organisation' => $organisation,
+            'members' => $this->member, 
+            'organisation' => $this->organisation,
             'form_steps' => $this->formStep,
         ]);
     }
