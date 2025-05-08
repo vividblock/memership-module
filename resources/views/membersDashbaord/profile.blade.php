@@ -104,6 +104,9 @@
                             {{ $organisation->postcode }}
                         </div>
                         <div class="col-md-6 mb-2">
+                            <strong>Postal Code:</strong> {{ $organisation->postcode ?? 'N/A' }}
+                        </div>
+                        <div class="col-md-6 mb-2">
                             <strong>Social Handles:</strong>
                             <div class="border rounded p-2 bg-light">
                                 @if(is_array($organisation->social_handle))
