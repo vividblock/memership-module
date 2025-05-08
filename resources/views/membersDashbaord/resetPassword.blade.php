@@ -25,7 +25,7 @@
             <div class="card shadow">
                 <div class="card-header">Verify OTP & Reset Password</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.reset.otp') }}">
+                    <form method="POST" action="">
                         @csrf
 
                         <div class="form-group">
