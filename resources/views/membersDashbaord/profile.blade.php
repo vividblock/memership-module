@@ -130,13 +130,11 @@
                             <strong>Organisation Details:</strong>
                             <div class="border rounded p-2 bg-light">
                                 @php
-                                    use Illuminate\Support\Str;
-
                                     $details = [];
 
                                     if (is_array($organisation->organization_details)) {
                                         $details = $organisation->organization_details;
-                                    } elseif (is_string($organisation->organization_details) && Str::startsWith($organisation->organization_details, '[')) {
+                                    } elseif (is_string($organisation->organization_details) && \Illuminate\Support\Str::startsWith($organisation->organization_details, '[')) {
                                         $details = json_decode($organisation->organization_details, true);
                                     } elseif (is_string($organisation->organization_details)) {
                                         $details = [$organisation->organization_details];
@@ -146,7 +144,7 @@
                                 @if (!empty($details))
                                     @foreach($details as $detail)
                                         <span class="badge badge-primary">
-                                            {{ Str::of($detail)->replace('-', ' ')->title() }}
+                                            {{ \Illuminate\Support\Str::of($detail)->replace('-', ' ')->title() }}
                                         </span>
                                     @endforeach
                                 @else
@@ -154,6 +152,7 @@
                                 @endif
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <strong>Request Description:</strong>
                             <div class="border rounded p-2 bg-light">
