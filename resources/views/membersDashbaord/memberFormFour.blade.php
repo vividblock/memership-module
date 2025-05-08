@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group pb-2">
-                            <label for="">Organisation Area (Please tick relevant box/es) <span class="field-fillup-required">*</span> </label>
+                            <label for="">Organisation Area (Please tick relevant boxes) <span class="field-fillup-required">*</span> </label>
                             <select name="organisation_area" class="form-control membership-from-select-field">
                                 <option value="All of Wales" {{ $organisation_details->organisation_area == 'All of Wales' ? 'selected' : '' }}>All of Wales</option>
                                 <option value="All of Cardiff" {{ $organisation_details->organisation_area == 'All of Cardiff' ? 'selected' : '' }}>All of Cardiff</option>
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="form-group pb-2">
-                            <label for="">National or umbrella body details:<span class="field-fillup-required">*</span> </label>
+                            <label for="">National or umbrella body details:</label>
                             <input type="text" name="umbrella_body_details" value="{{  $organisation_details->umbrella_body_details }}" class="form-control form-control-user">
                         </div>
 
