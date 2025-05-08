@@ -61,9 +61,20 @@
 
     <script>
         $(document).ready(function () {
-            $('.nav-link').on('click', function () {
-                $('#accordionSidebar .nav-item').removeClass('active'); // Remove from all
-                $(this).closest('.nav-item').addClass('active'); // Add to clicked
+            // Highlight from localStorage
+            const activeUrl = localStorage.getItem('activeSidebarLink');
+            if (activeUrl) {
+                $('#accordionSidebar .nav-item').removeClass('active');
+                $('#accordionSidebar .nav-link').each(function () {
+                    if (this.href === activeUrl) {
+                        $(this).closest('.nav-item').addClass('active');
+                    }
+                });
+            }
+
+            // On click, store clicked URL
+            $('#accordionSidebar .nav-link').on('click', function () {
+                localStorage.setItem('activeSidebarLink', this.href);
             });
         });
     </script>
