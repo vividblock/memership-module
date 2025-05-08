@@ -19,8 +19,10 @@ class membersController extends Controller
 {
 
     protected $formStep;
+    protected $memberID;
 
     public function __construct(){
+        $this->memberID = Session::get('members_id_sess');
         $memberId = Session::get('members_id_sess');
         if ($memberId) {
             $MembersformStep = new Members_form_fillup_status();
@@ -310,6 +312,12 @@ class membersController extends Controller
             ]);
         }
         Session::put('from_step_four',true);
+        (new Members_form_fillup_status)->updateFormSteps(
+            $request->memberId,
+            '3',
+            'false',
+            Session::get('membershiptype_sess') === '2' ? '5' : '6'
+        );
         return redirect()->route('memberformFiveView', $request->memberId);
         
     }
@@ -348,6 +356,13 @@ class membersController extends Controller
         if(Session::get('membershiptype_sess')=== "2"){
             return redirect()->route('membersDashboard');
         }
+        (new Members_form_fillup_status)->updateFormSteps(
+            $request->memberId,
+            '4',
+            'false',
+            Session::get('membershiptype_sess') === '2' ? '5' : '6'
+        );
+
         return redirect()->route('memberformSixView', $request->memberId);
     }
 
