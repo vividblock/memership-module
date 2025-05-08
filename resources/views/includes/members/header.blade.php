@@ -78,7 +78,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Notification & </h6> -->
                         <a class="collapse-item" href="#">Notification</a>
-                        <a class="collapse-item" href="#">Support</a>
+                        <a class="collapse-item" href="{{ route('supportView') }}">Support</a>
                     </div>
                 </div>
             </li>
