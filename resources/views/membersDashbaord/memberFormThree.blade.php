@@ -130,7 +130,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="">Other – please specify</label>
-                            <input type="text" name="other_activity" class="form-control form-control-user" value="{{ $member_two->other_activity }}">
+                            <input type="text" name="other_activity" class="form-control form-control-user" value="{{ old('other_activity', optional($member_two)->other_activity) }}">
                         </div>
                         <div class="form-group">
                             <label for="">Short description of individual, group or organisation <span class="field-fillup-required">*</span></label>
