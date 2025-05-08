@@ -57,6 +57,11 @@
                     <i class="fas fa-fw fa-id-card-clip"></i>
                     <span>Cards</span>
                 </a>
+
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-id-card-clip"></i>
+                    <span>Profile</span>
+                </a>
             </li>
 
             <!-- Divider -->
