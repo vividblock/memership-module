@@ -48,12 +48,39 @@
                     Your previous requests
                 </div>
                 <div class="card-body">
-                    <div class="
-                        card
-                        border-bottom-primary
-                    ">
-                        
+                @foreach($support_list as $support)
+                    @php
+                        // Define border color based on urgency level
+                        switch ($support->urgency_lavel) {
+                            case 1:
+                                $borderClass = 'border-left-danger'; // Today
+                                break;
+                            case 2:
+                                $borderClass = 'border-left-warning'; // Next Few Days
+                                break;
+                            case 3:
+                                $borderClass = 'border-left-success'; // Not Urgent
+                                break;
+                            default:
+                                $borderClass = 'border-left-secondary';
+                        }
+
+                        // Limit description to first 10 words
+                        $words = explode(' ', strip_tags($support->support_message));
+                        $shortMessage = implode(' ', array_slice($words, 0, 10));
+                        if (count($words) > 10) {
+                            $shortMessage .= '...';
+                        }
+                    @endphp
+
+                    <div class="card mb-3 {{ $borderClass }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $support->support_subject }}</h5>
+                            <p class="card-text">{{ $shortMessage }}</p>
+                        </div>
                     </div>
+                @endforeach
+
                 </div>
             </div>
         </div>
