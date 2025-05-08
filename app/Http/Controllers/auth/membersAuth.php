@@ -79,9 +79,14 @@ class membersAuth extends Controller
         }
 
         $membersEmailValidation = membersEmailValidationTemporary::where('members_email', $request->email)->latest()->first();
-        if($membersEmailValidation->email_validation_status == '0' || !$membersEmailValidation){
+        if( $membersEmailValidation && $membersEmailValidation->email_validation_status == '0'){
+
+            return redirect()->back()->withErrors(['email' => 'Please verify your email.'])->withInput();
+
+        }else{
             return redirect()->back()->withErrors(['email' => 'Please verify your email.'])->withInput();
         }
+
 
         return redirect()->route('membersRegistrationTwoView');
     }
