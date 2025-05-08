@@ -19,7 +19,7 @@
                         Account not complete yet.
                     </small>
                 @elseif($form_steps->form_fillup_status == 'submited')
-                    <small class="members-account-status" style="background-color:yellow;">
+                    <small class="members-account-status" style="background-color:#ff9100;">
                         Account in review.
                     </small>
                 @else($form_steps->form_fillup_status == 'true')
