@@ -17,26 +17,33 @@ use App\Models\Members_form_fillup_status;
 
 class membersController extends Controller
 {
+
+    protected $formStep;
+
+    public function __construct(){
+        $memberId = Session::get('members_id_sess');
+        if ($memberId) {
+            $MembersformStep = new Members_form_fillup_status();
+            $this->formStep = $MembersformStep->getFormSteps($memberId);
+        }
+    }
+
     public function dashboard(){
         $members = members::where('id', Session::get('members_id_sess'))->first();
-        $MembersformStep = new Members_form_fillup_status;
-        $formStep = $MembersformStep->getFormSteps(Session::get('members_id_sess'));
 
         return view('membersDashbaord.dashboard')->with([
             'members' => $members,
-            'form_steps' => $formStep,
+            'form_steps' => $this->formStep,
         ]);
     }
 
     public function memberformOneView(Request $request){
         $members = members::where('id', $request->memberId)->first();
         $organisation = organisation::where('member_id', $request->memberId)->first();
-        $MembersformStep = new Members_form_fillup_status;
-        $formStep = $MembersformStep->getFormSteps(Session::get('members_id_sess'));
         return view('membersDashbaord.memberFormOne')->with([
             'members' => $members, 
             'organisation' => $organisation,
-            'form_steps' => $formStep,
+            'form_steps' => $this->formStep,
         ]);
     }
 
@@ -150,13 +157,11 @@ class membersController extends Controller
         $members = members::where('id', $request->memberId)->first();
         $members_two = members_two::where('member_id', $request->memberId)->first();
         $organisation = organisation::where('member_id', $request->memberId)->first();
-        $MembersformStep = new Members_form_fillup_status;
-        $formStep = $MembersformStep->getFormSteps(Session::get('members_id_sess'));
         return view('membersDashbaord.memberFormThree')->with([
             'members' => $members, 
             'organisation' => $organisation,
             'member_two' => $members_two,
-            'form_steps' => $formStep,
+            'form_steps' => $this->formStep,
         ]);
     }
 
@@ -258,7 +263,9 @@ class membersController extends Controller
 
 
     public function memberformFourView(Request $request){
-        return view('membersDashbaord.memberFormFour');
+        return view('membersDashbaord.memberFormFour')->with([
+            'form_steps' => $this->formStep,
+        ]);
     }
 
     public function memberformFour(Request $request){
@@ -308,7 +315,9 @@ class membersController extends Controller
     }
 
     public function memberformFiveView(Request $request){
-        return view('membersDashbaord.memberFormFive');
+        return view('membersDashbaord.memberFormFive')->with([
+            'form_steps' => $this->formStep,
+        ]);
     }
 
     public function memberformFive(Request $request){
@@ -343,7 +352,9 @@ class membersController extends Controller
     }
 
     public function memberformSixView(Request $request){
-        return view('membersDashbaord.memberFormSix');
+        return view('membersDashbaord.memberFormSix')->with([
+            'form_steps' => $this->formStep,
+        ]);
     }
 
     public function memberformSix(Request $request){
