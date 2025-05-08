@@ -69,7 +69,7 @@
     <!-- Tabs for Additional Info -->
     <ul class="nav nav-tabs mb-3" id="profileTab" role="tablist">
         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#org">Organisation Information</a></li>
-        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#details">Details</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#details">Organisational Details</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#local">Local Activities</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#interest">Interest</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#survey">Survey</a></li>
@@ -157,9 +157,9 @@
         <div class="tab-pane fade" id="details">
             @if($orgDetails)
             <div class="card blur-shadow mb-4">
-                <div class="card-header">
+                <!-- <div class="card-header">
                     <h5 class="mb-0">Organisational Details</h5>
-                </div>
+                </div> -->
                 <div class="card-body p-4">
                     <table class="table table-bordered table-hover">
                         <tbody>
