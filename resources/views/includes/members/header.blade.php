@@ -62,10 +62,17 @@
             </li>
 
             <li class="nav-item">
+                @if(session('form_fillup_status') === "submited" || session('form_fillup_status') === '1')
                 <a class="nav-link" href="{{ route('profileView') }}">
                     <i class="fa-regular fa-id-card"></i>
                     <span>Profile</span>
                 </a>
+                @elseif(session('form_fillup_status') === "false" || session('form_fillup_status') === '0')
+                    <a class="nav-link" href="{{ route('memberformOneView',session('members_id_sess')) }}">
+                        <i class="fa-regular fa-id-card"></i>
+                        <span>Profile</span>
+                    </a>
+                @endif
             </li>
 
             <!-- Divider -->

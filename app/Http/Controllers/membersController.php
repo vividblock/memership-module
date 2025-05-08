@@ -42,6 +42,10 @@ class membersController extends Controller
             $this->organisation = organisation::where("member_id", $this->memberID)->first();
             $this->organisationDetails = organisation_details::where('org_id', $this->organisation->id)->first();
             $this->organisationLocalActivities = organisation_local_activities::where('org_id', $this->organisation->id)->first();
+            Session::put([
+                "form_fillup_status" => $this->formStep->form_fillup_status,
+                "profile_status" => $this->member->user_status
+            ]);
         }
     }
 
