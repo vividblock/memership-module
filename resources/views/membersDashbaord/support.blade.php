@@ -51,7 +51,7 @@
                 @foreach($support_list as $support)
                     @php
                         // Define border color based on urgency level
-                        switch ($support->urgency_lavel) {
+                        switch ($support->urgency_lable) {
                             case 1:
                                 $borderClass = 'border-left-danger'; // Today
                                 break;
