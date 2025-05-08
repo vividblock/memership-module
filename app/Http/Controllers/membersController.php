@@ -564,4 +564,10 @@ class membersController extends Controller
         return view('membersDashbaord.cards')->with(['members' => $members, 'organisation' => $organisation]);;
     }
 
+    // Support -------
+    public function supportView(){
+        return view('membersDashbaord.support');
+    }
+
+
 }

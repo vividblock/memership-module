@@ -63,6 +63,10 @@ Route::middleware([membersMiddleware::class])->prefix('/auth/members')->group(fu
     
 
     Route::get('/cards', [membersController::class, 'cardsView'])->name('cardsView');
+
+
+    // Support 
+    Route::get('/support', [membersController::class, 'supportView'])->name('supportView');
 }); 
 
 
