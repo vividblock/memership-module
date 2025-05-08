@@ -425,6 +425,32 @@ class membersController extends Controller
 
     public function memberformFive(Request $request){
 
+        $rules = [
+            'how_u_use_this_details_media' => 'required|in:yes,no',
+            'member_signed_date'           => 'required|date',
+            'member_signed'                => 'required|string|min:3|max:100',
+        ];
+
+        $messages = [
+            'how_u_use_this_details_media.required' => 'Please let us know if we have permission to use your details in media.',
+            'how_u_use_this_details_media.in'       => 'Invalid selection for media permissions.',
+        
+            'member_signed_date.required' => 'Please provide the date of signature.',
+            'member_signed_date.date'     => 'The signature date must be a valid date.',
+        
+            'member_signed.required' => 'Please provide your full name as an electronic signature.',
+            'member_signed.string'   => 'Your signature must be a text value.',
+            'member_signed.min'      => 'Your full name must be at least :min characters.',
+            'member_signed.max'      => 'Your full name may not exceed :max characters.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+
         $member_network_survay = member_network_survey::where('member_id', $request->memberId)->first();
         if($member_network_survay){
             member_network_survey::where('member_id', $request->memberId)->update([

@@ -58,6 +58,9 @@
                             <input type="radio" name="how_u_use_this_details_media" value="yes" {{ $member_network_survay->how_u_use_this_details_media == 'yes' ? 'checked' : '' }}>Yes<br>
                             <input type="radio" name="how_u_use_this_details_media" value="no" {{ $member_network_survay->how_u_use_this_details_media == 'no' ? 'checked' : '' }}>No<br>
                             <small>Note: digital communications may be available online indefinitely. Please visit the Privacy Notice page on our website to understand how we will use the information you provide.</small>
+                            @if ($errors->has('how_u_use_this_details_media'))
+                                <span class="text-danger">{{ $errors->first('how_u_use_this_details_media') }}</span>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -74,6 +77,9 @@
                                     <label for="">Date Signed<span class="field-fillup-required">*</span></label>
                                     <input type="date" name="member_signed_date" class="form-control from-control-user" value="{{ $member_network_survay->member_signed_date ?? '' }}">
                                 </div>
+                                @if ($errors->has('member_signed_date'))
+                                    <span class="text-danger">{{ $errors->first('member_signed_date') }}</span>
+                                @endif
                             </div>
 
                             <div class="col-lg-6">
@@ -81,6 +87,9 @@
                                     <label for="">Electronic Signature<span class="field-fillup-required">*</span></label>
                                     <input type="text" name="member_signed" class="form-control from-control-user" value="{{ $member_network_survay->member_signed ?? '' }}">
                                     <small>Please write your full name to sign this application.</small>
+                                    @if ($errors->has('member_signed'))
+                                        <span class="text-danger">{{ $errors->first('member_signed') }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
