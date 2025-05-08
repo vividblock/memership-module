@@ -82,7 +82,7 @@
                 <div class="card-header">Activity: {{ $activity->name_of_group }}</div>
                 <div class="card-body">
                     <p><strong>Frequency:</strong> {{ $activity->frequency_of_group_meetings }}</p>
-                    <p><strong>Activities:</strong> {{ implode(', ', json_decode($activity->type_of_activities ?? '[]')) }}</p>
+                    <p><strong>Activities:</strong> {{ $activity->type_of_activities }}</p>
                     <p><strong>Additional Info:</strong> {{ $activity->response_to_any_additional_information }}</p>
                 </div>
             </div>
