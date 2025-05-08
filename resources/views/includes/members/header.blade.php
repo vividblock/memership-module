@@ -59,7 +59,7 @@
                 </a>
 
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-id-card-clip"></i>
+                    <i class="fa-regular fa-id-card"></i>
                     <span>Profile</span>
                 </a>
             </li>
