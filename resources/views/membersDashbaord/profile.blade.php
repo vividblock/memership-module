@@ -236,18 +236,70 @@
         <!-- Local Activities -->
         <div class="tab-pane fade" id="local">
             @if($activity)
-
             <div class="card blur-shadow mb-4">
-                <div class="card-header">Activity: {{ $activity->name_of_group }}</div>
-                <div class="card-body">
-                    <p><strong>Frequency:</strong> {{ $activity->frequency_of_group_meetings }}</p>
-                    <p><strong>Activities:</strong> {{$activity->type_of_activities }}</p>
-                    <p><strong>Additional Info:</strong> {{ $activity->response_to_any_additional_information }}</p>
+                <div class="card-header">
+                    <h5 class="mb-0">Local Activity: {{ $activity->name_of_group }}</h5>
+                </div>
+                <div class="card-body p-4">
+                    <table class="table table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 30%;">Frequency of Group Meetings</th>
+                                <td>{{ $activity->frequency_of_group_meetings ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Activity Taking Place</th>
+                                <td>{{ $activity->activity_taking_place ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Types of Activities</th>
+                                <td>
+                                    @php
+                                        $types = is_array(json_decode($activity->type_of_activities, true)) 
+                                            ? json_decode($activity->type_of_activities, true) 
+                                            : [$activity->type_of_activities];
+                                    @endphp
+                                    @foreach($types as $type)
+                                        <span class="badge badge-primary">{{ $type }}</span>
+                                    @endforeach
+                                    @if($activity->type_of_activities_other)
+                                        <br><em>Other:</em> {{ $activity->type_of_activities_other }}
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Additional Information</th>
+                                <td>{{ $activity->response_to_any_additional_information ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Receive Info from C3SC?</th>
+                                <td>{{ $activity->receive_more_information_from_c3sc ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Promotion on Dewis Cymru Website?</th>
+                                <td>{{ $activity->promotion_on_dewis_cymru_website ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Wants to Know More About Dewis Cymru?</th>
+                                <td>{{ $activity->know_more_dewis_cymru ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Willing to Attend Events?</th>
+                                <td>{{ $activity->attend_events ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>GDPR Consent</th>
+                                <td>{{ $activity->gdpr ?? 'N/A' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
+            @else
+            <div class="alert alert-info">No local activity data found.</div>
             @endif
         </div>
+
 
         <!-- Member Interest -->
         <div class="tab-pane fade" id="interest">
