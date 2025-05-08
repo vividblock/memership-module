@@ -36,17 +36,17 @@
                         <div class="form-group">
                             <label for="">4. What type of activities does the group do/provide? Please tick all the boxes that apply</label>
                             <select name="type_of_activities[]" class="form-control membership-from-select-field" multiple>
-                                <option value="Meeting Rooms" {{ in_array('Meeting Rooms', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Meeting Rooms</option>
-                                <option value="Physical Activities" {{ in_array('Physical Activities', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Physical Activities</option>
-                                <option value="Mental Wellbeing" {{ in_array('Mental Wellbeing', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Mental Wellbeing</option>
-                                <option value="Advice / Support" {{ in_array('Advice / Support', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Advice / Support</option>
-                                <option value="Arts and Crafts" {{ in_array('Arts and Crafts', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Arts and Crafts</option>
-                                <option value="Education and skills building" {{ in_array('Education and skills building', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Education and skills building</option>
-                                <option value="Parent and toddler" {{ in_array('Parent and toddler', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Parent and toddler</option>
-                                <option value="Social" {{ in_array('Social', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Social</option>
-                                <option value="Environmental" {{ in_array('Environmental', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Environmental</option>
-                                <option value="Young people" {{ in_array('Young people', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Young people</option>
-                                <option value="Other" {{ in_array('Other', $org_local_activity_details->type_of_activities ?? []) ? 'selected' : '' }}>Other</option>
+                                <option value="Meeting Rooms" {{ in_array('Meeting Rooms', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Meeting Rooms</option>
+                                <option value="Physical Activities" {{ in_array('Physical Activities', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Physical Activities</option>
+                                <option value="Mental Wellbeing" {{ in_array('Mental Wellbeing', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Mental Wellbeing</option>
+                                <option value="Advice / Support" {{ in_array('Advice / Support', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Advice / Support</option>
+                                <option value="Arts and Crafts" {{ in_array('Arts and Crafts', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Arts and Crafts</option>
+                                <option value="Education and skills building" {{ in_array('Education and skills building', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Education and skills building</option>
+                                <option value="Parent and toddler" {{ in_array('Parent and toddler', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Parent and toddler</option>
+                                <option value="Social" {{ in_array('Social', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Social</option>
+                                <option value="Environmental" {{ in_array('Environmental', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Environmental</option>
+                                <option value="Young people" {{ in_array('Young people', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Young people</option>
+                                <option value="Other" {{ in_array('Other', explode(',', $org_local_activity_details->type_of_activities ?? '')) ? 'selected' : '' }}>Other</option>
                             </select>
                         </div>
                         <div class="form-group">
