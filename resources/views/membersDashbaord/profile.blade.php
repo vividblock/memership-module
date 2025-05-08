@@ -345,10 +345,22 @@
                             <tr>
                                 <th>Governing Documents</th>
                                 <td>
-                                    @if($interest->governing_documents)
-                                        <a href="{{ asset('storage/' . $interest->governing_documents) }}" target="_blank">
-                                            View Document
-                                        </a>
+                                    @php
+                                        $documents = is_string($interest->governing_documents) && Str::startsWith($interest->governing_documents, '[')
+                                            ? json_decode($interest->governing_documents, true)
+                                            : [];
+                                    @endphp
+
+                                    @if(!empty($documents) && is_array($documents))
+                                        <ul class="list-unstyled mb-0">
+                                            @foreach($documents as $doc)
+                                                <li>
+                                                    <a href="{{ asset('storage/' . $doc) }}" target="_blank">
+                                                        📄 View Document {{ $loop->iteration }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     @else
                                         N/A
                                     @endif
