@@ -77,20 +77,46 @@
         <!-- Local Activities -->
         <div class="tab-pane fade" id="local">
             @if($activity)
-            
+            <!-- @foreach($localActivities as $activity) -->
             <div class="card blur-shadow mb-4">
                 <div class="card-header">Activity: {{ $activity->name_of_group }}</div>
                 <div class="card-body">
                     <p><strong>Frequency:</strong> {{ $activity->frequency_of_group_meetings }}</p>
-                    <p><strong>Activities:</strong> {{ $activity->type_of_activities }}</p>
+                    <p><strong>Activities:</strong> {{$activity->type_of_activities }}</p>
                     <p><strong>Additional Info:</strong> {{ $activity->response_to_any_additional_information }}</p>
                 </div>
             </div>
-            
+            <!-- @endforeach -->
             @endif
         </div>
 
+        <!-- Member Interest -->
+        <div class="tab-pane fade" id="interest">
+            @if($interest)
+            <div class="card blur-shadow mb-4">
+                <div class="card-header">Member Interests</div>
+                <div class="card-body">
+                    <p><strong>Activity:</strong> {{ $interest->your_activity }}</p>
+                    <p><strong>Special Interest:</strong> {{ $interest->special_interest }}</p>
+                    <p><strong>Description:</strong> {{ $interest->short_description }}</p>
+                </div>
+            </div>
+            @endif
+        </div>
 
+        <!-- Survey -->
+        <div class="tab-pane fade" id="survey">
+            @if($survey)
+            <div class="card blur-shadow mb-4">
+                <div class="card-header">Network Survey</div>
+                <div class="card-body">
+                    <p><strong>Networks:</strong> {{ $survey->networks }}</p>
+                    <p><strong>Discussion:</strong> {{ $survey->informal_discussion }}</p>
+                    <p><strong>Signed:</strong> {{ $survey->member_signed }} on {{ $survey->member_signed_date }}</p>
+                </div>
+            </div>
+            @endif
+        </div>
     </div>
 
 </div>

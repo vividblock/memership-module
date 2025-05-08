@@ -26,6 +26,7 @@ class membersController extends Controller
     protected $memberID;
     protected $member;
     protected $memberActivity;
+    protected $memberNetworkSurvey
     protected $organisation;
     protected $organisationDetails;
     protected $organisationLocalActivities;
@@ -37,6 +38,7 @@ class membersController extends Controller
             $this->formStep = $MembersformStep->getFormSteps($this->memberID);
             $this->member = members::where('id', $this->memberID)->first();
             $this->memberActivity = members_two::where('member_id', $this->memberID)->first();
+            $this->memberNetworkSurvey = member_network_survey::where('member_id', $this->memberID)->first();
             $this->organisation = organisation::where("member_id", $this->memberID)->first();
             $this->organisationDetails = organisation_details::where('org_id', $this->organisation->id)->first();
             $this->organisationLocalActivities = organisation_local_activities::where('org_id', $this->organisation->id)->first();
@@ -621,6 +623,7 @@ class membersController extends Controller
             "orgDetails" => $this->organisationDetails,
             "activity" => $this->organisationLocalActivities,
             "interest" => $this->memberActivity,
+            "survey" => $this->memberNetworkSurvey,
         ]);
     }
 
