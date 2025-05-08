@@ -241,7 +241,15 @@ class membersController extends Controller
 
         // Extra validation if membership type is not '2'
         if(Session::get('membershiptype_sess') !== '2'){
-            $rules['documents'] = 'required';
+            // Get existing member record to check if documents were already uploaded
+            $existing = members_two::where('member_id', $request->memberId)->first();
+
+            $hasExistingDocuments = $existing && !empty($existing->governing_documents);
+
+            // Only require new documents if none exist yet
+            if (!$hasExistingDocuments) {
+                $rules['documents'] = 'required';
+            }
             $rules['documents.*'] = 'file|mimes:pdf,jpeg,png,jpg,doc,docx';
 
             $messages['documents.required']    = 'You must upload at least one document.';
