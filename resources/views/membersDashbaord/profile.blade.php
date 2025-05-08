@@ -157,19 +157,81 @@
         <div class="tab-pane fade" id="details">
             @if($orgDetails)
             <div class="card blur-shadow mb-4">
-                <div class="card-header">Organisational Details</div>
-                <div class="card-body">
-                    <table class="table table-striped">
-                        <tr><th>Description</th><td>{{ $orgDetails->org_description }}</td></tr>
-                        <tr><th>Accreditation</th><td>{{ $orgDetails->quality_marks }} ({{ $orgDetails->date_accreditation_awarded }})</td></tr>
-                        <tr><th>Annual Turnover</th><td>{{ $orgDetails->annual_turnover }}</td></tr>
-                        <tr><th>Employees</th><td>{{ $orgDetails->currently_employ }}</td></tr>
-                        <tr><th>Volunteers</th><td>{{ $orgDetails->volunteers_number }}</td></tr>
+                <div class="card-header">
+                    <h5 class="mb-0">Organisational Details</h5>
+                </div>
+                <div class="card-body p-4">
+                    <table class="table table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 30%;">Organisation Description</th>
+                                <td>{{ $orgDetails->org_description ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Organisation Area</th>
+                                <td>{{ $orgDetails->organisation_area ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Part Of</th>
+                                <td>{{ $orgDetails->organisation_part_of ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Umbrella Body Details</th>
+                                <td>{{ $orgDetails->umbrella_body_details ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Quality Marks</th>
+                                <td>{{ $orgDetails->quality_marks ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Accreditation Awarded</th>
+                                <td>{{ optional($orgDetails->date_accreditation_awarded)->format('d M Y') ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Accreditation Reviewed</th>
+                                <td>{{ optional($orgDetails->date_accreditation_reviewed)->format('d M Y') ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Annual Turnover</th>
+                                <td>{{ $orgDetails->annual_turnover ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Employees</th>
+                                <td>{{ $orgDetails->currently_employ ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Volunteers</th>
+                                <td>{{ $orgDetails->volunteers_number ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Registered On</th>
+                                <td>{{ $orgDetails->registered_on ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Supports Volunteer Recruitment</th>
+                                <td>{{ $orgDetails->support_to_recruit_volunteers ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Collaboration Area 1</th>
+                                <td>{{ $orgDetails->collaboration_area_1 ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Collaboration Area 2</th>
+                                <td>{{ $orgDetails->collaboration_area_2 ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Collaboration Area 3</th>
+                                <td>{{ $orgDetails->collaboration_area_3 ?? 'N/A' }}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
+            @else
+                <div class="alert alert-info">No organisation details found.</div>
             @endif
         </div>
+
 
         <!-- Local Activities -->
         <div class="tab-pane fade" id="local">
