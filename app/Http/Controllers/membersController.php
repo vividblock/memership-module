@@ -642,7 +642,7 @@ class membersController extends Controller
         ]);
     }
 
-
+    // Password Reset ------
     public function resetPasswordView(){
         $lastSent = Session::get('reset_password_sent_at');
 
