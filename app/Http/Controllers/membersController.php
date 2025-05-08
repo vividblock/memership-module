@@ -624,6 +624,7 @@ class membersController extends Controller
             "activity" => $this->organisationLocalActivities,
             "interest" => $this->memberActivity,
             "survey" => $this->memberNetworkSurvey,
+            "formStep" => $this->formStep,
         ]);
     }
 

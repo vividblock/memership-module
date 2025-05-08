@@ -49,7 +49,11 @@
                     @if($member->user_status)
                         <span class="badge badge-success">Active</span>
                     @else
-                        <span class="badge badge-danger">Inactive</span>
+                        @if($formStep->form_fillup_status === "submited")
+                            <span class="badge badge-warning">In Review</span>
+                        @elseif($formStep->form_fillup_status === "false")
+                            span class="badge badge-danger">Inactive</span>
+                        @endif
                     @endif
                 </div>
                 <div class="col-md-6 mb-2">
