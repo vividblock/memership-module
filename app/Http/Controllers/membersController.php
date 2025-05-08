@@ -26,7 +26,7 @@ class membersController extends Controller
     protected $memberID;
     protected $member;
     protected $memberActivity;
-    protected $memberNetworkSurvey
+    protected $memberNetworkSurvey;
     protected $organisation;
     protected $organisationDetails;
     protected $organisationLocalActivities;
