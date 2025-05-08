@@ -123,6 +123,7 @@
                                                 <div class="form-group">
                                                     <input type="password" class="form-control form-control-user"
                                                     placeholder="Password" name="password">
+                                                    <span class="eye-button-for-password"><i class="fa-solid fa-eye"></i></span>
                                                     @if ($errors->has('password'))
                                                         <span class="text-danger">{{ $errors->first('password') }}</span>
                                                     @endif

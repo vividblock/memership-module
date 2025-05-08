@@ -173,6 +173,12 @@ form.user .btn-user{
     border-radius: 11px;
 }
 
+.eye-button-for-password{
+    position: absolute;
+    top: 13px;
+    right: 28px;
+}
+
 @media only screen and (min-width:992px) {
     .step-line {
         width: 460px;
