@@ -46,22 +46,23 @@
                         </div>
 
                         <div class="form-group pb-2">
-                            <label for="">Quality Marks / Accreditation (Select all that apply) </label>
+                            <label for="">Quality Marks / Accreditation (Select all that apply)</label>
                             <select name="quality_marks" class="form-control membership-from-select-field">
-                                <option value="Trusted Charity">Trusted Charity</option>
-                                <option value="Investor in Volunteering (IiV)">Investor in Volunteering (IiV)</option>
-                                <option value="Investors in Personnel (IiP)">Investors in Personnel (IiP)</option>
-                                <option value="Cyber Essentials">Cyber Essentials</option>
-                                <option value="Cynnig Cymraeg (Welsh Offer)">Cynnig Cymraeg (Welsh Offer)</option>
-                                <option value="Living Wage">Living Wage</option>
-                                <option value="UK Investors in Equality in Diversity (UKIED)">UK Investors in Equality in Diversity (UKIED)</option>
-                                <option value="Other  Quality Marks ">Other  Quality Marks </option>
+                                <option value="Trusted Charity" {{ $organisation_details->quality_marks == 'Trusted Charity' ? 'selected' : '' }}>Trusted Charity</option>
+                                <option value="Investor in Volunteering (IiV)" {{ $organisation_details->quality_marks == 'Investor in Volunteering (IiV)' ? 'selected' : '' }}>Investor in Volunteering (IiV)</option>
+                                <option value="Investors in Personnel (IiP)" {{ $organisation_details->quality_marks == 'Investors in Personnel (IiP)' ? 'selected' : '' }}>Investors in Personnel (IiP)</option>
+                                <option value="Cyber Essentials" {{ $organisation_details->quality_marks == 'Cyber Essentials' ? 'selected' : '' }}>Cyber Essentials</option>
+                                <option value="Cynnig Cymraeg (Welsh Offer)" {{ $organisation_details->quality_marks == 'Cynnig Cymraeg (Welsh Offer)' ? 'selected' : '' }}>Cynnig Cymraeg (Welsh Offer)</option>
+                                <option value="Living Wage" {{ $organisation_details->quality_marks == 'Living Wage' ? 'selected' : '' }}>Living Wage</option>
+                                <option value="UK Investors in Equality in Diversity (UKIED)" {{ $organisation_details->quality_marks == 'UK Investors in Equality in Diversity (UKIED)' ? 'selected' : '' }}>UK Investors in Equality in Diversity (UKIED)</option>
+                                <option value="Other  Quality Marks" {{ $organisation_details->quality_marks == 'Other  Quality Marks' ? 'selected' : '' }}>Other Quality Marks</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="">Date accreditation was awarded:</label>
-                            <input type="date" name="date_accreditation_awarded" class="form-control form-control-user" id="">
+                            <input type="date" name="date_accreditation_awarded" class="form-control form-control-user" 
+                                value="{{ old('date_accreditation_awarded', $organisation_details->date_accreditation_awarded ?? '') }}">
                             <small>Write each accreditation and its corresponding date.</small>
                         </div>
 
