@@ -61,8 +61,8 @@
 
     <script>
         $(document).ready(function () {
-            $('#sidebarNav .nav-link').on('click', function () {
-                $('#sidebarNav .nav-item').removeClass('active'); // Remove from all
+            $('.nav-link').on('click', function () {
+                $('#accordionSidebar .nav-item').removeClass('active'); // Remove from all
                 $(this).closest('.nav-item').addClass('active'); // Add to clicked
             });
         });
