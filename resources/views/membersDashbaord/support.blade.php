@@ -75,6 +75,7 @@
 
                     <div class="card mb-3 {{ $borderClass }}">
                         <div class="card-body">
+                            <span >{{ $support->support_status }}</span>
                             <h5 class="card-title">{{ $support->support_subject }}</h5>
                             <p class="card-text">{{ $shortMessage }}</p>
                         </div>
