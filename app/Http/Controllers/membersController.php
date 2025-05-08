@@ -372,8 +372,11 @@ class membersController extends Controller
     }
 
     public function memberformSixView(Request $request){
+        $orgData = organisation::where('member_id', $request->memberId)->first();
+        $org_local_activity_details = organisation_local_activities::where('org_id', $orgData->id)->first();
         return view('membersDashbaord.memberFormSix')->with([
             'form_steps' => $this->formStep,
+            'org_local_activity_details' => $org_local_activity_details,
         ]);
     }
 
