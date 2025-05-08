@@ -2,31 +2,27 @@
     <h2 class="h3 text-gray-800 membership-dashbaord-from-heading">Membership Application Details</h2>
     <p >Please complete all relevant sections below:</p>
     @php
-    $memberId = session('members_id_sess');
-    $currentStep = (int) $form_steps->form_steps;
-    $memberType = session('membershiptype_sess') == "2" ? "single" : "other";
+        $memberId = session('members_id_sess');
+        $currentStep = (int) $form_steps->form_steps;
+        $memberType = session('membershiptype_sess') == "2" ? "single" : "other";
 
-    // Common steps
-    $steps = [
-        ['title' => 'Member & Organisation', 'route' => route('memberformOneView', $memberId)],
-        ['title' => 'Activity & Documentation', 'route' => route('memberformThreeView', $memberId)],
-        ['title' => 'About your organisation', 'route' => route('memberformFourView', $memberId)],
-        ['title' => 'Agreements & Networks', 'route' => route('memberformFiveView', $memberId)],
-    ];
+        // Define all possible steps
+        $steps = [
+            ['title' => 'Member & Organisation', 'route' => route('memberformOneView', $memberId)],
+            ['title' => 'Activity & Documentation', 'route' => route('memberformThreeView', $memberId)],
+            ['title' => 'About your organisation', 'route' => route('memberformFourView', $memberId)],
+            ['title' => 'Agreements & Networks', 'route' => route('memberformFiveView', $memberId)],
+            ['title' => 'Submission', 'route' => route('memberformFiveView', $memberId)],
+        ];
 
-    // Add additional step only for "other" type
-    if ($memberType === "other") {
-        $steps[] = [
-            'title' => 'Submission',
-            'route' => route('memberformSixView', $memberId),
-        ];
-    } else {
-        $steps[] = [
-            'title' => 'Submission',
-            'route' => route('memberformFiveView', $memberId),
-        ];
-    }
-@endphp
+        // Add extra step only for "other" members (making it 6 steps)
+        if ($memberType == "other") {
+            array_splice($steps, 4, 0, [[
+                'title' => 'Additional Info',
+                'route' => route('memberformSixView', $memberId)
+            ]]);
+        }
+    @endphp
 
     <div class="row mt-3 align-items-center">
         @foreach($steps as $index => $step)
