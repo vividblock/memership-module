@@ -77,7 +77,7 @@
         <!-- Local Activities -->
         <div class="tab-pane fade" id="local">
             @if($activity)
-            <!-- @foreach($localActivities as $activity) -->
+            
             <div class="card blur-shadow mb-4">
                 <div class="card-header">Activity: {{ $activity->name_of_group }}</div>
                 <div class="card-body">
@@ -86,7 +86,7 @@
                     <p><strong>Additional Info:</strong> {{ $activity->response_to_any_additional_information }}</p>
                 </div>
             </div>
-            <!-- @endforeach -->
+            
             @endif
         </div>
 
