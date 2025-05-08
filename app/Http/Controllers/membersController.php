@@ -26,6 +26,8 @@ class membersController extends Controller
     protected $memberID;
     protected $member;
     protected $organisation;
+    protected $organisationDetails;
+    protected $organisationLocalActivities;
 
     public function __construct(){
         $this->memberID = Session::get('members_id_sess');
@@ -34,6 +36,8 @@ class membersController extends Controller
             $this->formStep = $MembersformStep->getFormSteps($this->memberID);
             $this->member = members::where('id', $this->memberID)->first();
             $this->organisation = organisation::where("member_id", $this->memberID)->first();
+            $this->organisationDetails = organisation_details::where('org_id', $this->organisation->id)->first();
+            $this->organisationLocalActivities = organisation_local_activities::where('org_id', $this->organisation->id)->first();
         }
     }
 
@@ -612,6 +616,9 @@ class membersController extends Controller
         return view('membersDashbaord.profile')->with([
             "member" => $this->member,
             "organisation" => $this->organisation,
+            "orgDetails" => $this->organisationDetails,
+            "activity" => $this->organisationLocalActivities,
+            
         ]);
     }
 
