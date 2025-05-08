@@ -23,7 +23,7 @@ class membersController extends Controller
 
     public function __construct(){
         $this->memberID = Session::get('members_id_sess');
-        if ($memberId) {
+        if ($memberID) {
             $MembersformStep = new Members_form_fillup_status();
             $this->formStep = $MembersformStep->getFormSteps($this->memberID);
         }
