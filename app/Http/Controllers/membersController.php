@@ -568,7 +568,7 @@ class membersController extends Controller
     // Support -------
     public function supportView(){
         return view('membersDashbaord.support')->with([
-            'support_list' => getAllSupport($this->memberID),
+            'support_list' => support_admin_members::getAllSupport($this->memberID),
         ]);
     }
 
