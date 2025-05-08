@@ -72,7 +72,7 @@
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#details">Organisational Details</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#local">Local Activities</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#interest">Member Interests</a></li>
-        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#survey">Survey</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#survey">Network Survey</a></li>
     </ul>
 
     <div class="tab-content">
@@ -366,7 +366,7 @@
         <div class="tab-pane fade" id="survey">
             @if($survey)
             <div class="card blur-shadow mb-4">
-                <div class="card-header bg-primary text-white">Network Survey</div>
+                <!-- <div class="card-header bg-primary text-white">Network Survey</div> -->
                 <div class="card-body p-4">
                     <table class="table table-bordered table-striped">
                         <tbody>
