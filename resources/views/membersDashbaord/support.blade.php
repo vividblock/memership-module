@@ -50,34 +50,27 @@
                 <div class="card-body">
                 @foreach($support_list as $support)
                     @php
-                        // Define border color based on urgency level
-                        switch ($support->urgency_lable) {
-                            case 1:
-                                $borderClass = 'border-left-danger'; // Today
-                                break;
-                            case 2:
-                                $borderClass = 'border-left-warning'; // Next Few Days
-                                break;
-                            case 3:
-                                $borderClass = 'border-left-success'; // Not Urgent
-                                break;
-                            default:
-                                $borderClass = 'border-left-secondary';
+                        // Set border class based on urgency
+                        switch ($support->urgency_lavel) {
+                            case 1:  $borderClass = 'border-left-danger'; break;    // Today
+                            case 2:  $borderClass = 'border-left-warning'; break;   // Next Few Days
+                            case 3:  $borderClass = 'border-left-success'; break;   // Not Urgent
+                            default: $borderClass = 'border-left-secondary';
                         }
 
-                        // Limit description to first 10 words
+                        // Truncate description to 10 words
                         $words = explode(' ', strip_tags($support->support_message));
-                        $shortMessage = implode(' ', array_slice($words, 0, 10));
-                        if (count($words) > 10) {
-                            $shortMessage .= '...';
-                        }
+                        $shortMessage = implode(' ', array_slice($words, 0, 10)) . (count($words) > 10 ? '...' : '');
                     @endphp
 
-                    <div class="card mb-3 {{ $borderClass }}">
+                    <div class="card mb-3 shadow-sm {{ $borderClass }}">
                         <div class="card-body">
-                            <span >{{ $support->support_status }}</span>
-                            <h5 class="card-title">{{ $support->support_subject }}</h5>
-                            <p class="card-text">{{ $shortMessage }}</p>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge bg-secondary">Status: {{ ucfirst($support->support_status) }}</span>
+                                <small class="text-muted">Created: {{ \Carbon\Carbon::parse($support->created_at)->format('d M Y, H:i') }}</small>
+                            </div>
+                            <h5 class="card-title text-primary">{{ $support->support_subject }}</h5>
+                            <p class="card-text mb-0">{{ $shortMessage }}</p>
                         </div>
                     </div>
                 @endforeach
