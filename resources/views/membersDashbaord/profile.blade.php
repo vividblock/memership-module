@@ -36,6 +36,9 @@
                 <div class="col-md-6">
                     <strong>Status:</strong> {!! $member->user_status ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>' !!}
                 </div>
+                <div class="col-md-6">
+                    <strong>C3SC Id:</strong> {$member->members_c3sc_id }
+                </div>
             </div>
         </div>
     </div>
