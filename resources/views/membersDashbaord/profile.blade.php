@@ -5,6 +5,8 @@
     <!-- Page Heading -->
     <div class="d-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Member Profile</h1>
+
+        <a href="{{ route('memberformOneView',session('members_id_sess')) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa-solid fa-user-pen"></i> Edit Profile</a>
     </div>
 
     <!-- Profile Overview -->
@@ -22,6 +24,10 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <strong>Username:</strong> {{ $member->username }}
+                </div>
+                <div class="col-md-6 mb-2">
+                    <strong>Contact:</strong> 
+                    {{ $member->contactnumber }}
                 </div>
                 <div class="col-md-6 mb-2">
                     <strong>C3SC ID:</strong> {{ $member->members_c3sc_id }}
@@ -50,6 +56,8 @@
                     <strong>Membership Package:</strong> 
                     {{ $member->memebership_package ?? 'N/A' }}
                 </div>
+                
+                    
             </div>
         </div>
     </div>
