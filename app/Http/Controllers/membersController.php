@@ -569,5 +569,9 @@ class membersController extends Controller
         return view('membersDashbaord.support');
     }
 
+    public function supportSubmit(Request $request){
+        
+    }
+
 
 }
