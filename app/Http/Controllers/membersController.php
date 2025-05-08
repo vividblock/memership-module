@@ -652,8 +652,39 @@ class membersController extends Controller
     }
 
     public function resetPassword(Request $request){
+
+        $rules=[
+            'otp' => 'required',
+            'password' => 'required|confirmed|min:8',
+        ];
+
+        $messages = [
+            'otp.required' => 'OTP is required.',
+            'email.required' => 'Email address is required.',
+            'password.required' => 'Password is required.',
+            'password.confirmed' => 'Password confirmation does not match.',
+            'password.min' => 'Password must be at least 8 characters long.',
+        ];
+
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+
         if($request->otp == Session::get("reset_password_otp")){
-            dd(Session::get("reset_password_otp"));
+            if($request->password === $request->password_confirmation){
+                $this->member->update([
+                    'password' => Hash::make($request->password),
+                ]);
+                return redirect()->back()->with('status', 'Password reset successfully. Please log in.');
+            }else{
+                return redirect()->back()->withErrors(['email' => 'No member found with this email.'])->withInput();
+            }
+        }else{
+            return redirect()->back()->withErrors(['otp' => 'Invalid OTP.'])->withInput();
         }
     }
 
