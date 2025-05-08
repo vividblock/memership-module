@@ -116,7 +116,7 @@ class membersController extends Controller
 
         Session::put('from_step_one',true);
         $memberformStep = new Members_form_fillup_status;
-        $memberformStep->updateFormSteps($request->memberId, '1', "false" , $request->membershiptype == "2" ? "5" : "6");
+        $memberformStep->updateFormSteps($request->memberId, '1', "false" , $request->membershiptype == "2" ? "4" : "5");
         // if($request->membershiptype === "2"){
             Session::put('membershiptype_sess',$request->membershiptype);
             members::where('id', $request->memberId)->update([
@@ -255,7 +255,7 @@ class membersController extends Controller
             $request->memberId,
             '2',
             'false',
-            Session::get('membershiptype_sess') === '2' ? '5' : '6'
+            Session::get('membershiptype_sess') === '2' ? '4' : '5'
         );
     
         // Redirect to the next step
@@ -316,7 +316,7 @@ class membersController extends Controller
             $request->memberId,
             '3',
             'false',
-            Session::get('membershiptype_sess') === '2' ? '5' : '6'
+            Session::get('membershiptype_sess') === '2' ? '4' : '5'
         );
         return redirect()->route('memberformFiveView', $request->memberId);
         
@@ -360,7 +360,7 @@ class membersController extends Controller
             $request->memberId,
             '4',
             'false',
-            Session::get('membershiptype_sess') === '2' ? '5' : '6'
+            Session::get('membershiptype_sess') === '2' ? '4' : '5'
         );
 
         return redirect()->route('memberformSixView', $request->memberId);
