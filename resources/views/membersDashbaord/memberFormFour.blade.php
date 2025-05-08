@@ -19,26 +19,30 @@
                         <div class="form-group pb-2">
                             <label for="">Organisation Area (Please tick relevant box/es) <span class="field-fillup-required">*</span> </label>
                             <select name="organisation_area" class="form-control membership-from-select-field">
-                                <option value="All of Wales">All of Wales</option>
-                                <option value="All of Cardiff">All of Cardiff</option>
-                                <option value="Cardiff City &amp; South">Cardiff City &amp; South</option>
-                                <option value="Cardiff East">Cardiff East</option>
-                                <option value="Cardiff North">Cardiff North</option>
-                                <option value="Cardiff South-East">Cardiff South-East</option>
-                                <option value="Cardiff South-West">Cardiff South-West</option>
-                                <option value="Cardiff West">Cardiff West</option>
+                                <option value="All of Wales" {{ $organisation_details->organisation_area == 'All of Wales' ? 'selected' : '' }}>All of Wales</option>
+                                <option value="All of Cardiff" {{ $organisation_details->organisation_area == 'All of Cardiff' ? 'selected' : '' }}>All of Cardiff</option>
+                                <option value="Cardiff City & South" {{ $organisation_details->organisation_area == 'Cardiff City & South' ? 'selected' : '' }}>Cardiff City & South</option>
+                                <option value="Cardiff East" {{ $organisation_details->organisation_area == 'Cardiff East' ? 'selected' : '' }}>Cardiff East</option>
+                                <option value="Cardiff North" {{ $organisation_details->organisation_area == 'Cardiff North' ? 'selected' : '' }}>Cardiff North</option>
+                                <option value="Cardiff South-East" {{ $organisation_details->organisation_area == 'Cardiff South-East' ? 'selected' : '' }}>Cardiff South-East</option>
+                                <option value="Cardiff South-West" {{ $organisation_details->organisation_area == 'Cardiff South-West' ? 'selected' : '' }}>Cardiff South-West</option>
+                                <option value="Cardiff West" {{ $organisation_details->organisation_area == 'Cardiff West' ? 'selected' : '' }}>Cardiff West</option>
                             </select>
                         </div>
 
                         <div class="form-group pb-2">
-                            <label for="">Are you / is your organisation part of a national or umbrella body?<span class="field-fillup-required">*</span> </label><br>
-                            <input type="radio" name="organisation_part_of" value="yes"> Yes
-                            <input type="radio" name="organisation_part_of" value="no"> No
+                            <label for="">Are you / is your organisation part of a national or umbrella body?<span class="field-fillup-required">*</span></label><br>
+
+                            <input type="radio" name="organisation_part_of" value="yes"
+                                {{ $organisation_details->organisation_part_of == 'yes' ? 'checked' : '' }}> Yes
+
+                            <input type="radio" name="organisation_part_of" value="no"
+                                {{ $organisation_details->organisation_part_of == 'no' ? 'checked' : '' }}> No
                         </div>
 
                         <div class="form-group pb-2">
                             <label for="">National or umbrella body details:<span class="field-fillup-required">*</span> </label>
-                            <input type="text" name="umbrella_body_details" class="form-control form-control-user">
+                            <input type="text" name="umbrella_body_details" value="{{  $organisation_details->umbrella_body_details }}" class="form-control form-control-user">
                         </div>
 
                         <div class="form-group pb-2">

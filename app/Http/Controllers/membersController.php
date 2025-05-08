@@ -264,7 +264,9 @@ class membersController extends Controller
 
 
     public function memberformFourView(Request $request){
+        $organisation_details = organisation_details::where('org_id', $organisation->id)->first();
         return view('membersDashbaord.memberFormFour')->with([
+            'organisation_details' =>  $organisation_details,
             'form_steps' => $this->formStep,
         ]);
     }
