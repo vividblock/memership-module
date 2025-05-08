@@ -79,18 +79,61 @@
         <!-- Organisation -->
         <div class="tab-pane fade show active" id="org">
             @if($organisation)
-            <div class="card blur-shadow mb-4">
-                <div class="card-header">Organisation Information</div>
+            <div class="card shadow-sm mb-4 border-0">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Organisation Information</h5>
+                </div>
                 <div class="card-body">
-                    <p><strong>Name:</strong> {{ $organisation->organisation_name }}</p>
-                    <p><strong>Email:</strong> {{ $organisation->organisation_email }}</p>
-                    <p><strong>Address:</strong> {{ $organisation->correspondence_address }}, {{ $organisation->city }} {{ $organisation->postcode }}, {{ $organisation->country }}</p>
-                    <p><strong>Contact:</strong> {{ $organisation->contact_number }}</p>
-                    <p><strong>Website:</strong> <a href="{{ $organisation->website }}" target="_blank">{{ $organisation->website }}</a></p>
+                    <div class="row mb-3">
+                        <div class="col-md-6 mb-2">
+                            <strong>Organisation Name:</strong> {{ $organisation->organisation_name }}
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <strong>Email:</strong> {{ $organisation->organisation_email }}
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <strong>Contact Number:</strong> {{ $organisation->contact_number ?? 'N/A' }}
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <strong>Social Handle:</strong> {{ $organisation->social_handle ?? 'N/A' }}
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <strong>Website:</strong>
+                            @if($organisation->website)
+                                <a href="{{ $organisation->website }}" target="_blank">{{ $organisation->website }}</a>
+                            @else
+                                N/A
+                            @endif
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <strong>Country:</strong> {{ $organisation->country ?? 'N/A' }}
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <strong>Full Address:</strong>
+                            {{ $organisation->correspondence_address }},
+                            {{ $organisation->city }},
+                            {{ $organisation->postcode }}
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <strong>Organisation Details:</strong>
+                            <div class="border rounded p-2 bg-light">
+                                {{ $organisation->organization_details ?? 'N/A' }}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <strong>Request Description:</strong>
+                            <div class="border rounded p-2 bg-light">
+                                {{ $organisation->organisation_request_descripiton ?? 'N/A' }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            @else
+                <div class="alert alert-warning">No organisation information available.</div>
             @endif
         </div>
+
 
         <!-- Organisation Details -->
         <div class="tab-pane fade" id="details">
