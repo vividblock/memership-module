@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label for="">Date accreditation was awarded:</label>
                             <input type="date" name="date_accreditation_awarded" class="form-control form-control-user" 
-                                value="{{$organisation_details->date_accreditation_awarded}}">
+                                value="{{\Carbon\Carbon::parse($organisation_details->date_accreditation_awarded)->format('Y-m-d')}}">
                             <small>Write each accreditation and its corresponding date.</small>
                         </div>
 
@@ -76,27 +76,34 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="">Most recent annual turnover in £ (GBP)</label>
-                            <input type="text" name="annual_turnover" class="form-control form-control-user" id="">
+                            <input type="text" name="annual_turnover" value="{{ $organisation_details->annual_turnover }}" class="form-control form-control-user" id="">
                         </div>
                         <div class="form-group">
-                            <label for="">What is the total number of staff you currently employ?<span class="field-fillup-required">*</span>
-                            </label>
-                            <input type="text" name="currently_employ" class="form-control form-control-user" id="">
+                            <label for="">What is the total number of staff you currently employ?<span class="field-fillup-required">*</span></label>
+                            <input type="text" name="currently_employ" class="form-control form-control-user" 
+                                value="{{ old('currently_employ', $organisation_details->currently_employ ?? '') }}">
                         </div>
+
                         <div class="form-group">
-                            <label for="">How many volunteers are involved with you or in your group/organisation?<span class="field-fillup-required">*</span>
-                            </label>
-                            <input type="text" name="volunteers_number" class="form-control form-control-user" id="">
+                            <label for="">How many volunteers are involved with you or in your group/organisation?<span class="field-fillup-required">*</span></label>
+                            <input type="text" name="volunteers_number" class="form-control form-control-user" 
+                                value="{{ old('volunteers_number', $organisation_details->volunteers_number ?? '') }}">
                         </div>
+
                         <div class="form-group pb-2">
-                            <label for="">Are you registered on www.Volunteering-Wales.net?<span class="field-fillup-required">*</span> </label><br>
-                            <input type="radio" name="registered_on" value="yes"> Yes
-                            <input type="radio" name="registered_on" value="no"> No
+                            <label for="">Are you registered on www.Volunteering-Wales.net?<span class="field-fillup-required">*</span></label><br>
+                            <input type="radio" name="registered_on" value="yes" 
+                                {{ old('registered_on', $organisation_details->registered_on) == 'yes' ? 'checked' : '' }}> Yes
+                            <input type="radio" name="registered_on" value="no" 
+                                {{ old('registered_on', $organisation_details->registered_on) == 'no' ? 'checked' : '' }}> No
                         </div>
+
                         <div class="form-group pb-2">
-                            <label for="">Would you like support to recruit volunteers?<span class="field-fillup-required">*</span> </label><br>
-                            <input type="radio" name="support_to_recruit_volunteers" value="yes"> Yes
-                            <input type="radio" name="support_to_recruit_volunteers" value="no"> No
+                            <label for="">Would you like support to recruit volunteers?<span class="field-fillup-required">*</span></label><br>
+                            <input type="radio" name="support_to_recruit_volunteers" value="yes" 
+                                {{ old('support_to_recruit_volunteers', $organisation_details->support_to_recruit_volunteers) == 'yes' ? 'checked' : '' }}> Yes
+                            <input type="radio" name="support_to_recruit_volunteers" value="no" 
+                                {{ old('support_to_recruit_volunteers', $organisation_details->support_to_recruit_volunteers) == 'no' ? 'checked' : '' }}> No
                         </div>
                     </div>
                 </div>
