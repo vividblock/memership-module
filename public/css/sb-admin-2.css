@@ -9633,6 +9633,7 @@ a.text-warning:hover, a.text-warning:focus {
 
 .text-danger {
   color: #e74a3b !important;
+  font-size: 12px;
 }
 
 a.text-danger:hover, a.text-danger:focus {
