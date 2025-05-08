@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card border-top-primary shadow py-2" >
+            <div class="card border-bottom-primary shadow py-2" >
 
             </div>
         </div>
