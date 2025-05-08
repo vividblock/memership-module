@@ -52,17 +52,20 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
+            </li>
 
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('cardsView') }}">
                     <i class="fas fa-fw fa-id-card-clip"></i>
                     <span>Cards</span>
                 </a>
+            </li>
 
+            <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa-regular fa-id-card"></i>
                     <span>Profile</span>
                 </a>
-
             </li>
 
             <!-- Divider -->
