@@ -2,12 +2,12 @@
 
 <div class="container-fluid pb-5">
     <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
-        <h1 class="h3 text-primary fw-bold">Member Application Details</h1>
+        <h1 class="h3 text-primary fw-bold">Application Details</h1>
     </div>
 
     <div class="row g-4">
         {{-- Member Details --}}
-        <div class="col-md-6">
+        <div class="col-md-6 mb-2">
             <div class="card shadow rounded-4 border border-primary-subtle">
                 <div class="card-header bg-primary text-white rounded-top-4 border-bottom">
                     <h5 class="mb-0">Member Details</h5>
@@ -30,7 +30,7 @@
         </div>
 
         {{-- Organisation Details --}}
-        <div class="col-md-6">
+        <div class="col-md-6 mb-2">
             <div class="card shadow rounded-4 border border-success-subtle">
                 <div class="card-header bg-success text-white rounded-top-4 border-bottom">
                     <h5 class="mb-0">Organisation Details</h5>
@@ -53,7 +53,7 @@
         </div>
 
         {{-- Organisation Description --}}
-        <div class="col-md-12">
+        <div class="col-md-12 mb-2">
             <div class="card shadow rounded-4 border border-info-subtle">
                 <div class="card-header bg-info text-white rounded-top-4 border-bottom">
                     <h5 class="mb-0">Organisation Description</h5>
@@ -68,7 +68,7 @@
 
         {{-- Extended Organisation Details --}}
         @if ($organisation_details)
-        <div class="col-md-6">
+        <div class="col-md-6 mb-2">
             <div class="card shadow rounded-4 border border-warning-subtle">
                 <div class="card-header bg-warning text-dark rounded-top-4 border-bottom">
                     <h5 class="mb-0">Additional Organisation Info</h5>
@@ -94,7 +94,7 @@
 
         {{-- Local Activities --}}
         @if ($organisation_local_activities)
-        <div class="col-md-6">
+        <div class="col-md-6 mb-2">
             <div class="card shadow rounded-4 border border-secondary-subtle">
                 <div class="card-header bg-secondary text-white rounded-top-4 border-bottom">
                     <h5 class="mb-0">Local Activities</h5>
@@ -121,7 +121,7 @@
 
         {{-- Network Survey --}}
         @if ($member_network_survey)
-        <div class="col-md-12">
+        <div class="col-md-12 mb-2">
             <div class="card shadow rounded-4 border border-dark-subtle">
                 <div class="card-header bg-dark text-white rounded-top-4 border-bottom">
                     <h5 class="mb-0">Network Survey</h5>
