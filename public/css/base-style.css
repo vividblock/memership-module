@@ -47,5 +47,7 @@ form.user .btn-user{
 
 
 .edit-member-details-button{
-    
+    position: absolute;
+    top: 11px;
+    right: 16px;
 }
