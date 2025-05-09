@@ -94,7 +94,13 @@
                     <p><strong>Group Name:</strong> {{ $organisation_local_activities->name_of_group }}</p>
                     <p><strong>Meeting Frequency:</strong> {{ $organisation_local_activities->frequency_of_group_meetings }}</p>
                     <p><strong>Activity Taking Place:</strong> {{ $organisation_local_activities->activity_taking_place }}</p>
-                    <p><strong>Type of Activities:</strong> {{ implode(', ', json_decode($organisation_local_activities->type_of_activities ?? '[]')) }}</p>
+                    @php
+                        $activities = json_decode($organisation_local_activities->type_of_activities, true);
+                    @endphp
+
+                    <p><strong>Type of Activities:</strong>
+                        {{ is_array($activities) ? implode(', ', $activities) : $organisation_local_activities->type_of_activities }}
+                    </p>
                     <p><strong>Other Activities:</strong> {{ $organisation_local_activities->type_of_activities_other }}</p>
                     <p><strong>Additional Info:</strong> {{ $organisation_local_activities->response_to_any_additional_information }}</p>
                     <p><strong>Receive Info from C3SC:</strong> {{ $organisation_local_activities->receive_more_information_from_c3sc }}</p>
