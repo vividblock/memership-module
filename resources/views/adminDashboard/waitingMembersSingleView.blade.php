@@ -11,7 +11,7 @@
             <div class="card shadow rounded-4 border border-primary-subtle">
                 <div class="card-header bg-primary text-white rounded-top-4 border-bottom">
                     <h5 class="mb-0">Member Details</h5>
-                    <span><i class="fa-solid fa-pen-to-square"></i></span>
+                    <span class="edit-member-details-button"><i class="fa-solid fa-pen-to-square"></i></span>
                 </div>
                 <div class="card-body">
                     <hr class="my-2">
