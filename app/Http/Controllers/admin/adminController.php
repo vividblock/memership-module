@@ -5,12 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
 use App\Mail\MailTemplateOne;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
-
-
 
 use App\Models\admin\admin_smtp_settings;
 use App\Models\members;
@@ -22,10 +19,24 @@ use App\Models\organisation_local_activities;
 
 class adminController extends Controller
 {
+    // GLOBAL FUNCTIONS
+    protected $members;
+    protected $organisation;
+
+
+    public function __construct(){
+        
+    }
+
+
     public function index(){
         return view('adminDashboard.dashboard');
     }
 
+
+
+
+    // SMTP SETTINGS
     public function SmtpIntrigationView(){
         $smtp_data = admin_smtp_settings::first();
         if(!$smtp_data){
@@ -90,6 +101,10 @@ class adminController extends Controller
         }
     }
 
+
+
+
+    // Members SETTINGS
     public function WaitingMembersView(){
         $members = members::get();
         $organisation = organisation::get();
