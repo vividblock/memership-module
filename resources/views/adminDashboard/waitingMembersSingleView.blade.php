@@ -116,6 +116,8 @@
                             <tr><td><strong>Group Name</strong></td><td>{{ $organisation_local_activities->name_of_group }}</td></tr>
                             <tr><td><strong>Meeting Frequency</strong></td><td>{{ $organisation_local_activities->frequency_of_group_meetings }}</td></tr>
                             <tr><td><strong>Activity Taking Place</strong></td><td>{{ $organisation_local_activities->activity_taking_place }}</td></tr>
+                            @php $activities = json_decode($organisation_local_activities->type_of_activities, true); 
+                            @endphp
                             <tr><td><strong>Type of Activities</strong></td><td>{{ is_array($activities) ? implode(', ', $activities) : $organisation_local_activities->type_of_activities }}</td></tr>
                             <tr><td><strong>Other Activities</strong></td><td>{{ $organisation_local_activities->type_of_activities_other }}</td></tr>
                             <tr><td><strong>Additional Info</strong></td><td>{{ $organisation_local_activities->response_to_any_additional_information }}</td></tr>
