@@ -16,6 +16,7 @@ use App\Models\members_two;
 use App\Models\organisation_details;
 use App\Models\member_network_survey;
 use App\Models\organisation_local_activities;
+use App\Models\Members_form_fillup_status;
 
 class adminController extends Controller
 {
@@ -25,7 +26,7 @@ class adminController extends Controller
 
 
     public function __construct(){
-        
+
     }
 
 
@@ -108,14 +109,24 @@ class adminController extends Controller
     public function WaitingMembersView(){
         $members = members::get();
         $organisation = organisation::get();
-        return view('adminDashboard.waitingMembers')->with([
-            'members'=>$members,
-            'organisation'=>$organisation,
-        ]);
+        $formStatus = Members_form_fillup_status::getAllFormDetails();
+        foreach($members as $m){
+            foreach($formStatus as $f){
+                if($f->member_id == $m->id && $f->form_fillup_status == "submited"){
+                    return view('adminDashboard.waitingMembers')->with([
+                        'members'=>$members,
+                        'organisation'=>$organisation,
+                    ]);
+                }
+            }
+        }
+
+
     }
 
     public function waitingMembersSingleView(Request $request){
         $memberId = Crypt::decrypt($request->memberId);
+
         $members = members::where('id', $memberId)->first();
         $organisation = organisation::where('member_id', $memberId)->first();
         $members_two = members_two::where('member_id', $memberId)->first();

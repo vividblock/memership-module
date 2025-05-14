@@ -18,6 +18,10 @@ class Members_form_fillup_status extends Model
         // 'current_steps',
     ];
 
+    public static function getAllFormDetails(){
+        return self::get();
+    }
+
     public function registerFormSteps($memberId, $memberTotalStep){
         try {
             Members_form_fillup_status::create([
