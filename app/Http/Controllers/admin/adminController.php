@@ -107,22 +107,35 @@ class adminController extends Controller
 
     // Members SETTINGS
     public function WaitingMembersView(){
-        $members = members::get();
-        $organisation = organisation::get();
-        $formStatus = Members_form_fillup_status::getAllFormDetails();
-        dd($formStatus);
-        foreach($members as $m){
-            foreach($formStatus as $f){
-                if(($f->member_id == $m->id) && ($f->form_fillup_status == "submited")){
-                    return view('adminDashboard.waitingMembers')->with([
-                        'members'=>$members,
-                        'organisation'=>$organisation,
-                    ]);
-                }
-            }
-        }
+        // $members = members::get();
+        // $organisation = organisation::get();
+        // $formStatus = Members_form_fillup_status::getAllFormDetails();
+        // // dd($formStatus);
+        // foreach($members as $m){
+        //     foreach($formStatus as $f){
+        //         if(($f->member_id == $m->id) && ($f->form_fillup_status == "submited")){
+        //             return view('adminDashboard.waitingMembers')->with([
+        //                 'members'=>$members,
+        //                 'organisation'=>$organisation,
+        //             ]);
+        //         }
+        //     }
+        // }
+        // Get all submitted form statuses
+        $submittedFormMemberIds = Members_form_fillup_status::where('form_fillup_status', 'submitted')
+        ->pluck('member_id')
+        ->toArray();
 
+        // Filter members whose form is submitted
+        $members = members::whereIn('id', $submittedFormMemberIds)->get();
 
+        // Get organisations related to those members
+        $organisation = organisation::whereIn('member_id', $submittedFormMemberIds)->get();
+
+        return view('adminDashboard.waitingMembers', [
+            'members' => $members,
+            'organisation' => $organisation,
+        ]);
     }
 
     public function waitingMembersSingleView(Request $request){
