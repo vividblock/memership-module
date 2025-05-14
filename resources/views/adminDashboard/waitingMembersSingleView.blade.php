@@ -9,7 +9,7 @@
         {{-- Member Details --}}
         <div class="col-md-6 mb-2">
             <div class="card shadow rounded-4 border border-primary-subtle">
-                <div class="card-header bg-primary text-white rounded-top-4 border-bottom">
+                <div class="card-header bg-primary text-white rounded-top-4 border-bottom d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Member Details</h5>
                     <span class="edit-member-details-button"><i class="fa-solid fa-pen-to-square"></i></span>
                 </div>
@@ -17,15 +17,60 @@
                     <hr class="my-2">
                     <table class="table table-borderless mb-0">
                         <tbody>
-                            <tr><td><strong>Name</strong></td><td>{{ $members->firstname }} {{ $members->lastname }}</td></tr>
-                            <tr><td><strong>Member ID</strong></td><td>{{ $members->members_c3sc_id }}</td></tr>
-                            <tr><td><strong>Username</strong></td><td>{{ $members->username }}</td></tr>
-                            <tr><td><strong>Email</strong></td><td>{{ $members->email }}</td></tr>
-                            <tr><td><strong>Contact Number</strong></td><td>{{ $members->contactnumber }}</td></tr>
-                            <tr><td><strong>Membership Package</strong></td><td>{{ $members->memebership_package }}</td></tr>
-                            <tr><td><strong>Membership Type</strong></td><td>{{ $members->membership_type }}</td></tr>
-                            <tr><td><strong>Membership Expiry</strong></td><td>{{ $members->membership_expiry }}</td></tr>
-                            <tr><td><strong>Apply Date</strong></td><td>{{ $members->created_at->format('d M Y') }}</td></tr>
+                            <tr>
+                                <td><strong>Name</strong></td>
+                                <td>
+                                    <input type="text" class="form-control" readonly value="{{ $members->firstname }} {{ $members->lastname }}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Member ID</strong></td>
+                                <td>
+                                    <input type="text" class="form-control" readonly value="{{ $members->members_c3sc_id }}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Username</strong></td>
+                                <td>
+                                    <input type="text" class="form-control" readonly value="{{ $members->username }}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email</strong></td>
+                                <td>
+                                    <input type="text" class="form-control" readonly value="{{ $members->email }}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contact Number</strong></td>
+                                <td>
+                                    <input type="text" class="form-control" readonly value="{{ $members->contactnumber }}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Membership Package</strong></td>
+                                <td>
+                                    <input type="text" class="form-control" readonly value="{{ $members->memebership_package }}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Membership Type</strong></td>
+                                <td>
+                                    <input type="text" class="form-control" readonly value="{{ $members->membership_type }}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Membership Expiry</strong></td>
+                                <td>
+                                    <input type="text" class="form-control" readonly value="{{ $members->membership_expiry }}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Apply Date</strong></td>
+                                <td>
+                                    <input type="text" class="form-control" readonly value="{{ $members->created_at->format('d M Y') }}">
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
