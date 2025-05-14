@@ -102,7 +102,11 @@
                             </tr>
                             <tr>
                                 <td><strong>Social Handle</strong></td>
-                                <td><input type="text" class="form-control" readonly value="{{ $organisation->social_handle }}"></td>
+                                <td>
+                                    @foreach(json_decode($organisation->social_handle) as $handle)
+                                        <input type="text" class="form-control mb-1" readonly value="{{ $handle }}">
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <td><strong>Website</strong></td>
