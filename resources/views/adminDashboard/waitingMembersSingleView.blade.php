@@ -169,21 +169,54 @@
                     <hr class="my-2">
                     <table class="table table-borderless mb-0">
                         <tbody>
-                            <tr><td><strong>Description</strong></td><td>{{ $organisation_details->org_description }}</td></tr>
-                            <tr><td><strong>Area</strong></td><td>{{ $organisation_details->organisation_area }}</td></tr>
-                            <tr><td><strong>Part Of</strong></td><td>{{ $organisation_details->organisation_part_of }}</td></tr>
-                            <tr><td><strong>Umbrella Body</strong></td><td>{{ $organisation_details->umbrella_body_details }}</td></tr>
-                            <tr><td><strong>Quality Marks</strong></td><td>{{ $organisation_details->quality_marks }}</td></tr>
-                            <tr><td><strong>Accreditation Awarded</strong></td><td>{{ $organisation_details->date_accreditation_awarded }}</td></tr>
-                            <tr><td><strong>Accreditation Reviewed</strong></td><td>{{ $organisation_details->date_accreditation_reviewed }}</td></tr>
-                            <tr><td><strong>Annual Turnover</strong></td><td>{{ $organisation_details->annual_turnover }}</td></tr>
-                            <tr><td><strong>Employees</strong></td><td>{{ $organisation_details->currently_employ }}</td></tr>
-                            <tr><td><strong>Volunteers</strong></td><td>{{ $organisation_details->volunteers_number }}</td></tr>
+                            <tr>
+                                <td><strong>Description</strong></td>
+                                <td>
+                                    <textarea class="form-control" rows="3" readonly>{{ $organisation_details->org_description }}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Area</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation_details->organisation_area }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Part Of</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation_details->organisation_part_of }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Umbrella Body</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation_details->umbrella_body_details }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quality Marks</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation_details->quality_marks }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Accreditation Awarded</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation_details->date_accreditation_awarded }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Accreditation Reviewed</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation_details->date_accreditation_reviewed }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Annual Turnover</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation_details->annual_turnover }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Employees</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation_details->currently_employ }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Volunteers</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation_details->volunteers_number }}"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
         @endif
 
         {{-- Local Activities --}}
