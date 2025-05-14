@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use App\Mail\OtpMail;
 use Illuminate\Support\Facades\Mail;
 
+use App\Services\NotificationService;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,6 +19,7 @@ use App\Models\organisation;
 use App\Models\admin\admin_smtp_settings;
 use App\Models\membersEmailValidationTemporary;
 use App\Models\Members_form_fillup_status;
+use App\Models\notification_main;
 
 class membersAuth extends Controller
 {
@@ -231,7 +234,10 @@ class membersAuth extends Controller
         ]);
 
 
-
+        $reason = 'account_created';
+        $service = new NotificationService();
+        $service->sendMail($reason, $members);
+        
         return redirect()->route('membersDashboard');
     }
 

@@ -175,4 +175,66 @@ class adminController extends Controller
             'notification'=>notification_main::get(),
         ]);
     }
+
+    public function notificationAdd(Request $request){
+        $notificationStatus = $request->has('notification_status') ? true : false;
+
+        $data = notification_main::where('notification_reason', $request->notification_reason)->first();
+    
+        if ($data) {
+            $data->update([
+                'notification_status' => $notificationStatus,
+                'notification_message' => $request->notification_message,
+            ]);
+        } else {
+            notification_main::create([
+                'notification_message' => $request->notification_message,
+                'notification_reason' => $request->notification_reason,
+                'notification_status' => $notificationStatus,
+            ]);
+        }
+        
+        return redirect()->back()->with('success', 'Notification saved successfully.');
+
+    }
+
+    public function notificationStatusChange(Request $request){
+        // Decrypt the notification ID
+        $notificationId = Crypt::decrypt($request->notiId);
+
+        // Update the notification status (either 1 for checked, 0 for unchecked)
+        $status = $request->status == 1 ? 1 : 0;  // Ensure status is 1 or 0
+        $notification = notification_main::where('id', $notificationId)->first();
+
+        if ($notification) {
+            $notification->update([
+                'notification_status' => $status,
+            ]);
+            
+            // Return a JSON response to confirm the update
+            return response()->json([
+                'success' => true,
+                'message' => 'Notification status updated successfully.',
+                'status' => $status,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Notification not found.',
+            ]);
+        }
+    }
+
+
+    public function notificationDelete(Request $request){
+        $notificationId = Crypt::decrypt($request->notificationId);
+        $notification = notification_main::find($notificationId);
+    
+        if ($notification) {
+            $notification->delete();
+            return redirect()->back()->with('success', 'Notification deleted successfully.');
+        }
+
+        return redirect()->back();
+    }
 }

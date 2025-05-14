@@ -31,6 +31,11 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
 
     // Notification
     Route::get('/notification', [adminController::class, 'notificationList'])->name('notificationList');
+    Route::post('/notification-add', [adminController::class, 'notificationAdd'])->name('notificationAdd');
+    Route::get('/notification-delete/{notificationId}', [adminController::class, 'notificationDelete'])->name('notificationDelete');
+
+    Route::post('/notification-status-change', [adminController::class, 'notificationStatusChange'])->name('notificationStatusChange');
+    
 
 });
 
