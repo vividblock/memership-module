@@ -112,7 +112,7 @@ class adminController extends Controller
         $formStatus = Members_form_fillup_status::getAllFormDetails();
         foreach($members as $m){
             foreach($formStatus as $f){
-                if($f->member_id == $m->id && $f->form_fillup_status == "submited"){
+                if(($f->member_id == $m->id) && ($f->form_fillup_status == "submited")){
                     return view('adminDashboard.waitingMembers')->with([
                         'members'=>$members,
                         'organisation'=>$organisation,
