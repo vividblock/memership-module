@@ -122,7 +122,7 @@ class adminController extends Controller
         //     }
         // }
         // Get all submitted form statuses
-        $submittedFormMemberIds = Members_form_fillup_status::where('form_fillup_status', 'submitted')
+        $submittedFormMemberIds = Members_form_fillup_status::where('form_fillup_status', 'submited')
         ->pluck('member_id')
         ->toArray();
 
