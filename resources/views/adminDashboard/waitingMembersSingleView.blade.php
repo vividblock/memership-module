@@ -23,24 +23,9 @@
                                     <input type="text" class="form-control" readonly value="{{ $members->firstname }} {{ $members->lastname }}">
                                 </td>
                             </tr>
-                            <tr>
-                                <td><strong>Member ID</strong></td>
-                                <td>
-                                    <input type="text" class="form-control" readonly value="{{ $members->members_c3sc_id }}">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Username</strong></td>
-                                <td>
-                                    <input type="text" class="form-control" readonly value="{{ $members->username }}">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Email</strong></td>
-                                <td>
-                                    <input type="text" class="form-control" readonly value="{{ $members->email }}">
-                                </td>
-                            </tr>
+                            <tr><td><strong>Member ID</strong></td><td>{{ $members->members_c3sc_id }}</td></tr>
+                            <tr><td><strong>Username</strong></td><td>{{ $members->username }}</td></tr>
+                            <tr><td><strong>Email</strong></td><td>{{ $members->email }}</td></tr>
                             <tr>
                                 <td><strong>Contact Number</strong></td>
                                 <td>
