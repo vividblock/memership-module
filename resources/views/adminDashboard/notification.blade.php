@@ -117,6 +117,7 @@
     </div>
 
 </div>
+<!-- /.container-fluid -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <script type="text/javascript" defer>
     $(document).ready(function(){
@@ -143,3 +144,9 @@
         });
     });
 </script>
+
+
+@include('includes.admin.footer')
+
+
+

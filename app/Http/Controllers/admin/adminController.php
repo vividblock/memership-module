@@ -225,7 +225,6 @@ class adminController extends Controller
         }
     }
 
-
     public function notificationDelete(Request $request){
         $notificationId = Crypt::decrypt($request->notificationId);
         $notification = notification_main::find($notificationId);
@@ -236,5 +235,11 @@ class adminController extends Controller
         }
 
         return redirect()->back();
+    }
+
+
+    // Support ticket
+    public function supportTicketsView(){
+        return view('supportView');
     }
 }

@@ -15,17 +15,19 @@ use App\Http\Middleware\membersMiddleware;
 Route::get('/',[adminAuth::class, 'index'])->name('adminLoginView');
 Route::post('/',[adminAuth::class, 'login'])->name('adminLogin');
 Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(function(){
+
     Route::get('/dashboard', [adminController::class, 'index'])->name('adminDashboardView');
+
+
+    // Smtp intrigartion
     Route::get('/smtp-intrigations', [adminController::class, 'SmtpIntrigationView'])->name('smtpIntrigationView');
     Route::post('/smtp-server-info-save', [adminController::class, 'SmtpIntrigationSave'])->name('smtpIntrigationSave');
     Route::post('/send-test-mail',[adminController::class, 'TestMailSend'])->name('SendTestMail');
 
+
+    // Member Lsit
     Route::get('/waiting-members-list', [adminController::class, 'WaitingMembersView'])->name('waitingMembersView');
-
     Route::get('/waiting-members-view/{memberId}', [adminController::class, 'waitingMembersSingleView'])->name('waitingMembersSingleView');
-
-
-    // Abandoned Members
     Route::get('/abandoned-members-list', [adminController::class, 'abandonedMembersList'])->name('abandonedMembersList');
 
 
@@ -33,8 +35,11 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
     Route::get('/notification', [adminController::class, 'notificationList'])->name('notificationList');
     Route::post('/notification-add', [adminController::class, 'notificationAdd'])->name('notificationAdd');
     Route::get('/notification-delete/{notificationId}', [adminController::class, 'notificationDelete'])->name('notificationDelete');
-
     Route::post('/notification-status-change', [adminController::class, 'notificationStatusChange'])->name('notificationStatusChange');
+
+
+    // Support
+    Route::get('/support-tickets', [adminController::class, 'supportTicketsView'])->name('supportTicketsView');
     
 
 });

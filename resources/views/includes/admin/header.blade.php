@@ -134,7 +134,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('adminDashboardView') }}">
+                <a class="nav-link" href="{{ route('supportTicketsView') }}">
                     <i class="fa-solid fa-headset"></i>
                     <span>Support Tickets</span>
                 </a>
