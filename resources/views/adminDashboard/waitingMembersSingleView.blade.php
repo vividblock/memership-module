@@ -137,13 +137,26 @@
                     <hr class="my-2">
                     <table class="table table-borderless mb-0">
                         <tbody>
-                            <tr><td><strong>Details</strong></td><td>{{ $organisation->organization_details }}</td></tr>
-                            <tr><td><strong>Request Description</strong></td><td>{{ $organisation->organisation_request_descripiton }}</td></tr>
+                            <tr>
+                                <td><strong>Details</strong></td>
+                                <td>
+                                    @foreach(json_decode($organisation->organization_details) as $detail)
+                                        <input type="text" class="form-control mb-1" readonly value="{{ ucwords(str_replace('-', ' ', $detail)) }}">
+                                    @endforeach
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Request Description</strong></td>
+                                <td>
+                                    <textarea class="form-control" rows="3" readonly>{{ $organisation->organisation_request_descripiton }}</textarea>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
 
         {{-- Extended Organisation Details --}}
         @if ($organisation_details)
