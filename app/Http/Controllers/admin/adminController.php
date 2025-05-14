@@ -110,6 +110,7 @@ class adminController extends Controller
         $members = members::get();
         $organisation = organisation::get();
         $formStatus = Members_form_fillup_status::getAllFormDetails();
+        dd($formStatus);
         foreach($members as $m){
             foreach($formStatus as $f){
                 if(($f->member_id == $m->id) && ($f->form_fillup_status == "submited")){
