@@ -65,27 +65,55 @@
         {{-- Organisation Details --}}
         <div class="col-md-6 mb-2">
             <div class="card shadow rounded-4 border border-success-subtle">
-                <div class="card-header bg-success text-white rounded-top-4 border-bottom">
+                <div class="card-header bg-success text-white rounded-top-4 border-bottom d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Organisation Details</h5>
                 </div>
                 <div class="card-body">
                     <hr class="my-2">
                     <table class="table table-borderless mb-0">
                         <tbody>
-                            <tr><td><strong>Name</strong></td><td>{{ $organisation->organisation_name }}</td></tr>
-                            <tr><td><strong>Email</strong></td><td>{{ $organisation->organisation_email }}</td></tr>
-                            <tr><td><strong>Contact Number</strong></td><td>{{ $organisation->contact_number }}</td></tr>
-                            <tr><td><strong>Address</strong></td><td>{{ $organisation->correspondence_address }}</td></tr>
-                            <tr><td><strong>City</strong></td><td>{{ $organisation->city }}</td></tr>
-                            <tr><td><strong>Postal Code</strong></td><td>{{ $organisation->postcode }}</td></tr>
-                            <tr><td><strong>Country</strong></td><td>{{ $organisation->country }}</td></tr>
-                            <tr><td><strong>Social Handle</strong></td><td>{{ $organisation->social_handle }}</td></tr>
-                            <tr><td><strong>Website</strong></td><td>{{ $organisation->website }}</td></tr>
+                            <tr>
+                                <td><strong>Name</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation->organisation_name }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation->organisation_email }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contact Number</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation->contact_number }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Address</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation->correspondence_address }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>City</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation->city }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Postal Code</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation->postcode }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Country</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation->country }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Social Handle</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation->social_handle }}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Website</strong></td>
+                                <td><input type="text" class="form-control" readonly value="{{ $organisation->website }}"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
 
         {{-- Organisation Description --}}
         <div class="col-md-12 mb-2">
