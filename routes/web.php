@@ -24,6 +24,10 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
 
     Route::get('/waiting-members-view/{memberId}', [adminController::class, 'waitingMembersSingleView'])->name('waitingMembersSingleView');
 
+
+    // Abandoned Members
+    Route::get('/abandoned-members-list', [adminController::class, 'abandonedMembersList'])->name('abandonedMembersList');
+
 });
 
 

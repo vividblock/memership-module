@@ -107,20 +107,6 @@ class adminController extends Controller
 
     // Members SETTINGS
     public function WaitingMembersView(){
-        // $members = members::get();
-        // $organisation = organisation::get();
-        // $formStatus = Members_form_fillup_status::getAllFormDetails();
-        // // dd($formStatus);
-        // foreach($members as $m){
-        //     foreach($formStatus as $f){
-        //         if(($f->member_id == $m->id) && ($f->form_fillup_status == "submited")){
-        //             return view('adminDashboard.waitingMembers')->with([
-        //                 'members'=>$members,
-        //                 'organisation'=>$organisation,
-        //             ]);
-        //         }
-        //     }
-        // }
         // Get all submitted form statuses
         $submittedFormMemberIds = Members_form_fillup_status::where('form_fillup_status', 'submited')
         ->pluck('member_id')
@@ -158,5 +144,23 @@ class adminController extends Controller
         ]);
         // }
 
+    }
+
+
+
+    public function abandonedMembersList(){
+
+        // Get all rows from Members_form_fillup_status where form_fillup_status is not 'submitted'
+        $notSubmittedForms = Members_form_fillup_status::where('form_fillup_status', '!=', 'submited')->get();
+
+        // Get the related members and organisations based on those form IDs
+        $members = members::whereIn('id', $notSubmittedForms->pluck('member_id'))->get();
+        $organisation = organisation::whereIn('member_id', $notSubmittedForms->pluck('member_id'))->get();
+
+        return view('adminDashboard.abandonedMembersList',[
+            'members' => $members,
+            'organisation' => $organisation,
+            'formStaus' => $notSubmittedForms,
+        ]);
     }
 }

@@ -67,11 +67,39 @@
                 </a>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Members List</h6>
+                        <!-- <h6 class="collapse-header">Members List</h6> -->
+                        <a class="collapse-item" href="">Members List</a>
                         <a class="collapse-item" href="{{ route('waitingMembersView') }}">Waiting Members</a>
-                        <a class="collapse-item" href="cards.html">Archived Members</a>
+                        <a class="collapse-item" href="">Archived Members</a>
+                        <a class="collapse-item" href="{{ route('abandonedMembersList') }}">Abandoned Members</a>
+                        
                     </div>
                 </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fa-solid fa-list"></i>
+                    <span>Listing</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <!-- <h6 class="collapse-header">Listing List</h6> -->
+                        <a class="collapse-item" href="">Listing List</a>
+                        <a class="collapse-item" href="">Waiting List</a>
+                        <a class="collapse-item" href="">Archived List</a>
+                        <a class="collapse-item" href="">Abandoned List</a>
+                        
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('adminDashboardView') }}">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Managers</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -93,9 +121,30 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Intrigations</h6>
                         <a class="collapse-item" href="{{ route('smtpIntrigationView') }}">SMTP Intrigations</a>
-                        <a class="collapse-item" href="cards.html">3rd Party Intrigations</a>
+                        <a class="collapse-item" href="">Wordpress Intrigations</a>
                     </div>
                 </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('adminDashboardView') }}">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notification</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('adminDashboardView') }}">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Support Tickets</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
             </li>
 
 
@@ -128,7 +177,7 @@
     </button>
 
     <!-- Topbar Search -->
-    <form
+    <!-- <form
         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div class="input-group">
             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -139,7 +188,7 @@
                 </button>
             </div>
         </div>
-    </form>
+    </form> -->
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
@@ -311,10 +360,6 @@
                 <a class="dropdown-item" href="#">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
