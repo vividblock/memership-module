@@ -41,7 +41,15 @@
                             <tr>
                                 <td><strong>Membership Type</strong></td>
                                 <td>
-                                    <input type="text" class="form-control" readonly value="{{ $members->membership_type }}">
+                                    @php
+                                        $membershipTypes = [
+                                            1 => 'Non for profit - Group or Organisation',
+                                            2 => 'Non for profit - Individual',
+                                            3 => 'Statutory Sector',
+                                            4 => 'Private Sector',
+                                        ];
+                                    @endphp
+                                    <input type="text" class="form-control" readonly value="{{ $membershipTypes[$members->membership_type] ?? 'Unknown' }}">
                                 </td>
                             </tr>
                             <tr>
