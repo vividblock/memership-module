@@ -17,6 +17,7 @@ use App\Models\organisation_details;
 use App\Models\member_network_survey;
 use App\Models\organisation_local_activities;
 use App\Models\Members_form_fillup_status;
+use App\Models\notification_main;
 
 class adminController extends Controller
 {
@@ -161,6 +162,17 @@ class adminController extends Controller
             'members' => $members,
             'organisation' => $organisation,
             'formStaus' => $notSubmittedForms,
+        ]);
+    }
+
+
+
+
+    // Notification List
+    public function notificationList(){
+        
+        return view('adminDashboard.notification',[
+            'notification'=>notification_main::get(),
         ]);
     }
 }

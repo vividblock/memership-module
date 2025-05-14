@@ -28,6 +28,10 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
     // Abandoned Members
     Route::get('/abandoned-members-list', [adminController::class, 'abandonedMembersList'])->name('abandonedMembersList');
 
+
+    // Notification
+    Route::get('/notification', [adminController::class, 'notificationList'])->name('notificationList');
+
 });
 
 

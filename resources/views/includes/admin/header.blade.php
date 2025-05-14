@@ -127,7 +127,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('adminDashboardView') }}">
+                <a class="nav-link" href="{{ route('notificationList') }}">
                     <i class="fa-solid fa-bell"></i>
                     <span>Notification</span>
                 </a>

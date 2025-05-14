@@ -10,7 +10,16 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    {   
+        Schema::create('notification_main', function(Blueprint $table){
+            $table->id();
+            $table->text('notification_message')->nullable();
+            $table->string('notification_reason')->nullable()->comment('account_create, form_submit, account_activate, account_in_review');
+            $table->boolean('notification_status')->default(false);
+            $table->timestamps();
+        });
+
+
         Schema::create('notification_info', function(Blueprint $table){
             $table->id();
             $table->unsignedBigInteger('member_id'); 
