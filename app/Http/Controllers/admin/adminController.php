@@ -19,6 +19,8 @@ use App\Models\organisation_local_activities;
 use App\Models\Members_form_fillup_status;
 use App\Models\notification_main;
 
+use App\Models\support_admin_members;
+
 class adminController extends Controller
 {
     // GLOBAL FUNCTIONS
@@ -240,6 +242,15 @@ class adminController extends Controller
 
     // Support ticket
     public function supportTicketsView(){
-        return view('supportView');
+        $data = support_admin_members::allSupport();
+        return view('adminDashboard.supportView', [
+            "supportlist" => $data
+        ]);
+    }
+
+    public function supportTicketSingleView(Request $request){
+        $supportId = $request->supportId;
+        $memeberId = $request->memberId;
+        
     }
 }

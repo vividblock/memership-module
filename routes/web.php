@@ -40,6 +40,7 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
 
     // Support
     Route::get('/support-tickets', [adminController::class, 'supportTicketsView'])->name('supportTicketsView');
+    Route::get('/support-tickets/support/{supportId}/member/{memberId}', [adminController::class, 'supportTicketSingleView'])->name('supportTicketSingleView');
     
 
 });

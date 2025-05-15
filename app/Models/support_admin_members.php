@@ -19,6 +19,10 @@ class support_admin_members extends Model
         'support_status',
     ];
 
+    public static function allSupport(){
+        return self::get();
+    }
+
     public static function createSupport($data){
         return self::create($data);
     }
