@@ -36,4 +36,9 @@ class support_admin_members extends Model
             ->where('id', $supportId)
             ->update($data);
     }
+
+    public static function getSupportByMemberIdAndSupportTicketID($memberId, $supportId){
+        return self::where('member_id', $memberId)
+            ->where('id', $supportId)->first();
+    }
 }

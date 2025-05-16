@@ -48,10 +48,10 @@
                         @php
                             // Set border class based on urgency
                             switch ($sl->urgency_lable) {
-                                case 1:  $borderClass = '<span class="btn btn-danger">Today</span>'; break;    // Today
-                                case 2:  $borderClass = '<span class="btn btn-warning">Next Few Days</span>'; break;   // Next Few Days
-                                case 3:  $borderClass = '<span class="btn btn-success">Not Urgent</span>'; break;   // Not Urgent
-                                default: $borderClass = '<span class="btn btn-primary">Need Help</span>';
+                                case 1:  $borderClass = '<span class="btn-sm btn-danger">Today</span>'; break;    // Today
+                                case 2:  $borderClass = '<span class="btn-sm btn-warning">Next Few Days</span>'; break;   // Next Few Days
+                                case 3:  $borderClass = '<span class="btn-sm btn-success">Not Urgent</span>'; break;   // Not Urgent
+                                default: $borderClass = '<span class="btn-sm btn-primary">Need Help</span>';
                             }
                         @endphp
 
@@ -60,9 +60,9 @@
                             <td>{{ $sl->support_subject }}</td>
                            <td>{{ \Illuminate\Support\Str::words($sl->support_message, 10, '...') }}</td>
                             <td>{!! $borderClass !!}</td>
-                            <td>{{ $sl->support_status }}</td>
+                            <td>{{ ucfirst($sl->support_status) }}</td>
                             <td>
-                                <a href="{{ route('supportTicketSingleView', ['supportId' => $sl->id, 'memberId' => encrypt($sl->member_id)]) }}" class="btn btn-success btn-icon-split">
+                                <a href="{{ route('supportTicketSingleView', ['supportId' => $sl->id, 'memberId' => encrypt($sl->member_id)]) }}" class="btn-sm btn-success btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fa-solid fa-eye"></i>
                                     </span>

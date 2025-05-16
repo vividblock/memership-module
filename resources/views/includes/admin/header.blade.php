@@ -71,11 +71,19 @@
                         <a class="collapse-item" href="">Members List</a>
                         <a class="collapse-item" href="{{ route('waitingMembersView') }}">Waiting Members</a>
                         <a class="collapse-item" href="">Archived Members</a>
-                        <a class="collapse-item" href="{{ route('abandonedMembersList') }}">Abandoned Members</a>
+                        <a class="collapse-item" href="{{ route('abandonedMembersList') }}">Pending Members</a>
                         
                     </div>
                 </div>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Listing
+            </div>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
@@ -89,19 +97,11 @@
                         <a class="collapse-item" href="">Listing List</a>
                         <a class="collapse-item" href="">Waiting List</a>
                         <a class="collapse-item" href="">Archived List</a>
-                        <a class="collapse-item" href="">Abandoned List</a>
+                        <a class="collapse-item" href="">Pending List</a>
                         
                     </div>
                 </div>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('adminDashboardView') }}">
-                    <i class="fa-solid fa-user-tie"></i>
-                    <span>Managers</span>
-                </a>
-            </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -109,6 +109,13 @@
             <div class="sidebar-heading">
                 Settings
             </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('adminDashboardView') }}">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Managers</span>
+                </a>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -284,7 +291,7 @@
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                        <img class="rounded-circle" lazyload src="img/undraw_profile_1.svg"
                             alt="...">
                         <div class="status-indicator bg-success"></div>
                     </div>

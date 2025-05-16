@@ -75,8 +75,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('organisation');
-        Schema::dropIfExists('organisation_details');
         Schema::dropIfExists('organisation_local_activities');
+        Schema::dropIfExists('organisation_details');
+        Schema::dropIfExists('organisation');
     }
 };

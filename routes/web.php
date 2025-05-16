@@ -41,7 +41,7 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
     // Support
     Route::get('/support-tickets', [adminController::class, 'supportTicketsView'])->name('supportTicketsView');
     Route::get('/support-tickets/support/{supportId}/member/{memberId}', [adminController::class, 'supportTicketSingleView'])->name('supportTicketSingleView');
-    
+    Route::post('/send-support-message/{adminId}/{memberID}/{supportTicketId}', [adminController::class, 'supportChatAdmin'])->name('supportChatSubmit');
 
 });
 
@@ -87,6 +87,9 @@ Route::middleware([membersMiddleware::class])->prefix('/auth/members')->group(fu
     // Support 
     Route::get('/support', [membersController::class, 'supportView'])->name('supportView');
     Route::post('/support-submit/{memberId}', [membersController::class, 'supportSubmit'])->name('supportSubmit');
+    Route::get('/support/chat-room/{ticketId}', [membersController::class, 'supportChatMemberView'])->name("supportChatMemberView");
+    Route::post('/support-chat-submit/{ticketID}',[membersController::class, 'supportChatMemberSubmit'])->name("supportChatMemberSubmit");
+
 
     // Reset Password
     Route::get('/reset-password', [membersController::class, 'resetPasswordView'])->name('resetPasswordView');

@@ -23,6 +23,7 @@ use App\Models\support_admin_members;
 use App\Mail\OtpMail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\membersEmailValidationTemporary;
+use App\Models\support_chat;
 
 class membersController extends Controller
 {
@@ -627,6 +628,27 @@ class membersController extends Controller
         ];
         support_admin_members::createSupport($data);
         return redirect()->back();
+    }
+
+    public function supportChatMemberView(Request $request){
+        $TicketId = $request->ticketId;
+        $supportTicket = support_admin_members::getSupportByMemberIdAndSupportTicketID($this->memberID, $TicketId);
+        $chats = support_chat::getSupportBasedOnTicketId($this->memberID, $TicketId);
+        return view('membersDashbaord.supportChatRoom',[
+            "supportTicket" => $supportTicket,
+            "chats" => $chats,
+        ]);
+    }
+
+
+    public function supportChatMemberSubmit(Request $request){
+        $data = [
+            'member_id' => $this->memberID,
+            'support_ticket_id' => $request->ticketID,
+            'chat_from_member' => $request->message,
+        ];
+        support_chat::InsertChat($data);
+        return redirect() -> back();
     }
 
     // Profile ------

@@ -20,6 +20,7 @@ use App\Models\Members_form_fillup_status;
 use App\Models\notification_main;
 
 use App\Models\support_admin_members;
+use App\Models\support_chat;
 
 class adminController extends Controller
 {
@@ -250,7 +251,25 @@ class adminController extends Controller
 
     public function supportTicketSingleView(Request $request){
         $supportId = $request->supportId;
-        $memeberId = $request->memberId;
-        
+        $memeberId = Crypt::decrypt($request->memberId);
+        $supportTicket = support_admin_members::getSupportByMemberIdAndSupportTicketID($memeberId, $supportId);
+
+        $chats = support_chat::getSupportBasedOnTicketId($memeberId, $supportId);
+        // dd($supportTicket);
+        return view("adminDashboard.chatSupportSingleView",[
+            "supportTicket" => $supportTicket,
+            "chats" => $chats,
+        ]);
+    }
+
+    public function supportChatAdmin(Request $request){
+        $data = [
+            'member_id' => $request->memberID,
+            'admin_id' => $request->adminId,
+            'support_ticket_id' => $request->supportTicketId,
+            'chat_from_admin' => $request->message,
+        ];
+        support_chat::InsertChat($data);
+        return redirect() -> back();
     }
 }

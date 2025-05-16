@@ -41,5 +41,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('notification_info');
+        Schema::dropIfExists('notification_main');
     }
 };

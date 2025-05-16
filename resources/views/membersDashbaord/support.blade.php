@@ -45,7 +45,7 @@
         <div class="col-md-6">
             <div class="card border-bottom-primary shadow py-2" >
                 <div class="card-header">
-                    Your previous requests
+                    Your requests
                 </div>
                 <div class="card-body">
                     @foreach($support_list as $support)
@@ -70,7 +70,11 @@
                                     <small class="text-muted">Created: {{ \Carbon\Carbon::parse($support->created_at)->format('d M Y') }}</small>
                                 </div>
                                 <h5 class="card-title text-primary">{{ $support->support_subject }}</h5>
-                                <p class="card-text mb-0">{{ $shortMessage }}</p>
+                                <p class="card-text mb-2">{{ $shortMessage }}</p>
+                                
+                                <a href="{{ route('supportChatMemberView', $support->id) }}" class="btn btn-sm btn-outline-primary">
+                                    View
+                                </a>
                             </div>
                         </div>
                     @endforeach
