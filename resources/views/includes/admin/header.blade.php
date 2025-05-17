@@ -93,7 +93,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#">  
                    <i class="fa-solid fa-location-dot"></i>
                     <span>Locations</span>
                 </a>
