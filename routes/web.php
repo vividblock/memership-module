@@ -43,6 +43,10 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
     Route::get('/support-tickets/support/{supportId}/member/{memberId}', [adminController::class, 'supportTicketSingleView'])->name('supportTicketSingleView');
     Route::post('/send-support-message/{adminId}/{memberID}/{supportTicketId}', [adminController::class, 'supportChatAdmin'])->name('supportChatSubmit');
 
+    // Listing categories
+    Route::get('/listing-categories', [adminController::class, 'listingCategories'])->name("listingCategoriesView");
+    Route::post('/listing-categories-add', [adminController::class, 'listingCategoriesAdd'])->name("listingCategoriesAdd");
+    Route::get('/listing-categories-delete/{cateId}', [adminController::class, 'listingCategoriesDelete'])->name("listingCategoriesDelete");
 });
 
 

@@ -86,6 +86,20 @@
             </div>
 
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('listingCategoriesView') }}">
+                   <i class="fa-solid fa-list"></i>
+                    <span>Categories</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                   <i class="fa-solid fa-location-dot"></i>
+                    <span>Locations</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseThree">
                     <i class="fa-solid fa-list"></i>
@@ -94,6 +108,7 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Listing List</h6> -->
+                        <a class="collapse-item" href="">Add Listing</a>
                         <a class="collapse-item" href="">Listing List</a>
                         <a class="collapse-item" href="">Waiting List</a>
                         <a class="collapse-item" href="">Archived List</a>

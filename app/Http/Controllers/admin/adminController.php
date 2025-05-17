@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Mail\MailTemplateOne;
 use Illuminate\Support\Facades\Mail;
@@ -21,6 +22,7 @@ use App\Models\notification_main;
 
 use App\Models\support_admin_members;
 use App\Models\support_chat;
+use App\Models\listing_categories;
 
 class adminController extends Controller
 {
@@ -272,4 +274,53 @@ class adminController extends Controller
         support_chat::InsertChat($data);
         return redirect() -> back();
     }
+
+    // Listing categories 
+    public function listingCategories(){
+        $categories = listing_categories::getAllCategories();
+        return view("adminDashboard.listingTemplatesAdmin.categoriesView", [
+            "categories" => $categories,
+        ]);
+    }
+
+
+
+    public function listingCategoriesAdd(Request $request)
+    {
+        // Validate required fields
+        // $request->validate([
+        //     'categori_name' => 'required|string|max:255',
+        //     'categori_icon' => 'nullable|string|max:255',
+        //     'categori_slug' => 'nullable|string|max:255',
+        // ]);
+
+        $slug = $request->categori_slug;
+
+        // Generate slug from name if not provided
+        if (empty($slug)) {
+            $slug = Str::slug($request->categori_name);
+        }
+
+        // Ensure slug is unique
+        $originalSlug = $slug;
+        while (listing_categories::getCategoriesBySlug($slug)) {
+            $slug = $originalSlug . '-' . Str::random(5); // Append 5-char random string
+        }
+
+        $data = [
+            'categories_name' => $request->categori_name,
+            'categories_icon' => $request->categori_icon,
+            'categories_slug' => $slug,
+        ];
+
+        listing_categories::addCategories($data);
+
+        return redirect()->back();
+    }
+
+    public function listingCategoriesDelete(Request $request){
+        listing_categories::deleteCategoriesById($request->cateId);
+        return redirect()->back();
+    }
+
 }
