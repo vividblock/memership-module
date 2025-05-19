@@ -27,6 +27,14 @@ class listing extends Model
         'exact_location',
         'website',
         'social_links',
+        'verified_listing',
+        'business_tagline',
+        'whatsapp_number',
+        'email',
+        'youtube_video_link',
+        'price_range',
+        'price_from',
+        'price_to',
     ];
 
     public static function createListing($data){

@@ -56,6 +56,7 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
     
     // Listing
     Route::get("/listing-add", [adminController::class, 'addListingView'])->name("addListingView");
+    Route::post("/listing-add", [adminController::class, 'addListing'])->name("addListing");
     Route::get("/listing-edit/{listingId}", [adminController::class, 'listingEditView'])->name("listingEditView");
     Route::post("/listing-edit/{listingId}", [adminController::class, 'listingEdit'])->name("listingEdit");
 });

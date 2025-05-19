@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('location_google_address');
             $table->string('location_country');
             $table->string('location_zipcode')->nullable();
-            $table->string('location_raw_date');
+            $table->string('location_raw_data')->nullable();
             $table->timestamps();
         });
 
@@ -45,17 +45,25 @@ return new class extends Migration
             $table->bigInteger('member_id')->nullable();
             $table->string('listing_status')->default('4')->comment('0 deacivate, 1 active, 2 inreview, 4 draft');
             $table->string('listing_name')->nullable();
+            $table->string('business_tagline')->nullable();
             $table->text('listing_slug');
             $table->text('listing_description')->nullable();
             $table->string('location_id')->nullable();
             $table->string('categories_id')->nullable();
             $table->text('brand_logo')->nullable();
             $table->text('gallery')->nullable();
-            $table->tetx('background_image')->nullable();
+            $table->text('background_image')->nullable();
             $table->text('open_time_table')->nullable();
             $table->text('tags_id')->nullable();
             $table->string('contact_number')->nullable();
+            $table->string('whatsapp_number')->nullable();
+            $table->string('email')->nullable();
+            $table->string('youtube_video_link')->nullable();
+            $table->string('price_range')->nullable();
+            $table->string('price_from')->nullable();
+            $table->string('price_to')->nullable();
             $table->string('logititude_lattidue')->nullable();
+            $table->string('verified_listing')->nullable();
             $table->string('exact_location')->nullable();
             $table->string('website')->nullable();
             $table->text('social_links')->nullable();

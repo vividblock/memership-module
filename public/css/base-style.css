@@ -96,3 +96,8 @@ form.user .btn-user{
     transform: translateX(24px);
 }
 
+#accordionSidebar{
+    position: sticky;
+    top: 0;
+    max-height: fit-content;
+}

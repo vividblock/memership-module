@@ -379,9 +379,17 @@ class adminController extends Controller
     }
 
     // listing
-
     public function addListingView(){
-        return view("adminDashboard.listingTemplatesAdmin.addlistingForm");
+        $categories = listing_categories::getAllCategories();
+        $locations = listing_location::getAllLocation();
+        return view("adminDashboard.listingTemplatesAdmin.addlistingForm",[
+            "locations"=>$locations,
+            "categories" =>$categories,
+        ]);
+    }
+
+    public function addListing(Request $request){
+        dd($request);
     }
 
 }

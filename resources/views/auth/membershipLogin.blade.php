@@ -22,6 +22,16 @@
 
     <!-- Custom css -->
     <link rel="stylesheet" href="{{ asset('css/members-base-style.css')}}">
+    <style>
+        #InputPassword{
+            position: relative;
+        }
+        .eye-button-for-password{
+            position: absolute;
+            top: 13px;
+            right: 28px;
+        }
+    </style>
 
 </head>
 
@@ -54,7 +64,7 @@
                                                     <span class="text-danger">{{ $errors->first('username') }}</span>
                                                 @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="InputPassword"> 
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password" name="password">
                                                 @if ($errors->has('password'))
@@ -101,7 +111,19 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin-2.min.js')}}"></script>
+    <script>
+            $(document).ready(function(){
+                $("#show-password").on("click", function(){
+                    let passwordInput = $('input[name="password"]');
+                    let isPassword = passwordInput.attr('type') === 'password';
 
+                    passwordInput.attr('type', isPassword ? 'text' : 'password');
+                    $(this).html(isPassword 
+                        ? '<i class="fa-solid fa-eye-slash"></i>' 
+                        : '<i class="fa-solid fa-eye"></i>');
+                });
+            });
+        </script>
 </body>
 
 </html>
