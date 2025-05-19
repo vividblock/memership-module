@@ -47,6 +47,17 @@ Route::middleware([adminMiddleware::class])->prefix('/auth/admin')->group(functi
     Route::get('/listing-categories', [adminController::class, 'listingCategories'])->name("listingCategoriesView");
     Route::post('/listing-categories-add', [adminController::class, 'listingCategoriesAdd'])->name("listingCategoriesAdd");
     Route::get('/listing-categories-delete/{cateId}', [adminController::class, 'listingCategoriesDelete'])->name("listingCategoriesDelete");
+
+    // Listing Location
+    Route::get('/listing-location', [adminController::class, 'listingLocations'])->name("listingLocationsViews");
+    Route::post('/listing-location-add', [adminController::class, 'listingLocationsAdd'])->name("listingLocationsAdd");
+    Route::get('/listing-location-delete/{locationID}', [adminController::class, 'listingLocationsDeleter'])->name("listingLocationDelete");
+
+    
+    // Listing
+    Route::get("/listing-add", [adminController::class, 'addListingView'])->name("addListingView");
+    Route::get("/listing-edit/{listingId}", [adminController::class, 'listingEditView'])->name("listingEditView");
+    Route::post("/listing-edit/{listingId}", [adminController::class, 'listingEdit'])->name("listingEdit");
 });
 
 

@@ -23,6 +23,7 @@ use App\Models\notification_main;
 use App\Models\support_admin_members;
 use App\Models\support_chat;
 use App\Models\listing_categories;
+use App\Models\listing_location;
 
 class adminController extends Controller
 {
@@ -321,6 +322,66 @@ class adminController extends Controller
     public function listingCategoriesDelete(Request $request){
         listing_categories::deleteCategoriesById($request->cateId);
         return redirect()->back();
+    }
+
+
+    // Listing Location
+    public function listingLocations(){
+
+        $listingLocation = listing_location::getAllLocation();
+        return view("adminDashboard.listingTemplatesAdmin.locationView",[
+            "location" => $listingLocation,
+        ]);
+    }
+
+    public function listingLocationsAdd(Request $request){
+
+        $userSlug = $request->input('location_slug');
+
+        if ($userSlug) {
+            // If user provided a slug, check if it's already taken
+            if (listing_location::getLocationBySlug($userSlug)) {
+                throw ValidationException::withMessages([
+                    'location_slug' => 'This slug is already in use. Please choose a different one.',
+                ]);
+            }
+            $slug = $userSlug;
+        } else {
+            // Generate slug from name and ensure uniqueness
+            $slug = Str::slug($request->input('location_name'));
+            $originalSlug = $slug;
+            $counter = 1;
+            while (listing_location::getLocationBySlug($slug)) {
+                $slug = $originalSlug . '-' . $counter++;
+            }
+        }
+    
+        $data = $request->only([
+            'location_name',
+            'location_latitude',
+            'location_longititude',
+            'location_google_address',
+            'location_country',
+            'location_zipcode',
+            'location_raw_data',
+        ]);
+        $data['location_slug'] = $slug;
+    
+        listing_location::addLocation($data);
+    
+        return redirect()->back()->with('success', 'Location added successfully!');
+    }
+
+
+    public function listingLocationsDeleter(Request $request){
+        listing_location::deleteLocation($request->locationID);
+        return redirect()->back();
+    }
+
+    // listing
+
+    public function addListingView(){
+        return view("adminDashboard.listingTemplatesAdmin.addlistingForm");
     }
 
 }

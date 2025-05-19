@@ -39,6 +39,28 @@ return new class extends Migration
             $table->string('tag_slug')->unique();
             $table->timestamps();
         });
+
+        Schema::create('listing', function(Blueprint $table){
+            $table->id();
+            $table->bigInteger('member_id')->nullable();
+            $table->string('listing_status')->default('4')->comment('0 deacivate, 1 active, 2 inreview, 4 draft');
+            $table->string('listing_name')->nullable();
+            $table->text('listing_slug');
+            $table->text('listing_description')->nullable();
+            $table->string('location_id')->nullable();
+            $table->string('categories_id')->nullable();
+            $table->text('brand_logo')->nullable();
+            $table->text('gallery')->nullable();
+            $table->tetx('background_image')->nullable();
+            $table->text('open_time_table')->nullable();
+            $table->text('tags_id')->nullable();
+            $table->string('contact_number')->nullable();
+            $table->string('logititude_lattidue')->nullable();
+            $table->string('exact_location')->nullable();
+            $table->string('website')->nullable();
+            $table->text('social_links')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -49,5 +71,6 @@ return new class extends Migration
         Schema::dropIfExists('listing_categories');
         Schema::dropIfExists('listing_location');
         Schema::dropIfExists('listing_tags');
+        Schema::dropIfExists('listing');
     }
 };

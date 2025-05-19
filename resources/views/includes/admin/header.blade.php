@@ -93,7 +93,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">  
+                 <a class="nav-link" href="{{ route('listingLocationsViews') }}">  
                    <i class="fa-solid fa-location-dot"></i>
                     <span>Locations</span>
                 </a>
@@ -108,7 +108,7 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Listing List</h6> -->
-                        <a class="collapse-item" href="">Add Listing</a>
+                        <a class="collapse-item" href="{{ route('addListingView') }}">Add Listing</a>
                         <a class="collapse-item" href="">Listing List</a>
                         <a class="collapse-item" href="">Waiting List</a>
                         <a class="collapse-item" href="">Archived List</a>
