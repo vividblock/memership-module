@@ -405,7 +405,7 @@
               <small>Ignore this if your buisness does not have any specific price to show</small>
               <input type="text" class="form-control">
             </div>
-
+    
 
           </div>
           
