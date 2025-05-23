@@ -24,6 +24,7 @@ use App\Models\support_admin_members;
 use App\Models\support_chat;
 use App\Models\listing_categories;
 use App\Models\listing_location;
+use App\Models\listing;
 
 class adminController extends Controller
 {
@@ -388,8 +389,82 @@ class adminController extends Controller
         ]);
     }
 
+    public function listingListView(){
+        $listing = listing::viewLiveListing();
+        return view("adminDashboard.listingTemplatesAdmin.listingView",[
+            "listing" => $listing
+        ]);
+    }
+
     public function addListing(Request $request){
-        dd($request);
+        // dd($request);
+
+        // Generate slug from title
+        $slug = Str::slug($request->listing_title);
+
+        // Check if slug exists in DB
+        $exists = listing::where('listing_slug', $slug)->exists();
+
+        if ($exists) {
+            // If slug exists, append random 5 char string
+            $slug = $slug . '-' . Str::random(5);
+            
+            // Optional: you could loop and check again if you want to guarantee uniqueness,
+            // but chances of collision with random 5 chars is very low.
+        }
+        // Handle file uploads (optional)
+        $brandLogoPath = null;
+        if ($request->hasFile('brand_logo')) {
+            $brandLogoPath = $request->file('brand_logo')->store('uploads/brand_logos', 'public');
+        }
+        $backgroundImagePath = null;
+        if ($request->hasFile('background_image')) {
+            $backgroundImagePath = $request->file('background_image')->store('uploads/background_images', 'public');
+        }
+        $galleryPaths = [];
+        if ($request->hasFile('gallery')) {
+            foreach ($request->file('gallery') as $file) {
+                $galleryPaths[] = $file->store('uploads/galleries', 'public');
+            }
+        }
+
+        // Prepare open hours data as array of entries with day, start, end, is24
+        $openHours = [];
+        if ($request->filled('days')) {
+            for ($i = 0; $i < count($request->days); $i++) {
+                $openHours[] = [
+                    'day' => $request->days[$i],
+                    'start_time' => $request->start_times[$i] ?? null,
+                    'end_time' => $request->end_times[$i] ?? null,
+                    'is_24_hours' => isset($request->is_24_hours[$i]) && $request->is_24_hours[$i] ? true : false,
+                ];
+            }
+        }
+
+        // Save to DB
+        $listing = new listing();
+        $listing->listing_name = $request->listing_title;
+        $listing->listing_slug = $slug;
+        $listing->listing_description = $request->listing_description;
+        $listing->business_tagline = $request->business_tagline;
+        $listing->contact_number = $request->phone_number;
+        $listing->whatsapp_number = $request->whatsapp_number;
+        $listing->logititude_lattidue = $request->location_latitude. ",".$request->location_longititude;
+        $listing->email = $request->email;
+        $listing->website = $request->website;
+        $listing->location_id = $request->location_name; // consider saving location ID or name properly
+        $listing->categories_id = $request->listing_categories ? implode(',', $request->listing_categories) : null;
+        $listing->brand_logo = $brandLogoPath;
+        $listing->background_image = $backgroundImagePath;
+        $listing->gallery = !empty($galleryPaths) ? json_encode($galleryPaths) : null;
+        $listing->open_time_table = !empty($openHours) ? json_encode($openHours) : null;
+        $listing->social_links = $request->social_links ? json_encode($request->social_links) : null;
+        $listing->price_from = $request->price_from;
+        $listing->price_to = $request->price_to;
+        $listing->price_range = $request->price_status ?? null;
+        $listing->save();
+
+        return redirect()->back();
     }
 
 }

@@ -41,6 +41,10 @@ class listing extends Model
         return self::create($data);
     }
 
+    public static function viewLiveListing(){
+        return self::where('listing_status', '4')->get();
+    }
+
 
     public static function deleteListing($listingId){
         return self::where('id', $listingId)->delete();
