@@ -391,8 +391,12 @@ class adminController extends Controller
 
     public function listingListView(){
         $listing = listing::viewLiveListing();
+        $categories = listing_categories::getAllCategories();
+        $locations = listing_location::getAllLocation();
         return view("adminDashboard.listingTemplatesAdmin.listingView",[
-            "listing" => $listing
+            "listing" => $listing,
+            "categories" =>$categories,
+            "locations"=>$locations,
         ]);
     }
 
@@ -443,6 +447,7 @@ class adminController extends Controller
 
         // Save to DB
         $listing = new listing();
+        $listing->listing_id = rand(0000, 99999);
         $listing->listing_name = $request->listing_title;
         $listing->listing_slug = $slug;
         $listing->listing_description = $request->listing_description;
@@ -452,7 +457,8 @@ class adminController extends Controller
         $listing->logititude_lattidue = $request->location_latitude. ",".$request->location_longititude;
         $listing->email = $request->email;
         $listing->website = $request->website;
-        $listing->location_id = $request->location_name; // consider saving location ID or name properly
+        $listing->location_id = $request->listing_locations ? implode(',', $request->listing_categories) : null;
+        $listing->exact_location = $request->location_name; // consider saving location ID or name properly
         $listing->categories_id = $request->listing_categories ? implode(',', $request->listing_categories) : null;
         $listing->brand_logo = $brandLogoPath;
         $listing->background_image = $backgroundImagePath;

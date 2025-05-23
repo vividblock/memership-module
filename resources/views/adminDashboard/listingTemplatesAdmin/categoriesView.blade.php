@@ -33,7 +33,7 @@
                                     <th>Link</th>
                                     <th>Action</th>
                                 </tr>
-                            </tfoot>   
+                            </tfoot> 
                             <tbody>
                                 @php
                                     $faIcons = [

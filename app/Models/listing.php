@@ -11,6 +11,7 @@ class listing extends Model
     protected $table = 'listing';
     protected $fillable =[
         'member_id',
+        'listing_id',
         'listing_status',
         'listing_name',
         'listing_slug',

@@ -21,36 +21,58 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Categorie Name</th>
-                                    <th>Link</th>
-                                    <th>Action</th>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Listing Category</th>
+                                    <th>Location</th>
+                                    <th>Author</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>Categorie Name</th>
-                                    <th>Link</th>
-                                    <th>Action</th>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Listing Category</th>
+                                    <th>Location</th>
+                                    <th>Author</th>
+                                    <th>Date</th>
                                 </tr>
-                            </tfoot>   
+                            </tfoot>      
                             <tbody>
-                                {{ dd($listing) }}
+
                                 @php    
                                     $count = 1;
                                 @endphp
                                 @foreach($listing as $la)
                                 <tr>
                                     <td>{{ $count }}</td>
-                                    <td><i class=" mr-2"></i>{{ $la->listing_name }}</td>
-                                    <td>{{ $la->listing_slug }}</td>
+                                    <td>{{ $la->listing_id }}</td>
+                                    <td><a href="{{ $la->listing_slug }}">{{ $la->listing_name }}</a></td>
                                     <td>
-                                        <a href="" class="btn btn-danger btn-icon-split">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-trash"></i>
-                                            </span>
-                                        </a>
+                                        @foreach(explode(',', $la->categories_id) as $catId)
+                                            @foreach($categories as $ca)
+                                                @if($ca->id == $catId)
+                                                    {{ $ca->categories_name }}@if(!$loop->last), @endif
+                                                @endif
+                                            @endforeach
+                                        @endforeach
                                     </td>
+                                    <td>
+                                        @foreach(explode(',', $la->location_id) as $locID)
+                                            @foreach($locations as $lo)
+                                                @if($lo->id == $locID)
+                                                    {{ $lo->location_name }}@if(!$loop->last), @endif
+                                                @endif
+                                            @endforeach
+                                        @endforeach
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        {{ $la->created_at->format('F j, Y g:i A') }}
+                                    </td>
+                                    
                                 </tr>
                                 @php
                                     $count++;

@@ -171,7 +171,7 @@
 
                       function initMap() {
                           geocoder = new google.maps.Geocoder();
-                          const defaultLatLng = { lat: 28.6139, lng: 77.2090 }; // Default: New Delhi
+                          const defaultLatLng = { lat: 55.3781, lng: -3.4360 }; // Default: New Delhi
 
                           map = new google.maps.Map(document.getElementById("map"), {
                               center: defaultLatLng,

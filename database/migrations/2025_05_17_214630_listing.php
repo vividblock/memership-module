@@ -43,6 +43,7 @@ return new class extends Migration
         Schema::create('listing', function(Blueprint $table){
             $table->id();
             $table->bigInteger('member_id')->nullable();
+            $table->bigInteger('listing_id')->unique();
             $table->string('listing_status')->default('4')->comment('0 deacivate, 1 active, 2 inreview, 4 draft');
             $table->string('listing_name')->nullable();
             $table->string('business_tagline')->nullable();
